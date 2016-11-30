@@ -1,17 +1,9 @@
+
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
-  
-  
-  <meta name="description" content="Skills" />
-  
-
-  
-  
-  
-  
-  
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   
   <title>子域名下安装wordpress总结 | Frank</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -33,66 +25,94 @@
 0.你付费的主机可以建立多个站点。有些主机你付费的时候只是给予一个站点的配额，这应该是不能开通子域名的好像。1.创建子域。打开cPanel表盘，找到域-&amp;gt;子域，选择创建子域（此处以growth为例），点击生成邮件列表（图1）。发现下面多了一个条">
 <meta name="twitter:image" content="http://blog.frankge.me/wp-content/uploads/2016/11/install-wordpress-on-a-subdomain-using-cpanel-01-1024x423.png">
   
+    <link rel="alternative" href="/atom.xml" title="Frank" type="application/atom+xml">
   
-    <link rel="icon" href="/css/images/favicon.ico">
   
   <link rel="stylesheet" href="/css/style.css">
   
-
+    <link href="//fonts.useso.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
   
-  <!-- baidu webmaster push -->
-  <script src='//push.zhanzhang.baidu.com/push.js'></script>
+  <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
+  
+  
+
 </head>
-<body class="home blog custom-background custom-font-enabled single-author">
-  <div id="page" class="hfeed site">
-      <header id="masthead" class="site-header" role="banner">
-    <hgroup>
-      <h1 class="site-title">
-        <a href="/" title="Frank" rel="home">Frank</a>
-      </h1>
-      
-        <h2 class="site-description">
-          <a href="/" id="subtitle">去探索更大的世界</a>
-        </h2>
-      
-    </hgroup>
 
-    <nav id="site-navigation" class="main-navigation" role="navigation">
-            <button class="menu-toggle">菜单</button>
-            <a class="assistive-text" href="/#content" title="跳至内容">跳至内容</a><!--TODO-->
-            <div class="menu-main-container">
-                <ul id="menu-main" class="nav-menu">
-                
-                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/">Home</a></li>
-                
-                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/archives">Archives</a></li>
-                
-                </ul>
-            </div>
-    </nav>
-</header>
-      <div id="main" class="wrapper">
-        <div id="primary" class="site-content"><div id="content" role="main"><article id="post-install-wordpress-on-a-subdomain-using-cpanel" class="post-install-wordpress-on-a-subdomain-using-cpanel post type-post status-publish format-standard hentry">
-    <!---->
-
-      <header class="entry-header">
+<body>
+<div id="container">
+  <div id="wrap">
+    <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <nav id="upper-nav" class="inner">
+      <a id="main-nav-toggle" class="nav-icon"></a>
+      <div class="sub-nav">
         
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        
+      </div>
+    </nav>
+    <div id="header-title">
+      
+        <h1 id="blog-title-wrap">
+          <a href="/" id="blog-title">Frank</a>
+        </h1>
+      
+    </div>
+    <div id="contenedor">
+      <ul class="cube">
+        <li class="cara">MyLogo</li>
+        <li class="cara"></li>
+        <li class="cara"></li>
+        <li class="cara"></li>
+        <li class="cara"></li>
+        <li class="cara"></li>
+      </ul>
+    </div>
+    <nav id="main-nav">
+      
+        <a class="main-nav-link" href="/">Home</a>
+      
+        <a class="main-nav-link" href="/archives">Archives</a>
+      
+        <a class="main-nav-link" href="/about">About</a>
+      
+      <a class="main-nav-link st-search-show-outputs">Search</a>
+    </nav>
+  </div>
+</header>
+
+    <div class="outer">
+      <section id="main"><article id="post-install-wordpress-on-a-subdomain-using-cpanel" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <h3 href="/install-wordpress-on-a-subdomain-using-cpanel/" class="article-date">
+  <time datetime="2016-11-22T03:48:59.000Z" itemprop="datePublished">2016-11-22</time>
+</h3>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/建站相关/">建站相关</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+  <div class="curve-down">
+  <div class="fill-content">
+    
+    
+      <header class="article-header">
         
   
-    <h1 class="entry-title article-title">
+    <h1 class="article-title" itemprop="name">
       子域名下安装wordpress总结
     </h1>
   
 
-        
-        <div class="comments-link">
-            
-            <a href="javascript:void(0);" data-url="http://yoursite.com/install-wordpress-on-a-subdomain-using-cpanel/" data-id="ciw4tt1k10004goezhopllx0o" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
-        </div><!-- .comments-link -->
-      </header><!-- .entry-header -->
-
-    <div class="entry-content">
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
       
+        
         <p>最近折腾博客，把<span style="color: #3366ff;"><a href="http://frankge.me/blog-old-site/" target="_blank" rel="external">frankge.me/blog</a></span>迁移到了<span style="color: #3366ff;"><a href="http://blog.frankge.me" target="_blank" rel="external">blog.frankge.me</a></span>。这样就要在子域名下安装wordpress。现在把步骤总结一下。</p>
 <p>0.你付费的主机可以建立多个站点。有些主机你付费的时候只是给予一个站点的配额，这应该是不能开通子域名的好像。<br>1.创建子域。打开cPanel表盘，找到域-&gt;子域，选择创建子域（此处以growth为例），点击生成邮件列表（图1）。发现下面多了一个条目（图2）。</p>
 <p>[caption id=”attachment_289” align=”aligncenter” width=”660”]<img src="http://blog.frankge.me/wp-content/uploads/2016/11/install-wordpress-on-a-subdomain-using-cpanel-01-1024x423.png" alt="install-wordpress-on-a-subdomain-using-cpanel-01"> <center>图1</center>[/caption]</p>
@@ -102,124 +122,108 @@
 <p>5.访问站点，安装wordpress，设置成对应的数据库即可。</p>
 
       
-    </div><!-- .entry-content -->
-
-    <footer class="entry-meta">
-    <a href="/install-wordpress-on-a-subdomain-using-cpanel/">
-    <time datetime="2016-11-22T03:48:59.000Z" class="entry-date">
-        2016-11-22
-    </time>
-</a>
-    
-  <span class="article-delim">&#8226;</span>
-  <div class="article-category">
-  <a class="article-category-link" href="/categories/建站相关/">建站相关</a>
-  </div>
-
-    
-  <span class="article-delim">&#8226;</span>
+    </div>
+    <footer class="article-footer">
+      <div class="article-footer-content">
+        
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/我的博客/">我的博客</a></li></ul>
 
+        <a data-url="http://yoursite.com/install-wordpress-on-a-subdomain-using-cpanel/" data-id="ciw51mfzk00040weznwes5ss6" class="article-share-link">分享到</a>
+        
+      </div>
     </footer>
+  </div>
+  </div>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/the-way-to-migrate-your-wordpress-website/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">
+        
+          wordpress站点迁移方法
+        
+      </div>
+    </a>
+  
+  
+    <a href="/getting-start-to-dynamic-programming-part2-some-exercises-slightly-difficult-from-lintcode-2/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">浅谈动态规划（二）——进阶题</div>
+    </a>
+  
+</nav>
+
+  
 </article>
 
 
-    
-<nav class="nav-single">
-    <h3 class="assistive-text">文章导航</h3>
-    
-        <span class="nav-previous"><a href="/the-way-to-migrate-your-wordpress-website/" rel="prev"><span class="meta-nav">←</span> wordpress站点迁移方法</a></span>
-    
-    
-        <span class="nav-next"><a href="/getting-start-to-dynamic-programming-part2-some-exercises-slightly-difficult-from-lintcode-2/" rel="next">浅谈动态规划（二）——进阶题 <span class="meta-nav">→</span></a></span>
-    
-</nav><!-- .nav-single -->
-
-
-
-
-
-
-
-</div></div>
-        <div id="secondary" class="widget-area" role="complementary">
+</section>
+      
+      <aside id="sidebar">
   
-    <aside id="search" class="widget widget_search"><form role="search" method="get" accept-charset="utf-8" id="searchform" class="searchform" action="//google.com/search">
-    <div>
-        <input type="text" value="" name="s" id="s" />
-        <input type="submit" id="searchsubmit" value="搜索" />
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a><span class="archive-list-count">2</span></li></ul>
     </div>
-</form></aside>
-  
-    
-  
-    
-  <aside class="widget">
-    <h3 class="widget-title">Categories</h3>
-    <div class="widget-content">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/建站相关/">建站相关</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/编程学习/">编程学习</a><span class="category-list-count">7</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/编程学习/论方法/">论方法</a><span class="category-list-count">1</span></li></ul></li></ul>
-    </div>
-  </aside>
+  </div>
 
   
     
-  <aside class="widget">
-    <h3 class="widget-title">Recents</h3>
-    <div class="widget-content">
-      <ul>
-        
-          <li>
-            <a href="/the-way-to-migrate-your-wordpress-website/">wordpress站点迁移方法</a>
-          </li>
-        
-          <li>
-            <a href="/install-wordpress-on-a-subdomain-using-cpanel/">子域名下安装wordpress总结</a>
-          </li>
-        
-          <li>
-            <a href="/getting-start-to-dynamic-programming-part2-some-exercises-slightly-difficult-from-lintcode-2/">浅谈动态规划（二）——进阶题</a>
-          </li>
-        
-          <li>
-            <a href="/matconvnet-installation-in-windows-system/">windows下MatConvNet深度学习框架的搭建</a>
-          </li>
-        
-          <li>
-            <a href="/getting-start-to-dynamic-programming-part1-some-exercises-from-lintcode/">浅谈动态规划（一）——从lintcode刷题入门</a>
-          </li>
-        
-      </ul>
-    </div>
-  </aside>
-
-  
-    
-  <aside class="widget">
-    <h3 class="widget-title">Tags</h3>
-    <div class="widget-content">
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
       <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C-C/">C/C++</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/个人成长/">个人成长</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/我的博客/">我的博客</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/深度学习/">深度学习</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a><span class="tag-list-count">2</span></li></ul>
     </div>
-  </aside>
+  </div>
 
   
-    
-  <aside class="widget">
-    <h3 class="widget-title">Tag Cloud</h3>
-    <div class="widget-content tagcloud">
-      <a href="/tags/C-C/" style="font-size: 20px;">C/C++</a> <a href="/tags/个人成长/" style="font-size: 10px;">个人成长</a> <a href="/tags/我的博客/" style="font-size: 16.67px;">我的博客</a> <a href="/tags/深度学习/" style="font-size: 10px;">深度学习</a> <a href="/tags/算法/" style="font-size: 13.33px;">算法</a>
+</aside>
+      
     </div>
-  </aside>
-
+    <footer id="footer">
   
-</div>
-      </div>
-      <footer id="colophon" role="contentinfo">
-    <p>&copy;2016 Frank. All rights reserved.</p>
-    <p>Powered by Hexo.</p>
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 Frank<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      .
+      Theme by <a href="https://github.com/sun11/hexo-theme-paperbox" target="_blank">Paperbox</a>
+    </div>
+  </div>
 </footer>
-    <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+  </div>
+  <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+  <a href="#search" class="mobile-nav-link st-search-show-outputs">Search</a>
+</nav>
+  
 
-<script src="/js/jquery-2.0.3.min.js"></script>
+<!-- totop start -->
+<div id="totop">
+	<a title="返回顶部"></a>
+</div>
+<!-- totop end -->
+
+<!-- swiftype search start -->
+
+<!-- swiftype search end -->
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/lrsjng.jquery-qrcode/0.12.0/jquery.qrcode.min.js"></script>
 
 
   <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
@@ -228,10 +232,6 @@
 
 <script src="/js/script.js"></script>
 
-<script src="/js/navigation.js"></script>
-
-<div id="bg"></div>
-
-  </div>
+</div>
 </body>
 </html>

@@ -1,349 +1,372 @@
+
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
-  
-  
-  <meta name="description" content="Skills" />
-  
-
-  
-  
-  
-  
-  
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   
   <title>浅谈动态规划（二）——进阶题 | Frank</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="上一次的动态规划的文章中（浅谈动态规划（一）——从lintcode刷题入门），借助lintcode上两个简单且典型的例子（Triangle和Climbing Stairs），阐述了动态规划的两个特点：1）最优子结构，和2）子问题重叠。这回来讲讲最近做lintcode上的几个难度稍微大一些的题目。这些题目也很符合动态规划的那两个特点。
+
 先来看看第一个题目。
-1.Paint Fence（栅栏染色）
-题">
+1.Paint Fence（栅栏染色）">
 <meta property="og:type" content="article">
 <meta property="og:title" content="浅谈动态规划（二）——进阶题">
 <meta property="og:url" content="http://yoursite.com/getting-start-to-dynamic-programming-part2-some-exercises-slightly-difficult-from-lintcode-2/index.html">
 <meta property="og:site_name" content="Frank">
 <meta property="og:description" content="上一次的动态规划的文章中（浅谈动态规划（一）——从lintcode刷题入门），借助lintcode上两个简单且典型的例子（Triangle和Climbing Stairs），阐述了动态规划的两个特点：1）最优子结构，和2）子问题重叠。这回来讲讲最近做lintcode上的几个难度稍微大一些的题目。这些题目也很符合动态规划的那两个特点。
+
 先来看看第一个题目。
-1.Paint Fence（栅栏染色）
-题">
-<meta property="og:updated_time" content="2016-11-30T10:52:32.246Z">
+1.Paint Fence（栅栏染色）">
+<meta property="og:updated_time" content="2016-11-30T15:02:39.038Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="浅谈动态规划（二）——进阶题">
 <meta name="twitter:description" content="上一次的动态规划的文章中（浅谈动态规划（一）——从lintcode刷题入门），借助lintcode上两个简单且典型的例子（Triangle和Climbing Stairs），阐述了动态规划的两个特点：1）最优子结构，和2）子问题重叠。这回来讲讲最近做lintcode上的几个难度稍微大一些的题目。这些题目也很符合动态规划的那两个特点。
+
 先来看看第一个题目。
-1.Paint Fence（栅栏染色）
-题">
+1.Paint Fence（栅栏染色）">
   
+    <link rel="alternative" href="/atom.xml" title="Frank" type="application/atom+xml">
   
-    <link rel="icon" href="/css/images/favicon.ico">
   
   <link rel="stylesheet" href="/css/style.css">
   
-
+    <link href="//fonts.useso.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
   
-  <!-- baidu webmaster push -->
-  <script src='//push.zhanzhang.baidu.com/push.js'></script>
+  <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
+  
+  
+
 </head>
-<body class="home blog custom-background custom-font-enabled single-author">
-  <div id="page" class="hfeed site">
-      <header id="masthead" class="site-header" role="banner">
-    <hgroup>
-      <h1 class="site-title">
-        <a href="/" title="Frank" rel="home">Frank</a>
-      </h1>
-      
-        <h2 class="site-description">
-          <a href="/" id="subtitle">去探索更大的世界</a>
-        </h2>
-      
-    </hgroup>
 
-    <nav id="site-navigation" class="main-navigation" role="navigation">
-            <button class="menu-toggle">菜单</button>
-            <a class="assistive-text" href="/#content" title="跳至内容">跳至内容</a><!--TODO-->
-            <div class="menu-main-container">
-                <ul id="menu-main" class="nav-menu">
-                
-                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/">Home</a></li>
-                
-                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/archives">Archives</a></li>
-                
-                </ul>
-            </div>
-    </nav>
-</header>
-      <div id="main" class="wrapper">
-        <div id="primary" class="site-content"><div id="content" role="main"><article id="post-getting-start-to-dynamic-programming-part2-some-exercises-slightly-difficult-from-lintcode-2" class="post-getting-start-to-dynamic-programming-part2-some-exercises-slightly-difficult-from-lintcode-2 post type-post status-publish format-standard hentry">
-    <!---->
-
-      <header class="entry-header">
+<body>
+<div id="container">
+  <div id="wrap">
+    <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <nav id="upper-nav" class="inner">
+      <a id="main-nav-toggle" class="nav-icon"></a>
+      <div class="sub-nav">
         
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        
+      </div>
+    </nav>
+    <div id="header-title">
+      
+        <h1 id="blog-title-wrap">
+          <a href="/" id="blog-title">Frank</a>
+        </h1>
+      
+    </div>
+    <div id="contenedor">
+      <ul class="cube">
+        <li class="cara">MyLogo</li>
+        <li class="cara"></li>
+        <li class="cara"></li>
+        <li class="cara"></li>
+        <li class="cara"></li>
+        <li class="cara"></li>
+      </ul>
+    </div>
+    <nav id="main-nav">
+      
+        <a class="main-nav-link" href="/">Home</a>
+      
+        <a class="main-nav-link" href="/archives">Archives</a>
+      
+        <a class="main-nav-link" href="/about">About</a>
+      
+      <a class="main-nav-link st-search-show-outputs">Search</a>
+    </nav>
+  </div>
+</header>
+
+    <div class="outer">
+      <section id="main"><article id="post-getting-start-to-dynamic-programming-part2-some-exercises-slightly-difficult-from-lintcode-2" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <h3 href="/getting-start-to-dynamic-programming-part2-some-exercises-slightly-difficult-from-lintcode-2/" class="article-date">
+  <time datetime="2016-11-15T16:44:43.000Z" itemprop="datePublished">2016-11-16</time>
+</h3>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/编程学习/">编程学习</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+  <div class="curve-down">
+  <div class="fill-content">
+    
+    
+      <header class="article-header">
         
   
-    <h1 class="entry-title article-title">
+    <h1 class="article-title" itemprop="name">
       浅谈动态规划（二）——进阶题
     </h1>
   
 
-        
-        <div class="comments-link">
-            
-            <a href="javascript:void(0);" data-url="http://yoursite.com/getting-start-to-dynamic-programming-part2-some-exercises-slightly-difficult-from-lintcode-2/" data-id="ciw4tt1kb0005goezltqkkuaq" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
-        </div><!-- .comments-link -->
-      </header><!-- .entry-header -->
-
-    <div class="entry-content">
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
       
-        <p>上一次的动态规划的文章中（<span style="color: #0000ff;"><a href="http://frankge.me/blog/2016/10/24/getting-start-to-dynamic-programming-part1-some-exercises-from-lintcode/" target="_blank" rel="external">浅谈动态规划（一）——从lintcode刷题入门</a></span>），借助lintcode上两个简单且典型的例子（Triangle和Climbing Stairs），阐述了动态规划的两个特点：1）最优子结构，和2）子问题重叠。这回来讲讲最近做lintcode上的几个难度稍微大一些的题目。这些题目也很符合动态规划的那两个特点。</p>
+        
+        <p style="text-align: justify;">上一次的动态规划的文章中（<span style="color: #0000ff;"><a href="http://frankge.me/blog/2016/10/24/getting-start-to-dynamic-programming-part1-some-exercises-from-lintcode/" target="_blank" rel="external">浅谈动态规划（一）——从lintcode刷题入门</a></span>），借助lintcode上两个简单且典型的例子（Triangle和Climbing Stairs），阐述了动态规划的两个特点：1）最优子结构，和2）子问题重叠。这回来讲讲最近做lintcode上的几个难度稍微大一些的题目。这些题目也很符合动态规划的那两个特点。</p>
+
 <p>先来看看第一个题目。</p>
 <p>1.<span style="color: #0000ff;"><a href="http://www.lintcode.com/en/problem/paint-fence/" target="_blank" rel="external">Paint Fence（栅栏染色）</a></span></p>
-<p>题目描述：<br>There is a fence with n posts, each post can be painted with one of the k colors. You have to paint all the posts such that no more than two adjacent fence posts have the same color. Return the total number of ways you can paint the fence.<br>Notice: n and k are non-negative integers.</p>
-<p>例子：<br>Given n=3, k=2 return 6</p>
-<p>[code lang=”latex”]<br>     post 1, post 2, post 3<br>way1    0      0       1<br>way2    0      1       0<br>way3    0      1       1<br>way4    1      0       0<br>way5    1      0       1<br>way6    1      1       0<br>[/code]</p>
-<p>题目中要求给n个栅栏涂颜色，有k种颜色可以选择，限制条件是最多可以有两个相邻的栅栏颜色相同。</p>
-<p>解题思路：<br>令ways<a href="n = 1, 2, 3, ..., n">i</a>表示涂到第i个栅栏时的所有的方法数。这样，题目就符合动态规划的两个特征（参考之前的那篇文章分析），就可以用动态规划求解。那么我们在涂第i个栅栏的时候，有两种涂色方式：1）和第i-1个栅栏的颜色相同；2）和第i-1个栅栏的颜色不同。在1）方式下，因为要保证最多只有两个相邻的栅栏颜色相同，所以第i个栅栏的颜色和第i-2个栅栏的颜色必然是不同的，那么此时有ways[i-2] <em> (k-1)中填涂的方式。在2）方式下，不需要考虑之前的栅栏的颜色，只要保证和i-1个栅栏颜色不同即可，此时有ways[i-1] </em> (k-1）中方法。所以有状态转移方程：</p>
-<p>[code lang=”latex”]<br>ways[i] = ways[i-2] <em> (k-1) + ways[i-1] </em> (k-1)<br>[/code]</p>
-<p>同时发现，每次只要用到相邻的3个栅栏的方法数就可以了，这样可以减少空间的使用。所以代码为：</p>
-<p>[code lang=”cpp”]<br>int numWays(int n, int k) {<br>    // Write your code here<br>    if (n == 0 || k == 0)<br>        return 0;</p>
-<pre><code>if (n == 1)
-    return k;
-if (n == 2)
-    return k * k;
+<p>题目描述：</p>
+<p style="text-align: justify;">There is a fence with n posts, each post can be painted with one of the k colors. You have to paint all the posts such that no more than two adjacent fence posts have the same color. Return the total number of ways you can paint the fence.<br>Notice: <code>n</code> and <code>k</code> are non-negative integers.</p>
 
-int ways[3] = {0}; // 辅助数组，只使用3个变量即可
-ways[0] = k;
-ways[1] = k * k;
+<p>例子：<br>Given <code>n=3</code>, <code>k=2</code> return <code>6</code></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">item</th>
+<th style="text-align:center">post 1</th>
+<th style="text-align:center">post 2</th>
+<th style="text-align:center">post 3</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">way1</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">1</td>
+</tr>
+<tr>
+<td style="text-align:center">way2</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">0</td>
+</tr>
+<tr>
+<td style="text-align:center">way3</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+</tr>
+<tr>
+<td style="text-align:center">way4</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0</td>
+</tr>
+<tr>
+<td style="text-align:center">way5</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">1</td>
+</tr>
+<tr>
+<td style="text-align:center">way6</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">0</td>
+</tr>
+</tbody>
+</table>
+<p>题目中要求给<code>n</code>个栅栏涂颜色，有k种颜色可以选择，限制条件是最多可以有两个相邻的栅栏颜色相同。</p>
+<p>解题思路：</p>
+<p style="text-align: justify;">令<code>ways[i]( n = 1, 2, 3, ..., n )</code>表示涂到第i个栅栏时的所有的方法数。这样，题目就符合动态规划的两个特征（参考之前的那篇文章分析），就可以用动态规划求解。那么我们在涂第i个栅栏的时候，有两种涂色方式：1）和第<code>i-1</code>个栅栏的颜色相同；2）和第<code>i-1</code>个栅栏的颜色不同。在1）方式下，因为要保证最多只有两个相邻的栅栏颜色相同，所以第i个栅栏的颜色和第i-2个栅栏的颜色必然是不同的，那么此时有<code>ways[i-2] * (k-1)</code>中填涂的方式。在2）方式下，不需要考虑之前的栅栏的颜色，只要保证和<code>i-1</code>个栅栏颜色不同即可，此时有<code>ways[i-1] * (k-1）</code>种方法。所以有状态转移方程：</p>
 
-// 动态规划步骤
-for (int i = 2; i &amp;lt; n; i++)
-{
-    ways[2] = (k-1) * (ways[0] + ways[1]); // 依据相邻的两个栅栏的填涂方法数来求解第3个栅栏的填涂方法数
-    ways[0] = ways[1];
-    ways[1] = ways[2];
+<p><code>ways[i] = ways[i-2] * (k-1) + ways[i-1] * (k-1)</code></p>
+<p style="text-align: justify;">同时发现，每次只要用到相邻的3个栅栏的方法数就可以了，这样可以减少空间的使用。所以代码为：</p>
+
+<pre><code>
+int numWays(int n, int k) {
+    // Write your code here
+    if (n == 0 || k == 0)
+        return 0;
+
+    if (n == 1)
+        return k;
+    if (n == 2)
+        return k * k;
+
+    int ways[3] = {0}; // 辅助数组，只使用3个变量即可
+    ways[0] = k;
+    ways[1] = k * k;
+
+    // 动态规划步骤
+    for (int i = 2; i < n; i++)
+    {
+        ways[2] = (k-1) * (ways[0] + ways[1]); // 依据相邻的两个栅栏的填涂方法数来求解第3个栅栏的填涂方法数
+        ways[0] = ways[1];
+        ways[1] = ways[2];
+    }
+
+    return ways[2];
 }
+</code></pre>
 
-return ways[2];
-</code></pre><p>}<br>[/code]</p>
-<p>这道题虽然也是简单的，但是因为限制条件的运用比较巧妙，所以给贴出来了。接下来看看下一题。</p>
+<p style="text-align: justify;">这道题虽然也是简单的，但是因为限制条件的运用比较巧妙，所以给贴出来了。接下来看看下一题。</p>
+
 <p>2.<span style="color: #0000ff;"><a href="http://www.lintcode.com/en/problem/house-robber/" target="_blank" rel="external">House Robber（打劫房屋）</a></span></p>
-<p>题目描述：<br>You are a professional robber planning to rob houses along a street. Each house has a certain amount of money stashed, the only constraint stopping you from robbing each of them is that adjacent houses have security system connected and it will automatically contact the police if two adjacent houses were broken into on the same night.</p>
-<p>Given a list of non-negative integers representing the amount of money of each house, determine the maximum amount of money you can rob tonight without alerting the police.</p>
-<p>例子：<br>Given [3, 8, 4], return 8.</p>
-<p>题目要求从n个房屋中找出一些房屋取走里面财产，找到财产最大的总值，限制条件是不能有相邻的房屋同时被偷盗。</p>
-<p>这道题虽然是道中等题，不过思路也很清晰，动态规划的两个特征也非常明显。令money<a href="i = 1, 2, ..., n">i</a>表示在偷第i个房屋时的最大值，那么在偷第i个房屋时，需要比较的只是money[i-1]和money[i-2] + A[i]值的大小(A[i]是第i个房屋的财产值)，因为相邻的两个房屋不可能同时被偷。所以，状态转移方程为：</p>
-<p>[code lang=”latex”]<br>money[i] = max(money[i-1], money[i-2] + A[i])<br>[/code]</p>
-<p>同样，我们发现每次比较时，只需要保留最近两次的最大值即可，那么优化后的代码为：</p>
-<p>[code lang=”cpp”]<br>long long houseRobber(vector&lt;int&gt; A) {<br>    // write your code here<br>    int n = A.size();</p>
-<pre><code>if (n == 0)
-    return 0;
+<p>题目描述：</p>
+<p style="text-align: justify;">You are a professional robber planning to rob houses along a street. Each house has a certain amount of money stashed, the only constraint stopping you from robbing each of them is that adjacent houses have security system connected and it will automatically contact the police if two adjacent houses were broken into on the same night.</p>
 
-if (n == 1)
-    return A[0];
+<p style="text-align: justify;">Given a list of non-negative integers representing the amount of money of each house, determine the maximum amount of money you can rob tonight without alerting the police.</p>
 
-// 辅助数组
-long long money[3] = {0};
-money[0] = 0;
-money[1] = A[0];
+<p>例子：<br>Given <code>[3, 8, 4]</code>, return <code>8</code>.</p>
+<p style="text-align: justify;">题目要求从<code>n</code>个房屋中找出一些房屋取走里面财产，找到财产最大的总值，限制条件是不能有相邻的房屋同时被偷盗。</p>
 
-// 动态规划步骤
-for (int i = 2; i &amp;lt;= n; i++)
-{
-    money[2] = max(A[i-1] + money[0], money[1]);
-    money[0] = money[1];
-    money[1] = money[2];
-}
+<p style="text-align: justify;">这道题虽然是道中等题，不过思路也很清晰，动态规划的两个特征也非常明显。令<code>money[i]( i = 1, 2, ..., n )</code>表示在偷第i个房屋时的最大值，那么在偷第i个房屋时，需要比较的只是<code>money[i-1]</code>和<code>money[i-2] + A[i]</code>值的大小(<code>A[i]</code>是第i个房屋的财产值)，因为相邻的两个房屋不可能同时被偷。所以，状态转移方程为：</p>
 
-return money[2];
-</code></pre><p>}<br>[/code]</p>
+<p><code>money[i] = max(money[i-1], money[i-2] + A[i])</code></p>
+<p style="text-align: justify;">同样，我们发现每次比较时，只需要保留最近两次的最大值即可，那么优化后的代码为：</p>
+
+<pre><code>
+long long houseRobber(vector<int> A) {
+    // write your code here
+    int n = A.size();
+
+    if (n == 0)
+        return 0;
+
+    if (n == 1)
+        return A[0];
+
+    // 辅助数组
+    long long money[3] = {0};
+    money[0] = 0;
+    money[1] = A[0];
+
+    // 动态规划步骤
+    for (int i = 2; i <= n;="" i++)="" {="" money[2]="max(A[i-1]" +="" money[0],="" money[1]);="" money[0]="money[1];" money[1]="money[2];" }="" return="" money[2];="" <="" code=""></=></int></code></pre>
+
 <p>最后来看第3题。</p>
 <p>3.<span style="color: #0000ff;"><a href="http://www.lintcode.com/en/problem/paint-house/" target="_blank" rel="external">Paint House（房屋染色）</a></span></p>
-<p>题目描述：<br>There are a row of n houses, each house can be painted with one of the three colors: red, blue or green. The cost of painting each house with a certain color is different. You have to paint all the houses such that no two adjacent houses have the same color.</p>
-<p>The cost of painting each house with a certain color is represented by a n x 3 cost matrix. For example, costs[0][0] is the cost of painting house 0 with color red; costs[1][2] is the cost of painting house 1 with color green, and so on… Find the minimum cost to paint all houses.</p>
+<p>题目描述：</p>
+<p style="text-align: justify;">There are a row of n houses, each house can be painted with one of the three colors: <code>red</code>, <code>blue</code> or <code>green</code>. The cost of painting each house with a certain color is different. You have to paint all the houses such that no two adjacent houses have the same color.</p>
+
+<p style="text-align: justify;">The cost of painting each house with a certain color is represented by a <code>n x 3</code> cost matrix. For example, <code>costs[0][0]</code> is the cost of painting house 0 with color red; <code>costs[1][2]</code> is the cost of painting house 1 with color green, and so on… Find the minimum cost to paint all houses.</p>
+
 <p>Notice: All costs are positive integers.</p>
 <p>例子：</p>
-<p>[code lang=”latex”]<br>Given costs = [[14,2,11],[11,14,5],[14,3,10]] return 10<br>[/code]</p>
-<p>house 0 is blue, house 1 is green, house 2 is blue, 2 + 5 + 3 = 10</p>
-<p>题目要求给n个房子粉刷颜色，找到最小的费用。粉刷时有3种颜色可供选择，而粉刷不同的颜色的费用是不同的，限制条件是相邻的两个房子的颜色不能相同。这道题目其实和上一道题目有点类似，均为相邻的两个有限制，不过这个在动态规划的时候，比较的是粉刷的不同的颜色。同样的方法，令value[i]<a href="i = 1, 2, ..., n; j = 1, 2, 3">j</a>表示正在粉刷第i个房子的时候颜色为j时的总费用（之前粉刷的位置均保证了费用最小）。为了避免相邻的两个房子粉刷的颜色相同，在粉刷每一层的时候，还要和前一层粉刷的颜色比较。那么在粉刷第i个房屋颜色为j时的状态转移方程为：</p>
-<p>[code lang=”latex”]<br>value[i][j] = min(costs[i][j] + value[i-1][k]), k = 1, 2, 3; k != j<br>[/code]</p>
-<p>上式中k是上一层粉刷不同颜色到达最小值时的不同颜色。在粉刷时要保证相邻的两层颜色不相同，所以k != j。</p>
+<p>Given <code>costs = [[14,2,11],[11,14,5],[14,3,10]]</code> return <code>10</code></p>
+<p>house <code>0</code> is blue, house <code>1</code> is green, house <code>2</code> is blue, <code>2 + 5 + 3 = 10</code></p>
+<p style="text-align: justify;">题目要求给n个房子粉刷颜色，找到最小的费用。粉刷时有3种颜色可供选择，而粉刷不同的颜色的费用是不同的，限制条件是相邻的两个房子的颜色不能相同。这道题目其实和上一道题目有点类似，均为相邻的两个有限制，不过这个在动态规划的时候，比较的是粉刷的不同的颜色。同样的方法，令<code>value[i][j](i = 1, 2, ..., n; j = 1, 2, 3)</code>表示正在粉刷第i个房子的时候颜色为j时的总费用（之前粉刷的位置均保证了费用最小）。为了避免相邻的两个房子粉刷的颜色相同，在粉刷每一层的时候，还要和前一层粉刷的颜色比较。那么在粉刷第i个房屋颜色为j时的状态转移方程为：</p>
+
+<p><code>value[i][j] = min(costs[i][j] + value[i-1][k]), k = 1, 2, 3; k != j</code></p>
+<p style="text-align: justify;">上式中<code>k</code>是上一层粉刷不同颜色到达最小值时的不同颜色。在粉刷时要保证相邻的两层颜色不相同，所以<code>k != j</code>。</p>
+
 <p>有了状态转移方程，题目的代码就好写了：</p>
-<p>[code lang=”cpp”]<br>int minCost2(vector&lt;vector&lt;int&gt; &gt; &amp;costs)<br>{<br>    int n = costs.size();</p>
-<pre><code>if (n == 0)
-    return 0;
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">minCost2</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; &gt; &amp;costs)</span></span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">int</span> n = costs.size();</div><div class="line"></div><div class="line">	<span class="keyword">if</span> (n == <span class="number">0</span>)</div><div class="line">		<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">	</div><div class="line">	<span class="keyword">int</span> i, j, k;</div><div class="line">	<span class="keyword">int</span> temp;</div><div class="line">	<span class="keyword">int</span> minValue = INT_MAX;</div><div class="line">			</div><div class="line">	<span class="keyword">for</span> (j = <span class="number">0</span>; j &lt; <span class="number">3</span>; j++) </div><div class="line">            <span class="keyword">if</span> (minValue &gt; costs[<span class="number">0</span>][j])</div><div class="line">	        minValue = costs[<span class="number">0</span>][j];</div><div class="line">					   </div><div class="line">	<span class="keyword">if</span> (n == <span class="number">1</span>)</div><div class="line">		<span class="keyword">return</span> minValue;</div><div class="line"></div><div class="line">	<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; &gt; value(n, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;(<span class="number">3</span>, INT_MAX)); <span class="comment">// 辅助数组，初始化时每个位置均为INT_MAX</span></div><div class="line"></div><div class="line">	<span class="comment">// 动态规划步骤</span></div><div class="line">	<span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; n; i++)</div><div class="line">	&#123;</div><div class="line">		<span class="keyword">if</span> (i == <span class="number">0</span>)</div><div class="line">		&#123;</div><div class="line">			<span class="keyword">for</span> (j = <span class="number">0</span>; j &lt; <span class="number">3</span>; j++)</div><div class="line">				value[i][j] = costs[i][j];</div><div class="line"></div><div class="line">			<span class="keyword">continue</span>;</div><div class="line">		&#125;</div><div class="line"></div><div class="line">		<span class="comment">// 找出相邻两层不相同时，粉刷不同颜色的最小值</span></div><div class="line">		<span class="keyword">for</span> (j = <span class="number">0</span>; j &lt; <span class="number">3</span>; j++)</div><div class="line">		&#123;</div><div class="line">			minValue = INT_MAX;</div><div class="line">			<span class="keyword">for</span> (k = <span class="number">0</span>; k &lt; <span class="number">3</span>; k++) <span class="comment">// 上一层粉刷不同颜色时对应的最小值</span></div><div class="line">			&#123;</div><div class="line">				<span class="keyword">if</span> (k == j) <span class="comment">// 跳过相同颜色</span></div><div class="line">					<span class="keyword">continue</span>;</div><div class="line">				<span class="comment">// 找出最小值</span></div><div class="line">				temp = costs[i][j] + value[i<span class="number">-1</span>][k];</div><div class="line">				<span class="keyword">if</span> (temp &lt; minValue)</div><div class="line">					minValue = temp;</div><div class="line">			&#125;</div><div class="line">			value[i][j] = minValue;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="comment">// 找出粉刷完最后一个房屋时的最小费用</span></div><div class="line">	minValue = INT_MAX;</div><div class="line">	<span class="keyword">for</span> (j = <span class="number">0</span>; j &lt; <span class="number">3</span>; j++) </div><div class="line">            <span class="keyword">if</span> (minValue &gt; value[n<span class="number">-1</span>][j])</div><div class="line">		minValue = value[n<span class="number">-1</span>][j];</div><div class="line"></div><div class="line">	<span class="keyword">return</span> minValue;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p style="text-align: justify;">同样，代码也可以优化以减少空间消耗，在这里就不再将最后结果贴出来了。</p>
 
-int i, j, k;
-int temp;
-int minValue = INT_MAX;
+<p style="text-align: justify;">好了，这就是这次的全部内容。这些题目是我在刷lintcode中遇到的动态规划特征比较明显的题目，且比《<span style="color: #0000ff;"><a href="http://frankge.me/blog/2016/10/24/getting-start-to-dynamic-programming-part1-some-exercises-from-lintcode/" target="_blank" rel="external">浅谈动态规划（一）——从lintcode刷题入门</a></span>》里面的一些题目稍微难点。希望能够给初接触动态规划的童鞋一点参考。</p>
 
-for (j = 0; j &amp;lt; 3; j++) 
-        if (minValue &amp;gt; costs[0][j])
-        minValue = costs[0][j];
-
-if (n == 1)
-    return minValue;
-
-vector&amp;lt;vector&amp;lt;int&amp;gt; &amp;gt; value(n, vector&amp;lt;int&amp;gt;(3, INT_MAX)); // 辅助数组，初始化时每个位置均为INT_MAX
-
-// 动态规划步骤
-for (i = 0; i &amp;lt; n; i++)
-{
-    if (i == 0)
-    {
-        for (j = 0; j &amp;lt; 3; j++)
-            value[i][j] = costs[i][j];
-
-        continue;
-    }
-
-    // 找出相邻两层不相同时，粉刷不同颜色的最小值
-    for (j = 0; j &amp;lt; 3; j++)
-    {
-        minValue = INT_MAX;
-        for (k = 0; k &amp;lt; 3; k++) // 上一层粉刷不同颜色时对应的最小值
-        {
-            if (k == j) // 跳过相同颜色
-                continue;
-            // 找出最小值
-            temp = costs[i][j] + value[i-1][k];
-            if (temp &amp;lt; minValue)
-                minValue = temp;
-        }
-        value[i][j] = minValue;
-    }
-}
-
-// 找出粉刷完最后一个房屋时的最小费用
-minValue = INT_MAX;
-for (j = 0; j &amp;lt; 3; j++) 
-        if (minValue &amp;gt; value[n-1][j])
-    minValue = value[n-1][j];
-
-return minValue;
-</code></pre><p>}<br>[/code]</p>
-<p>同样，代码也可以优化以减少空间消耗，在这里就不再将最后结果贴出来了。</p>
-<p>好了，这就是这次的全部内容。这些题目是我在刷lintcode中遇到的动态规划特征比较明显的题目，且比《<span style="color: #0000ff;"><a href="http://frankge.me/blog/2016/10/24/getting-start-to-dynamic-programming-part1-some-exercises-from-lintcode/" target="_blank" rel="external">浅谈动态规划（一）——从lintcode刷题入门</a></span>》里面的一些题目稍微难点。希望能够给初接触动态规划的童鞋一点参考。</p>
 <p>参考资料：<br>lintcode<br>1.<span style="color: #0000ff;"><a href="http://www.lintcode.com/en/problem/paint-fence/" target="_blank" rel="external">Paint Fence（栅栏染色）</a></span><br>2.<span style="color: #0000ff;"><a href="http://www.lintcode.com/en/problem/house-robber/" target="_blank" rel="external">House Robber（打劫房屋）</a></span><br>3.<span style="color: #0000ff;"><a href="http://www.lintcode.com/en/problem/paint-house/" target="_blank" rel="external">Paint House（房屋染色）</a></span></p>
 
       
-    </div><!-- .entry-content -->
-
-    <footer class="entry-meta">
-    <a href="/getting-start-to-dynamic-programming-part2-some-exercises-slightly-difficult-from-lintcode-2/">
-    <time datetime="2016-11-15T16:44:43.000Z" class="entry-date">
-        2016-11-16
-    </time>
-</a>
-    
-  <span class="article-delim">&#8226;</span>
-  <div class="article-category">
-  <a class="article-category-link" href="/categories/编程学习/">编程学习</a>
-  </div>
-
-    
-  <span class="article-delim">&#8226;</span>
+    </div>
+    <footer class="article-footer">
+      <div class="article-footer-content">
+        
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
 
+        <a data-url="http://yoursite.com/getting-start-to-dynamic-programming-part2-some-exercises-slightly-difficult-from-lintcode-2/" data-id="ciw51mfz700000wezihhymk2h" class="article-share-link">分享到</a>
+        
+      </div>
     </footer>
+  </div>
+  </div>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/install-wordpress-on-a-subdomain-using-cpanel/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">
+        
+          子域名下安装wordpress总结
+        
+      </div>
+    </a>
+  
+  
+    <a href="/matconvnet-installation-in-windows-system/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">windows下MatConvNet深度学习框架的搭建</div>
+    </a>
+  
+</nav>
+
+  
 </article>
 
 
-    
-<nav class="nav-single">
-    <h3 class="assistive-text">文章导航</h3>
-    
-        <span class="nav-previous"><a href="/install-wordpress-on-a-subdomain-using-cpanel/" rel="prev"><span class="meta-nav">←</span> 子域名下安装wordpress总结</a></span>
-    
-    
-        <span class="nav-next"><a href="/matconvnet-installation-in-windows-system/" rel="next">windows下MatConvNet深度学习框架的搭建 <span class="meta-nav">→</span></a></span>
-    
-</nav><!-- .nav-single -->
-
-
-
-
-
-
-
-</div></div>
-        <div id="secondary" class="widget-area" role="complementary">
+</section>
+      
+      <aside id="sidebar">
   
-    <aside id="search" class="widget widget_search"><form role="search" method="get" accept-charset="utf-8" id="searchform" class="searchform" action="//google.com/search">
-    <div>
-        <input type="text" value="" name="s" id="s" />
-        <input type="submit" id="searchsubmit" value="搜索" />
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a><span class="archive-list-count">2</span></li></ul>
     </div>
-</form></aside>
-  
-    
-  
-    
-  <aside class="widget">
-    <h3 class="widget-title">Categories</h3>
-    <div class="widget-content">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/建站相关/">建站相关</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/编程学习/">编程学习</a><span class="category-list-count">7</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/编程学习/论方法/">论方法</a><span class="category-list-count">1</span></li></ul></li></ul>
-    </div>
-  </aside>
+  </div>
 
   
     
-  <aside class="widget">
-    <h3 class="widget-title">Recents</h3>
-    <div class="widget-content">
-      <ul>
-        
-          <li>
-            <a href="/the-way-to-migrate-your-wordpress-website/">wordpress站点迁移方法</a>
-          </li>
-        
-          <li>
-            <a href="/install-wordpress-on-a-subdomain-using-cpanel/">子域名下安装wordpress总结</a>
-          </li>
-        
-          <li>
-            <a href="/getting-start-to-dynamic-programming-part2-some-exercises-slightly-difficult-from-lintcode-2/">浅谈动态规划（二）——进阶题</a>
-          </li>
-        
-          <li>
-            <a href="/matconvnet-installation-in-windows-system/">windows下MatConvNet深度学习框架的搭建</a>
-          </li>
-        
-          <li>
-            <a href="/getting-start-to-dynamic-programming-part1-some-exercises-from-lintcode/">浅谈动态规划（一）——从lintcode刷题入门</a>
-          </li>
-        
-      </ul>
-    </div>
-  </aside>
-
-  
-    
-  <aside class="widget">
-    <h3 class="widget-title">Tags</h3>
-    <div class="widget-content">
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
       <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C-C/">C/C++</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/个人成长/">个人成长</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/我的博客/">我的博客</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/深度学习/">深度学习</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a><span class="tag-list-count">2</span></li></ul>
     </div>
-  </aside>
+  </div>
 
   
-    
-  <aside class="widget">
-    <h3 class="widget-title">Tag Cloud</h3>
-    <div class="widget-content tagcloud">
-      <a href="/tags/C-C/" style="font-size: 20px;">C/C++</a> <a href="/tags/个人成长/" style="font-size: 10px;">个人成长</a> <a href="/tags/我的博客/" style="font-size: 16.67px;">我的博客</a> <a href="/tags/深度学习/" style="font-size: 10px;">深度学习</a> <a href="/tags/算法/" style="font-size: 13.33px;">算法</a>
+</aside>
+      
     </div>
-  </aside>
-
+    <footer id="footer">
   
-</div>
-      </div>
-      <footer id="colophon" role="contentinfo">
-    <p>&copy;2016 Frank. All rights reserved.</p>
-    <p>Powered by Hexo.</p>
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 Frank<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      .
+      Theme by <a href="https://github.com/sun11/hexo-theme-paperbox" target="_blank">Paperbox</a>
+    </div>
+  </div>
 </footer>
-    <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+  </div>
+  <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+  <a href="#search" class="mobile-nav-link st-search-show-outputs">Search</a>
+</nav>
+  
 
-<script src="/js/jquery-2.0.3.min.js"></script>
+<!-- totop start -->
+<div id="totop">
+	<a title="返回顶部"></a>
+</div>
+<!-- totop end -->
+
+<!-- swiftype search start -->
+
+<!-- swiftype search end -->
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/lrsjng.jquery-qrcode/0.12.0/jquery.qrcode.min.js"></script>
 
 
   <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
@@ -352,10 +375,6 @@ return minValue;
 
 <script src="/js/script.js"></script>
 
-<script src="/js/navigation.js"></script>
-
-<div id="bg"></div>
-
-  </div>
+</div>
 </body>
 </html>
