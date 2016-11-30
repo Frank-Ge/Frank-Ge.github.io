@@ -2,8 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta charset="utf-8">
   
   <title>Frank</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -20,69 +19,64 @@
     <link rel="alternative" href="/atom.xml" title="Frank" type="application/atom+xml">
   
   
+    <link rel="icon" href="/favicon.png">
+  
   <link rel="stylesheet" href="/css/style.css">
-  
-    <link href="//fonts.useso.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  
   <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
   
-  
-
 </head>
-
 <body>
 <div id="container">
   <div id="wrap">
     <header id="header">
   <div id="banner"></div>
   <div id="header-outer" class="outer">
-    <nav id="upper-nav" class="inner">
-      <a id="main-nav-toggle" class="nav-icon"></a>
-      <div class="sub-nav">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Frank</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">去探索更大的世界</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
         
           <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//www.baidu.com/baidu" method="get" accept-charset="utf-8" class="search-form">
+          <input type="search" name="word" maxlength="20" class="search-form-input" placeholder="Search">
+          <input type="submit" value="" class="search-form-submit">
+          <input name=tn type=hidden value="bds">
+          <input name=cl type=hidden value="3">
+          <input name=ct type=hidden value="2097152">
+          <input type="hidden" name="si" value="yoursite.com">
+        </form>
       </div>
-    </nav>
-    <div id="header-title">
-      
-        <h1 id="blog-title-wrap">
-          <a href="/" id="blog-title">Frank</a>
-        </h1>
-      
     </div>
-    <div id="contenedor">
-      <ul class="cube">
-        <li class="cara">MyLogo</li>
-        <li class="cara"></li>
-        <li class="cara"></li>
-        <li class="cara"></li>
-        <li class="cara"></li>
-        <li class="cara"></li>
-      </ul>
-    </div>
-    <nav id="main-nav">
-      
-        <a class="main-nav-link" href="/">Home</a>
-      
-        <a class="main-nav-link" href="/archives">Archives</a>
-      
-        <a class="main-nav-link" href="/about">About</a>
-      
-      <a class="main-nav-link st-search-show-outputs">Search</a>
-    </nav>
   </div>
 </header>
-
     <div class="outer">
       <section id="main">
   
     <article id="post-the-way-to-migrate-your-wordpress-website" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <h3 href="/the-way-to-migrate-your-wordpress-website/" class="article-date">
+    <a href="/the-way-to-migrate-your-wordpress-website/" class="article-date">
   <time datetime="2016-11-22T17:08:37.000Z" itemprop="datePublished">2016-11-23</time>
-</h3>
+</a>
     
   <div class="article-category">
     <a class="article-category-link" href="/categories/建站相关/">建站相关</a>
@@ -90,8 +84,6 @@
 
   </div>
   <div class="article-inner">
-  <div class="curve-down">
-  <div class="fill-content">
     
     
       <header class="article-header">
@@ -106,7 +98,6 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
         <p>本文总结了将wordpress从一个站点迁移至另一个站点的过程。</p>
 <p>最早我的博客地址是<span style="color: #3366ff;"><a href="http://blog.frankge.me/" target="_blank" rel="external">frankge.me</a></span>，中间遇到一点问题，所以将博客迁移到了<span style="color: #3366ff;"><a href="http://frankge.me/blog-old-site" target="_blank" rel="external">frankge.me/blog</a></span>，当时有很多内容不清楚，所以才搞到了前一个站点。最近学会了在<span style="color: #3366ff;"><a href="http://blog.frankge.me/install-wordpress-on-a-subdomain-using-cpanel/" target="_blank" rel="external">子域名下安装wordpress</a></span>，所以想把站点从<span style="color: #3366ff;"><a href="http://frankge.me/blog-old-site" target="_blank" rel="external">frankge.me/blog</a></span>迁移到<span style="color: #3366ff;"><a href="http://blog.frankge.me" target="_blank" rel="external">blog.frankge.me</a></span>下。</p>
 <p>这里以我博客的迁移为例，来总结一下不同站点迁移wordpress的步骤。</p>
@@ -118,28 +109,29 @@
       
     </div>
     <footer class="article-footer">
-      <div class="article-footer-content">
-        
+      
+        <a data-url="http://yoursite.com/the-way-to-migrate-your-wordpress-website/" data-id="ciw55cjjc000k6wezjoy0pcu1" class="article-share-link" data-share="baidu" data-title="wordpress站点迁移方法">分享到</a>
+      
+
+      
+        <a href="http://yoursite.com/the-way-to-migrate-your-wordpress-website/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/我的博客/">我的博客</a></li></ul>
 
-        <a data-url="http://yoursite.com/the-way-to-migrate-your-wordpress-website/" data-id="ciw51mg0o000p0wezb8tuq0im" class="article-share-link">分享到</a>
-        
-      </div>
     </footer>
-  </div>
-  </div>
   </div>
   
 </article>
 
 
-
   
     <article id="post-install-wordpress-on-a-subdomain-using-cpanel" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <h3 href="/install-wordpress-on-a-subdomain-using-cpanel/" class="article-date">
+    <a href="/install-wordpress-on-a-subdomain-using-cpanel/" class="article-date">
   <time datetime="2016-11-22T03:48:59.000Z" itemprop="datePublished">2016-11-22</time>
-</h3>
+</a>
     
   <div class="article-category">
     <a class="article-category-link" href="/categories/建站相关/">建站相关</a>
@@ -147,8 +139,6 @@
 
   </div>
   <div class="article-inner">
-  <div class="curve-down">
-  <div class="fill-content">
     
     
       <header class="article-header">
@@ -163,7 +153,6 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
         <p>最近折腾博客，把<span style="color: #3366ff;"><a href="http://frankge.me/blog-old-site/" target="_blank" rel="external">frankge.me/blog</a></span>迁移到了<span style="color: #3366ff;"><a href="http://blog.frankge.me" target="_blank" rel="external">blog.frankge.me</a></span>。这样就要在子域名下安装wordpress。现在把步骤总结一下。</p>
 <p>0.你付费的主机可以建立多个站点。有些主机你付费的时候只是给予一个站点的配额，这应该是不能开通子域名的好像。<br>1.创建子域。打开cPanel表盘，找到域-&gt;子域，选择创建子域（此处以growth为例），点击生成邮件列表（图1）。发现下面多了一个条目（图2）。</p>
 <p>[caption id=”attachment_289” align=”aligncenter” width=”660”]<img src="http://blog.frankge.me/wp-content/uploads/2016/11/install-wordpress-on-a-subdomain-using-cpanel-01-1024x423.png" alt="install-wordpress-on-a-subdomain-using-cpanel-01"> <center>图1</center>[/caption]</p>
@@ -175,28 +164,29 @@
       
     </div>
     <footer class="article-footer">
-      <div class="article-footer-content">
-        
+      
+        <a data-url="http://yoursite.com/install-wordpress-on-a-subdomain-using-cpanel/" data-id="ciw55cjiy00056wez4t06d3bt" class="article-share-link" data-share="baidu" data-title="子域名下安装wordpress总结">分享到</a>
+      
+
+      
+        <a href="http://yoursite.com/install-wordpress-on-a-subdomain-using-cpanel/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/我的博客/">我的博客</a></li></ul>
 
-        <a data-url="http://yoursite.com/install-wordpress-on-a-subdomain-using-cpanel/" data-id="ciw51mfzk00040weznwes5ss6" class="article-share-link">分享到</a>
-        
-      </div>
     </footer>
-  </div>
-  </div>
   </div>
   
 </article>
 
 
-
   
     <article id="post-getting-start-to-dynamic-programming-part2-some-exercises-slightly-difficult-from-lintcode-2" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <h3 href="/getting-start-to-dynamic-programming-part2-some-exercises-slightly-difficult-from-lintcode-2/" class="article-date">
+    <a href="/getting-start-to-dynamic-programming-part2-some-exercises-slightly-difficult-from-lintcode-2/" class="article-date">
   <time datetime="2016-11-15T16:44:43.000Z" itemprop="datePublished">2016-11-16</time>
-</h3>
+</a>
     
   <div class="article-category">
     <a class="article-category-link" href="/categories/编程学习/">编程学习</a>
@@ -204,8 +194,6 @@
 
   </div>
   <div class="article-inner">
-  <div class="curve-down">
-  <div class="fill-content">
     
     
       <header class="article-header">
@@ -220,7 +208,6 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
         <p style="text-align: justify;">上一次的动态规划的文章中（<span style="color: #0000ff;"><a href="http://frankge.me/blog/2016/10/24/getting-start-to-dynamic-programming-part1-some-exercises-from-lintcode/" target="_blank" rel="external">浅谈动态规划（一）——从lintcode刷题入门</a></span>），借助lintcode上两个简单且典型的例子（Triangle和Climbing Stairs），阐述了动态规划的两个特点：1）最优子结构，和2）子问题重叠。这回来讲讲最近做lintcode上的几个难度稍微大一些的题目。这些题目也很符合动态规划的那两个特点。</p>
 
 <p>先来看看第一个题目。</p>
@@ -284,33 +271,7 @@
 <p><code>ways[i] = ways[i-2] * (k-1) + ways[i-1] * (k-1)</code></p>
 <p style="text-align: justify;">同时发现，每次只要用到相邻的3个栅栏的方法数就可以了，这样可以减少空间的使用。所以代码为：</p>
 
-<pre><code>
-int numWays(int n, int k) {
-    // Write your code here
-    if (n == 0 || k == 0)
-        return 0;
-
-    if (n == 1)
-        return k;
-    if (n == 2)
-        return k * k;
-
-    int ways[3] = {0}; // 辅助数组，只使用3个变量即可
-    ways[0] = k;
-    ways[1] = k * k;
-
-    // 动态规划步骤
-    for (int i = 2; i < n; i++)
-    {
-        ways[2] = (k-1) * (ways[0] + ways[1]); // 依据相邻的两个栅栏的填涂方法数来求解第3个栅栏的填涂方法数
-        ways[0] = ways[1];
-        ways[1] = ways[2];
-    }
-
-    return ways[2];
-}
-</code></pre>
-
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">numWays</span><span class="params">(<span class="keyword">int</span> n, <span class="keyword">int</span> k)</span> </span>&#123;</div><div class="line">	<span class="comment">// Write your code here</span></div><div class="line">	<span class="keyword">if</span> (n == <span class="number">0</span> || k == <span class="number">0</span>)</div><div class="line">		<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">		</div><div class="line">	<span class="keyword">if</span> (n == <span class="number">1</span>)</div><div class="line">		<span class="keyword">return</span> k;</div><div class="line">	<span class="keyword">if</span> (n == <span class="number">2</span>)</div><div class="line">		<span class="keyword">return</span> k * k;</div><div class="line">		</div><div class="line">	<span class="keyword">int</span> ways[<span class="number">3</span>] = &#123;<span class="number">0</span>&#125;; <span class="comment">// 辅助数组，只使用3个变量即可</span></div><div class="line">	ways[<span class="number">0</span>] = k;</div><div class="line">	ways[<span class="number">1</span>] = k * k;</div><div class="line">		</div><div class="line">	<span class="comment">// 动态规划步骤</span></div><div class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt; n; i++)</div><div class="line">	&#123;</div><div class="line">		ways[<span class="number">2</span>] = (k<span class="number">-1</span>) * (ways[<span class="number">0</span>] + ways[<span class="number">1</span>]); <span class="comment">// 依据相邻的两个栅栏的填涂方法数来求解第3个栅栏的填涂方法数</span></div><div class="line">		ways[<span class="number">0</span>] = ways[<span class="number">1</span>];</div><div class="line">		ways[<span class="number">1</span>] = ways[<span class="number">2</span>];</div><div class="line">	&#125;</div><div class="line">		</div><div class="line">	<span class="keyword">return</span> ways[<span class="number">2</span>];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p style="text-align: justify;">这道题虽然也是简单的，但是因为限制条件的运用比较巧妙，所以给贴出来了。接下来看看下一题。</p>
 
 <p>2.<span style="color: #0000ff;"><a href="http://www.lintcode.com/en/problem/house-robber/" target="_blank" rel="external">House Robber（打劫房屋）</a></span></p>
@@ -327,25 +288,7 @@ int numWays(int n, int k) {
 <p><code>money[i] = max(money[i-1], money[i-2] + A[i])</code></p>
 <p style="text-align: justify;">同样，我们发现每次比较时，只需要保留最近两次的最大值即可，那么优化后的代码为：</p>
 
-<pre><code>
-long long houseRobber(vector<int> A) {
-    // write your code here
-    int n = A.size();
-
-    if (n == 0)
-        return 0;
-
-    if (n == 1)
-        return A[0];
-
-    // 辅助数组
-    long long money[3] = {0};
-    money[0] = 0;
-    money[1] = A[0];
-
-    // 动态规划步骤
-    for (int i = 2; i <= n;="" i++)="" {="" money[2]="max(A[i-1]" +="" money[0],="" money[1]);="" money[0]="money[1];" money[1]="money[2];" }="" return="" money[2];="" <="" code=""></=></int></code></pre>
-
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">long</span> <span class="keyword">long</span> <span class="title">houseRobber</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; A)</span> </span>&#123;</div><div class="line">	<span class="comment">// write your code here</span></div><div class="line">	<span class="keyword">int</span> n = A.size();</div><div class="line"></div><div class="line">	<span class="keyword">if</span> (n == <span class="number">0</span>)</div><div class="line">		<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">	</div><div class="line">	<span class="keyword">if</span> (n == <span class="number">1</span>)</div><div class="line">		<span class="keyword">return</span> A[<span class="number">0</span>];</div><div class="line">	</div><div class="line">	<span class="comment">// 辅助数组</span></div><div class="line">	<span class="keyword">long</span> <span class="keyword">long</span> money[<span class="number">3</span>] = &#123;<span class="number">0</span>&#125;;</div><div class="line">	money[<span class="number">0</span>] = <span class="number">0</span>;</div><div class="line">	money[<span class="number">1</span>] = A[<span class="number">0</span>];</div><div class="line">	</div><div class="line">	<span class="comment">// 动态规划步骤</span></div><div class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= n; i++)</div><div class="line">	&#123;</div><div class="line">		money[<span class="number">2</span>] = max(A[i<span class="number">-1</span>] + money[<span class="number">0</span>], money[<span class="number">1</span>]);</div><div class="line">		money[<span class="number">0</span>] = money[<span class="number">1</span>];</div><div class="line">		money[<span class="number">1</span>] = money[<span class="number">2</span>];</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="keyword">return</span> money[<span class="number">2</span>];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>最后来看第3题。</p>
 <p>3.<span style="color: #0000ff;"><a href="http://www.lintcode.com/en/problem/paint-house/" target="_blank" rel="external">Paint House（房屋染色）</a></span></p>
 <p>题目描述：</p>
@@ -373,28 +316,29 @@ long long houseRobber(vector<int> A) {
       
     </div>
     <footer class="article-footer">
-      <div class="article-footer-content">
-        
+      
+        <a data-url="http://yoursite.com/getting-start-to-dynamic-programming-part2-some-exercises-slightly-difficult-from-lintcode-2/" data-id="ciw55cjip00016wezg8ko1uqb" class="article-share-link" data-share="baidu" data-title="浅谈动态规划（二）——进阶题">分享到</a>
+      
+
+      
+        <a href="http://yoursite.com/getting-start-to-dynamic-programming-part2-some-exercises-slightly-difficult-from-lintcode-2/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
 
-        <a data-url="http://yoursite.com/getting-start-to-dynamic-programming-part2-some-exercises-slightly-difficult-from-lintcode-2/" data-id="ciw51mfz700000wezihhymk2h" class="article-share-link">分享到</a>
-        
-      </div>
     </footer>
-  </div>
-  </div>
   </div>
   
 </article>
 
 
-
   
     <article id="post-matconvnet-installation-in-windows-system" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <h3 href="/matconvnet-installation-in-windows-system/" class="article-date">
+    <a href="/matconvnet-installation-in-windows-system/" class="article-date">
   <time datetime="2016-10-25T08:28:07.000Z" itemprop="datePublished">2016-10-25</time>
-</h3>
+</a>
     
   <div class="article-category">
     <a class="article-category-link" href="/categories/编程学习/">编程学习</a>
@@ -402,8 +346,6 @@ long long houseRobber(vector<int> A) {
 
   </div>
   <div class="article-inner">
-  <div class="curve-down">
-  <div class="fill-content">
     
     
       <header class="article-header">
@@ -418,7 +360,6 @@ long long houseRobber(vector<int> A) {
     
     <div class="article-entry" itemprop="articleBody">
       
-        
         <h3 id="博客原文"><a href="#博客原文" class="headerlink" title="博客原文"></a>博客原文</h3><p><span style="color: #3366ff;"><a href="http://www.vlfeat.org/matconvnet/" target="_blank" rel="external">MatConvNet</a></span>是Matlab下用于机器视觉的一个工具包，主要应用是CNN网络，当然其他的网络也涉及到了。MatConvNet简洁、高效，可以用于图片分类、分割和人脸识别等等深度学习的功能。具体的可以参见官网的介绍。</p>
 <p>在搭建环境的过程中，发现如今网上对其的资源不太多，所以在这做一个总结。以beta22版本为例。</p>
 <p>过程分为下面几个步骤：<br>1.MatConvNet的下载<br>2.GPU模式的使用<br>3.测试</p>
@@ -454,28 +395,29 @@ long long houseRobber(vector<int> A) {
       
     </div>
     <footer class="article-footer">
-      <div class="article-footer-content">
-        
+      
+        <a data-url="http://yoursite.com/matconvnet-installation-in-windows-system/" data-id="ciw55cjj5000d6wezz0i0pahp" class="article-share-link" data-share="baidu" data-title="windows下MatConvNet深度学习框架的搭建">分享到</a>
+      
+
+      
+        <a href="http://yoursite.com/matconvnet-installation-in-windows-system/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/深度学习/">深度学习</a></li></ul>
 
-        <a data-url="http://yoursite.com/matconvnet-installation-in-windows-system/" data-id="ciw51mfzx000a0wezi5hzbcog" class="article-share-link">分享到</a>
-        
-      </div>
     </footer>
-  </div>
-  </div>
   </div>
   
 </article>
 
 
-
   
     <article id="post-getting-start-to-dynamic-programming-part1-some-exercises-from-lintcode" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <h3 href="/getting-start-to-dynamic-programming-part1-some-exercises-from-lintcode/" class="article-date">
+    <a href="/getting-start-to-dynamic-programming-part1-some-exercises-from-lintcode/" class="article-date">
   <time datetime="2016-10-24T13:10:34.000Z" itemprop="datePublished">2016-10-24</time>
-</h3>
+</a>
     
   <div class="article-category">
     <a class="article-category-link" href="/categories/编程学习/">编程学习</a>
@@ -483,8 +425,6 @@ long long houseRobber(vector<int> A) {
 
   </div>
   <div class="article-inner">
-  <div class="curve-down">
-  <div class="fill-content">
     
     
       <header class="article-header">
@@ -499,7 +439,6 @@ long long houseRobber(vector<int> A) {
     
     <div class="article-entry" itemprop="articleBody">
       
-        
         <p>动态规划是算法中比较常见的一种分析问题的方式，最近看算法看到这，带着lintcode上面的题目，在这写个总结。</p>
 <p>首先从一个lintcode上面简单的题目开始。</p>
 <p><span style="color: #3366ff;"><a href="http://www.lintcode.com/zh-cn/problem/climbing-stairs/" target="_blank" rel="external">Climbing Stairs（爬楼梯）</a></span></p>
@@ -585,28 +524,29 @@ return result;
       
     </div>
     <footer class="article-footer">
-      <div class="article-footer-content">
-        
+      
+        <a data-url="http://yoursite.com/getting-start-to-dynamic-programming-part1-some-exercises-from-lintcode/" data-id="ciw55cjiv00046wez5wrvg271" class="article-share-link" data-share="baidu" data-title="浅谈动态规划（一）——从lintcode刷题入门">分享到</a>
+      
+
+      
+        <a href="http://yoursite.com/getting-start-to-dynamic-programming-part1-some-exercises-from-lintcode/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
 
-        <a data-url="http://yoursite.com/getting-start-to-dynamic-programming-part1-some-exercises-from-lintcode/" data-id="ciw51mfzm00050wezsw4grl9b" class="article-share-link">分享到</a>
-        
-      </div>
     </footer>
-  </div>
-  </div>
   </div>
   
 </article>
 
 
-
   
     <article id="post-some-tips-for-a-green-hand-in-computer-science" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <h3 href="/some-tips-for-a-green-hand-in-computer-science/" class="article-date">
+    <a href="/some-tips-for-a-green-hand-in-computer-science/" class="article-date">
   <time datetime="2016-09-11T11:57:50.000Z" itemprop="datePublished">2016-09-11</time>
-</h3>
+</a>
     
   <div class="article-category">
     <a class="article-category-link" href="/categories/编程学习/">编程学习</a>►<a class="article-category-link" href="/categories/编程学习/论方法/">论方法</a>
@@ -614,8 +554,6 @@ return result;
 
   </div>
   <div class="article-inner">
-  <div class="curve-down">
-  <div class="fill-content">
     
     
       <header class="article-header">
@@ -630,7 +568,6 @@ return result;
     
     <div class="article-entry" itemprop="articleBody">
       
-        
         <p>最近感觉自己在计算机方面有点入门了，而且恰好前几天和研一的新生聚餐，被问道一些所谓的“经验”方面的问题，所以在这里总结一下在前一个阶段自学计算机的一些尝试，也希望给看到这篇博文的自学计算机方面的人一点参考吧。</p>
 <p>首先说明一下，自考研到目前为止，自己看过的书籍（这里所指的看过，是几乎都看完了或者看完至少一大半以上，这样我才能对书做一个评价）。</p>
 <p>考研考的是东南大学计算机的自主命题935，科目包括数据结构，计组，操作系统。我用的书是根据统招408来的那三本，即：</p>
@@ -712,28 +649,29 @@ return result;
       
     </div>
     <footer class="article-footer">
-      <div class="article-footer-content">
-        
+      
+        <a data-url="http://yoursite.com/some-tips-for-a-green-hand-in-computer-science/" data-id="ciw55cjj3000a6wezgrvzuodt" class="article-share-link" data-share="baidu" data-title="计算机入门的一点经验和对迷茫的一些分析">分享到</a>
+      
+
+      
+        <a href="http://yoursite.com/some-tips-for-a-green-hand-in-computer-science/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C-C/">C/C++</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/个人成长/">个人成长</a></li></ul>
 
-        <a data-url="http://yoursite.com/some-tips-for-a-green-hand-in-computer-science/" data-id="ciw51mg04000d0wezmivl85h9" class="article-share-link">分享到</a>
-        
-      </div>
     </footer>
-  </div>
-  </div>
   </div>
   
 </article>
 
 
-
   
     <article id="post-the-implement-of-binary-tree-class" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <h3 href="/the-implement-of-binary-tree-class/" class="article-date">
+    <a href="/the-implement-of-binary-tree-class/" class="article-date">
   <time datetime="2016-09-10T17:05:45.000Z" itemprop="datePublished">2016-09-11</time>
-</h3>
+</a>
     
   <div class="article-category">
     <a class="article-category-link" href="/categories/编程学习/">编程学习</a>
@@ -741,8 +679,6 @@ return result;
 
   </div>
   <div class="article-inner">
-  <div class="curve-down">
-  <div class="fill-content">
     
     
       <header class="article-header">
@@ -757,7 +693,6 @@ return result;
     
     <div class="article-entry" itemprop="articleBody">
       
-        
         <p>最近看数据结构看到二叉树的时候，自己实现了一下，同时写成了类，正好复习一下以前看C++的一些知识。代码如下。</p>
 <p>[code lang=”cpp”]<br>// BiTNode.h<br>// 参照《c++大学教程》中P639页编写<br>// 模版结点BiTNode类的声明</p>
 <p>#ifndef BITNODE_H</p>
@@ -1093,28 +1028,29 @@ return 0;
       
     </div>
     <footer class="article-footer">
-      <div class="article-footer-content">
-        
+      
+        <a data-url="http://yoursite.com/the-implement-of-binary-tree-class/" data-id="ciw55cjja000h6wez2i2fta84" class="article-share-link" data-share="baidu" data-title="二叉树类的实现">分享到</a>
+      
+
+      
+        <a href="http://yoursite.com/the-implement-of-binary-tree-class/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C-C/">C/C++</a></li></ul>
 
-        <a data-url="http://yoursite.com/the-implement-of-binary-tree-class/" data-id="ciw51mfzr00060wezx9p8zf89" class="article-share-link">分享到</a>
-        
-      </div>
     </footer>
-  </div>
-  </div>
   </div>
   
 </article>
 
 
-
   
     <article id="post-the-implement-of-binary-tree-in-cpp" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <h3 href="/the-implement-of-binary-tree-in-cpp/" class="article-date">
+    <a href="/the-implement-of-binary-tree-in-cpp/" class="article-date">
   <time datetime="2016-09-10T16:38:36.000Z" itemprop="datePublished">2016-09-11</time>
-</h3>
+</a>
     
   <div class="article-category">
     <a class="article-category-link" href="/categories/编程学习/">编程学习</a>
@@ -1122,8 +1058,6 @@ return 0;
 
   </div>
   <div class="article-inner">
-  <div class="curve-down">
-  <div class="fill-content">
     
     
       <header class="article-header">
@@ -1138,7 +1072,6 @@ return 0;
     
     <div class="article-entry" itemprop="articleBody">
       
-        
         <p>夏天看机器学习之余，把C语言给过了一遍，现在开始数据结构的学习了。最近看的二叉树，照着书实现了一下。</p>
 <p>其中包括二叉树的一些基本操作：初始化，建立，销毁，判空，深度和几种遍历。因为书上没给出非递归的遍历的非递归形式，自己这边给总结一下。代码本来是用C写的，但是其中有些功能的实现需要用到队列或者栈，直接调用C++的STL了。如下是相关代码。</p>
 <p>[code lang=”cpp”]</p>
@@ -1451,28 +1384,29 @@ while (!Q.empty())
       
     </div>
     <footer class="article-footer">
-      <div class="article-footer-content">
-        
+      
+        <a data-url="http://yoursite.com/the-implement-of-binary-tree-in-cpp/" data-id="ciw55cjj000066wez89ildb0o" class="article-share-link" data-share="baidu" data-title="二叉树的实现以及相关操作C/C++">分享到</a>
+      
+
+      
+        <a href="http://yoursite.com/the-implement-of-binary-tree-in-cpp/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C-C/">C/C++</a></li></ul>
 
-        <a data-url="http://yoursite.com/the-implement-of-binary-tree-in-cpp/" data-id="ciw51mg0c000h0wezltulzb1k" class="article-share-link">分享到</a>
-        
-      </div>
     </footer>
-  </div>
-  </div>
   </div>
   
 </article>
 
 
-
   
     <article id="post-a-smart-way-to-insert-a-new-node-in-sorted-singly-linked-list" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <h3 href="/a-smart-way-to-insert-a-new-node-in-sorted-singly-linked-list/" class="article-date">
+    <a href="/a-smart-way-to-insert-a-new-node-in-sorted-singly-linked-list/" class="article-date">
   <time datetime="2016-08-17T16:09:39.000Z" itemprop="datePublished">2016-08-18</time>
-</h3>
+</a>
     
   <div class="article-category">
     <a class="article-category-link" href="/categories/编程学习/">编程学习</a>
@@ -1480,8 +1414,6 @@ while (!Q.empty())
 
   </div>
   <div class="article-inner">
-  <div class="curve-down">
-  <div class="fill-content">
     
     
       <header class="article-header">
@@ -1496,7 +1428,6 @@ while (!Q.empty())
     
     <div class="article-entry" itemprop="articleBody">
       
-        
         <p>在学习链表的时候我们都接触过单链表插入新结点的问题。其中有一类就是在顺序链表中插入新节点，并保持链表的递增或者递减性质。</p>
 <p>最近看《C和指针》一书中提到了一种方法，我个人感觉不错，并且思想非常好。</p>
 <p>这是最常见的思维：</p>
@@ -1599,28 +1530,29 @@ return 0;
       
     </div>
     <footer class="article-footer">
-      <div class="article-footer-content">
-        
+      
+        <a data-url="http://yoursite.com/a-smart-way-to-insert-a-new-node-in-sorted-singly-linked-list/" data-id="ciw55cjim00006wezrwpff8l7" class="article-share-link" data-share="baidu" data-title="顺序单链表插入新节点的一种方法">分享到</a>
+      
+
+      
+        <a href="http://yoursite.com/a-smart-way-to-insert-a-new-node-in-sorted-singly-linked-list/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C-C/">C/C++</a></li></ul>
 
-        <a data-url="http://yoursite.com/a-smart-way-to-insert-a-new-node-in-sorted-singly-linked-list/" data-id="ciw51mfzb00010wez1qsfpwz5" class="article-share-link">分享到</a>
-        
-      </div>
     </footer>
-  </div>
-  </div>
   </div>
   
 </article>
 
 
-
   
     <article id="post-the-timeline-of-my-blog" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <h3 href="/the-timeline-of-my-blog/" class="article-date">
+    <a href="/the-timeline-of-my-blog/" class="article-date">
   <time datetime="2016-08-15T02:56:55.000Z" itemprop="datePublished">2016-08-15</time>
-</h3>
+</a>
     
   <div class="article-category">
     <a class="article-category-link" href="/categories/建站相关/">建站相关</a>
@@ -1628,8 +1560,6 @@ return 0;
 
   </div>
   <div class="article-inner">
-  <div class="curve-down">
-  <div class="fill-content">
     
     
       <header class="article-header">
@@ -1644,7 +1574,6 @@ return 0;
     
     <div class="article-entry" itemprop="articleBody">
       
-        
         <h3 id="16-11-21"><a href="#16-11-21" class="headerlink" title="16.11.21"></a><span style="color: #0000ff;">16.11.21</span></h3><p>将<span style="color: #3366ff;"><a href="http://frankge.me/blog-old-site/" target="_blank" rel="external">frankge.me/blog</a></span>站点全部移至<span style="color: #3366ff;"><a href="http://blog.frankge.me" target="_blank" rel="external">blog.frankge.me</a><span style="color: #000000;">，以前的文章保留原链接，但不更新，新链接开始使用。</span></span></p>
 <h3 id="16-08-29"><a href="#16-08-29" class="headerlink" title="16.08.29"></a><span style="color: #0000ff;">16.08.29</span></h3><p>添加如下插件：</p>
 <p>1.<span style="color: #0000ff;"><a href="https://wordpress.org/plugins/latex/" target="_blank" rel="external">LaTeX for WordPress</a></span>。此插件可以在wordpress编辑LaTex公式。这个插件的作者就是我的推荐博客中<span style="color: #0000ff;"><a href="http://zhiqiang.org/blog/" target="_blank" rel="external">阅微堂</a></span>的博主写的。<span style="color: #0000ff;"><a href="http://www.codelast.com/%E5%8E%9F%E5%88%9B%E7%94%A8latex-for-wordpress%E6%8F%92%E4%BB%B6%E5%9C%A8wordpress%E4%B8%AD%E5%86%99%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F/" target="_blank" rel="external">这个页面</a></span>中有一些关于此插件用法的总结。</p>
@@ -1688,33 +1617,34 @@ return 0;
       
     </div>
     <footer class="article-footer">
-      <div class="article-footer-content">
-        
+      
+        <a data-url="http://yoursite.com/the-timeline-of-my-blog/" data-id="ciw55cjje000p6wez00scrzgw" class="article-share-link" data-share="baidu" data-title="博客时间轴">分享到</a>
+      
+
+      
+        <a href="http://yoursite.com/the-timeline-of-my-blog/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/我的博客/">我的博客</a></li></ul>
 
-        <a data-url="http://yoursite.com/the-timeline-of-my-blog/" data-id="ciw51mg0g000k0wezgwfjh7g2" class="article-share-link">分享到</a>
-        
-      </div>
     </footer>
-  </div>
-  </div>
   </div>
   
 </article>
 
 
+  
 
-  
-  
 </section>
       
       <aside id="sidebar">
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">归档</h3>
+    <h3 class="widget-title">分类</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a><span class="archive-list-count">2</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/建站相关/">建站相关</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/编程学习/">编程学习</a><span class="category-list-count">7</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/编程学习/论方法/">论方法</a><span class="category-list-count">1</span></li></ul></li></ul>
     </div>
   </div>
 
@@ -1728,6 +1658,78 @@ return 0;
   </div>
 
   
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/C-C/" style="font-size: 20px;">C/C++</a> <a href="/tags/个人成长/" style="font-size: 10px;">个人成长</a> <a href="/tags/我的博客/" style="font-size: 16.67px;">我的博客</a> <a href="/tags/深度学习/" style="font-size: 10px;">深度学习</a> <a href="/tags/算法/" style="font-size: 13.33px;">算法</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a><span class="archive-list-count">2</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">近期文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/the-way-to-migrate-your-wordpress-website/">wordpress站点迁移方法</a>
+          </li>
+        
+          <li>
+            <a href="/install-wordpress-on-a-subdomain-using-cpanel/">子域名下安装wordpress总结</a>
+          </li>
+        
+          <li>
+            <a href="/getting-start-to-dynamic-programming-part2-some-exercises-slightly-difficult-from-lintcode-2/">浅谈动态规划（二）——进阶题</a>
+          </li>
+        
+          <li>
+            <a href="/matconvnet-installation-in-windows-system/">windows下MatConvNet深度学习框架的搭建</a>
+          </li>
+        
+          <li>
+            <a href="/getting-start-to-dynamic-programming-part1-some-exercises-from-lintcode/">浅谈动态规划（一）——从lintcode刷题入门</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">友情链接</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="http://arvinxiang.com" target="_blank">主题作者</a>
+          </li>
+        
+          <li>
+            <a href="http://reqianduan.com" target="_blank">热前端</a>
+          </li>
+        
+          <li>
+            <a href="http://yuancheng.work" target="_blank">远程.work</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
 </aside>
       
     </div>
@@ -1736,9 +1738,9 @@ return 0;
   <div class="outer">
     <div id="footer-info" class="inner">
       &copy; 2016 Frank<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      Powered by <a href="//hexo.io/" target="_blank">Hexo</a>
       .
-      Theme by <a href="https://github.com/sun11/hexo-theme-paperbox" target="_blank">Paperbox</a>
+      Theme by <a href="https://github.com/xiangming/landscape-plus" target="_blank">Landscape-plus</a>
     </div>
   </div>
 </footer>
@@ -1749,31 +1751,60 @@ return 0;
   
     <a href="/archives" class="mobile-nav-link">Archives</a>
   
-    <a href="/about" class="mobile-nav-link">About</a>
-  
-  <a href="#search" class="mobile-nav-link st-search-show-outputs">Search</a>
 </nav>
-  
-
-<!-- totop start -->
+  <!-- totop start -->
 <div id="totop">
-	<a title="返回顶部"></a>
+<a title="返回顶部"><img src="/img/scrollup.png"/></a>
 </div>
+
 <!-- totop end -->
 
-<!-- swiftype search start -->
+<!-- 多说公共js代码 start -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"reqianduan"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+<!-- 多说公共js代码 end -->
 
-<!-- swiftype search end -->
+
+<!-- 百度分享 start -->
+
+<div id="article-share-box" class="article-share-box">
+  <div id="bdshare" class="bdsharebuttonbox article-share-links">
+    <a class="article-share-weibo" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a class="article-share-weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a class="article-share-qq" data-cmd="sqq" title="分享到QQ"></a>
+    <a class="article-share-renren" data-cmd="renren" title="分享到人人网"></a>
+    <a class="article-share-more" data-cmd="more" title="更多"></a>
+  </div>
+</div>
+<script>
+  function SetShareData(cmd, config) {
+    if (shareDataTitle && shareDataUrl) {
+      config.bdText = shareDataTitle;
+      config.bdUrl = shareDataUrl;
+    }
+    return config;
+  }
+  window._bd_share_config={
+    "common":{onBeforeClick: SetShareData},
+    "share":{"bdCustomStyle":"/css/bdshare.css"}
+  };
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+<!-- 百度分享 end -->
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
 
-
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-
-<script src="//cdnjs.cloudflare.com/ajax/libs/lrsjng.jquery-qrcode/0.12.0/jquery.qrcode.min.js"></script>
-
-
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-  <script src="/fancybox/jquery.fancybox.pack.js"></script>
 
 
 <script src="/js/script.js"></script>
