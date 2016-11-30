@@ -81,7 +81,7 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/the-way-to-migrate-your-wordpress-website/" data-id="ciw4t2yl100015kezub5t208s" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/the-way-to-migrate-your-wordpress-website/" data-id="ciw4tcrzj000nr8ezuafhshsn" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -138,7 +138,7 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/install-wordpress-on-a-subdomain-using-cpanel/" data-id="ciw4t2ykx00005kez6ybsp6uz" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/install-wordpress-on-a-subdomain-using-cpanel/" data-id="ciw4tcrz20005r8ez2gdz7a8w" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -180,6 +180,1411 @@
 
 
   
+    <article id="post-getting-start-to-dynamic-programming-part2-some-exercises-slightly-difficult-from-lintcode-2" class="post-getting-start-to-dynamic-programming-part2-some-exercises-slightly-difficult-from-lintcode-2 post type-post status-publish format-standard hentry">
+    <!---->
+
+      <header class="entry-header">
+        
+        
+  
+    <h1 class="entry-title">
+      <a class="article-title" href="/getting-start-to-dynamic-programming-part2-some-exercises-slightly-difficult-from-lintcode-2/">浅谈动态规划（二）——进阶题</a>
+    </h1>
+  
+
+        
+        <div class="comments-link">
+            
+            <a href="javascript:void(0);" data-url="http://yoursite.com/getting-start-to-dynamic-programming-part2-some-exercises-slightly-difficult-from-lintcode-2/" data-id="ciw4tcrz9000ar8ezym9ye4x7" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+
+    <div class="entry-content">
+      
+        <p>上一次的动态规划的文章中（<span style="color: #0000ff;"><a href="http://frankge.me/blog/2016/10/24/getting-start-to-dynamic-programming-part1-some-exercises-from-lintcode/" target="_blank" rel="external">浅谈动态规划（一）——从lintcode刷题入门</a></span>），借助lintcode上两个简单且典型的例子（Triangle和Climbing Stairs），阐述了动态规划的两个特点：1）最优子结构，和2）子问题重叠。这回来讲讲最近做lintcode上的几个难度稍微大一些的题目。这些题目也很符合动态规划的那两个特点。</p>
+<p>先来看看第一个题目。</p>
+<p>1.<span style="color: #0000ff;"><a href="http://www.lintcode.com/en/problem/paint-fence/" target="_blank" rel="external">Paint Fence（栅栏染色）</a></span></p>
+<p>题目描述：<br>There is a fence with n posts, each post can be painted with one of the k colors. You have to paint all the posts such that no more than two adjacent fence posts have the same color. Return the total number of ways you can paint the fence.<br>Notice: n and k are non-negative integers.</p>
+<p>例子：<br>Given n=3, k=2 return 6</p>
+<p>[code lang=”latex”]<br>     post 1, post 2, post 3<br>way1    0      0       1<br>way2    0      1       0<br>way3    0      1       1<br>way4    1      0       0<br>way5    1      0       1<br>way6    1      1       0<br>[/code]</p>
+<p>题目中要求给n个栅栏涂颜色，有k种颜色可以选择，限制条件是最多可以有两个相邻的栅栏颜色相同。</p>
+<p>解题思路：<br>令ways<a href="n = 1, 2, 3, ..., n">i</a>表示涂到第i个栅栏时的所有的方法数。这样，题目就符合动态规划的两个特征（参考之前的那篇文章分析），就可以用动态规划求解。那么我们在涂第i个栅栏的时候，有两种涂色方式：1）和第i-1个栅栏的颜色相同；2）和第i-1个栅栏的颜色不同。在1）方式下，因为要保证最多只有两个相邻的栅栏颜色相同，所以第i个栅栏的颜色和第i-2个栅栏的颜色必然是不同的，那么此时有ways[i-2] <em> (k-1)中填涂的方式。在2）方式下，不需要考虑之前的栅栏的颜色，只要保证和i-1个栅栏颜色不同即可，此时有ways[i-1] </em> (k-1）中方法。所以有状态转移方程：</p>
+<p>[code lang=”latex”]<br>ways[i] = ways[i-2] <em> (k-1) + ways[i-1] </em> (k-1)<br>[/code]</p>
+<p>同时发现，每次只要用到相邻的3个栅栏的方法数就可以了，这样可以减少空间的使用。所以代码为：</p>
+<p>[code lang=”cpp”]<br>int numWays(int n, int k) {<br>    // Write your code here<br>    if (n == 0 || k == 0)<br>        return 0;</p>
+<pre><code>if (n == 1)
+    return k;
+if (n == 2)
+    return k * k;
+
+int ways[3] = {0}; // 辅助数组，只使用3个变量即可
+ways[0] = k;
+ways[1] = k * k;
+
+// 动态规划步骤
+for (int i = 2; i &amp;lt; n; i++)
+{
+    ways[2] = (k-1) * (ways[0] + ways[1]); // 依据相邻的两个栅栏的填涂方法数来求解第3个栅栏的填涂方法数
+    ways[0] = ways[1];
+    ways[1] = ways[2];
+}
+
+return ways[2];
+</code></pre><p>}<br>[/code]</p>
+<p>这道题虽然也是简单的，但是因为限制条件的运用比较巧妙，所以给贴出来了。接下来看看下一题。</p>
+<p>2.<span style="color: #0000ff;"><a href="http://www.lintcode.com/en/problem/house-robber/" target="_blank" rel="external">House Robber（打劫房屋）</a></span></p>
+<p>题目描述：<br>You are a professional robber planning to rob houses along a street. Each house has a certain amount of money stashed, the only constraint stopping you from robbing each of them is that adjacent houses have security system connected and it will automatically contact the police if two adjacent houses were broken into on the same night.</p>
+<p>Given a list of non-negative integers representing the amount of money of each house, determine the maximum amount of money you can rob tonight without alerting the police.</p>
+<p>例子：<br>Given [3, 8, 4], return 8.</p>
+<p>题目要求从n个房屋中找出一些房屋取走里面财产，找到财产最大的总值，限制条件是不能有相邻的房屋同时被偷盗。</p>
+<p>这道题虽然是道中等题，不过思路也很清晰，动态规划的两个特征也非常明显。令money<a href="i = 1, 2, ..., n">i</a>表示在偷第i个房屋时的最大值，那么在偷第i个房屋时，需要比较的只是money[i-1]和money[i-2] + A[i]值的大小(A[i]是第i个房屋的财产值)，因为相邻的两个房屋不可能同时被偷。所以，状态转移方程为：</p>
+<p>[code lang=”latex”]<br>money[i] = max(money[i-1], money[i-2] + A[i])<br>[/code]</p>
+<p>同样，我们发现每次比较时，只需要保留最近两次的最大值即可，那么优化后的代码为：</p>
+<p>[code lang=”cpp”]<br>long long houseRobber(vector&lt;int&gt; A) {<br>    // write your code here<br>    int n = A.size();</p>
+<pre><code>if (n == 0)
+    return 0;
+
+if (n == 1)
+    return A[0];
+
+// 辅助数组
+long long money[3] = {0};
+money[0] = 0;
+money[1] = A[0];
+
+// 动态规划步骤
+for (int i = 2; i &amp;lt;= n; i++)
+{
+    money[2] = max(A[i-1] + money[0], money[1]);
+    money[0] = money[1];
+    money[1] = money[2];
+}
+
+return money[2];
+</code></pre><p>}<br>[/code]</p>
+<p>最后来看第3题。</p>
+<p>3.<span style="color: #0000ff;"><a href="http://www.lintcode.com/en/problem/paint-house/" target="_blank" rel="external">Paint House（房屋染色）</a></span></p>
+<p>题目描述：<br>There are a row of n houses, each house can be painted with one of the three colors: red, blue or green. The cost of painting each house with a certain color is different. You have to paint all the houses such that no two adjacent houses have the same color.</p>
+<p>The cost of painting each house with a certain color is represented by a n x 3 cost matrix. For example, costs[0][0] is the cost of painting house 0 with color red; costs[1][2] is the cost of painting house 1 with color green, and so on… Find the minimum cost to paint all houses.</p>
+<p>Notice: All costs are positive integers.</p>
+<p>例子：</p>
+<p>[code lang=”latex”]<br>Given costs = [[14,2,11],[11,14,5],[14,3,10]] return 10<br>[/code]</p>
+<p>house 0 is blue, house 1 is green, house 2 is blue, 2 + 5 + 3 = 10</p>
+<p>题目要求给n个房子粉刷颜色，找到最小的费用。粉刷时有3种颜色可供选择，而粉刷不同的颜色的费用是不同的，限制条件是相邻的两个房子的颜色不能相同。这道题目其实和上一道题目有点类似，均为相邻的两个有限制，不过这个在动态规划的时候，比较的是粉刷的不同的颜色。同样的方法，令value[i]<a href="i = 1, 2, ..., n; j = 1, 2, 3">j</a>表示正在粉刷第i个房子的时候颜色为j时的总费用（之前粉刷的位置均保证了费用最小）。为了避免相邻的两个房子粉刷的颜色相同，在粉刷每一层的时候，还要和前一层粉刷的颜色比较。那么在粉刷第i个房屋颜色为j时的状态转移方程为：</p>
+<p>[code lang=”latex”]<br>value[i][j] = min(costs[i][j] + value[i-1][k]), k = 1, 2, 3; k != j<br>[/code]</p>
+<p>上式中k是上一层粉刷不同颜色到达最小值时的不同颜色。在粉刷时要保证相邻的两层颜色不相同，所以k != j。</p>
+<p>有了状态转移方程，题目的代码就好写了：</p>
+<p>[code lang=”cpp”]<br>int minCost2(vector&lt;vector&lt;int&gt; &gt; &amp;costs)<br>{<br>    int n = costs.size();</p>
+<pre><code>if (n == 0)
+    return 0;
+
+int i, j, k;
+int temp;
+int minValue = INT_MAX;
+
+for (j = 0; j &amp;lt; 3; j++) 
+        if (minValue &amp;gt; costs[0][j])
+        minValue = costs[0][j];
+
+if (n == 1)
+    return minValue;
+
+vector&amp;lt;vector&amp;lt;int&amp;gt; &amp;gt; value(n, vector&amp;lt;int&amp;gt;(3, INT_MAX)); // 辅助数组，初始化时每个位置均为INT_MAX
+
+// 动态规划步骤
+for (i = 0; i &amp;lt; n; i++)
+{
+    if (i == 0)
+    {
+        for (j = 0; j &amp;lt; 3; j++)
+            value[i][j] = costs[i][j];
+
+        continue;
+    }
+
+    // 找出相邻两层不相同时，粉刷不同颜色的最小值
+    for (j = 0; j &amp;lt; 3; j++)
+    {
+        minValue = INT_MAX;
+        for (k = 0; k &amp;lt; 3; k++) // 上一层粉刷不同颜色时对应的最小值
+        {
+            if (k == j) // 跳过相同颜色
+                continue;
+            // 找出最小值
+            temp = costs[i][j] + value[i-1][k];
+            if (temp &amp;lt; minValue)
+                minValue = temp;
+        }
+        value[i][j] = minValue;
+    }
+}
+
+// 找出粉刷完最后一个房屋时的最小费用
+minValue = INT_MAX;
+for (j = 0; j &amp;lt; 3; j++) 
+        if (minValue &amp;gt; value[n-1][j])
+    minValue = value[n-1][j];
+
+return minValue;
+</code></pre><p>}<br>[/code]</p>
+<p>同样，代码也可以优化以减少空间消耗，在这里就不再将最后结果贴出来了。</p>
+<p>好了，这就是这次的全部内容。这些题目是我在刷lintcode中遇到的动态规划特征比较明显的题目，且比《<span style="color: #0000ff;"><a href="http://frankge.me/blog/2016/10/24/getting-start-to-dynamic-programming-part1-some-exercises-from-lintcode/" target="_blank" rel="external">浅谈动态规划（一）——从lintcode刷题入门</a></span>》里面的一些题目稍微难点。希望能够给初接触动态规划的童鞋一点参考。</p>
+<p>参考资料：<br>lintcode<br>1.<span style="color: #0000ff;"><a href="http://www.lintcode.com/en/problem/paint-fence/" target="_blank" rel="external">Paint Fence（栅栏染色）</a></span><br>2.<span style="color: #0000ff;"><a href="http://www.lintcode.com/en/problem/house-robber/" target="_blank" rel="external">House Robber（打劫房屋）</a></span><br>3.<span style="color: #0000ff;"><a href="http://www.lintcode.com/en/problem/paint-house/" target="_blank" rel="external">Paint House（房屋染色）</a></span></p>
+
+      
+    </div><!-- .entry-content -->
+
+    <footer class="entry-meta">
+    <a href="/getting-start-to-dynamic-programming-part2-some-exercises-slightly-difficult-from-lintcode-2/">
+    <time datetime="2016-11-15T16:44:43.000Z" class="entry-date">
+        2016-11-16
+    </time>
+</a>
+    
+  <span class="article-delim">&#8226;</span>
+  <div class="article-category">
+  <a class="article-category-link" href="/categories/编程学习/">编程学习</a>
+  </div>
+
+    
+  <span class="article-delim">&#8226;</span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
+
+    </footer>
+</article>
+
+
+
+
+
+
+  
+    <article id="post-matconvnet-installation-in-windows-system" class="post-matconvnet-installation-in-windows-system post type-post status-publish format-standard hentry">
+    <!---->
+
+      <header class="entry-header">
+        
+        
+  
+    <h1 class="entry-title">
+      <a class="article-title" href="/matconvnet-installation-in-windows-system/">windows下MatConvNet深度学习框架的搭建</a>
+    </h1>
+  
+
+        
+        <div class="comments-link">
+            
+            <a href="javascript:void(0);" data-url="http://yoursite.com/matconvnet-installation-in-windows-system/" data-id="ciw4tcryw0001r8ez9xgvegiw" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+
+    <div class="entry-content">
+      
+        <h3 id="博客原文"><a href="#博客原文" class="headerlink" title="博客原文"></a>博客原文</h3><p><span style="color: #3366ff;"><a href="http://www.vlfeat.org/matconvnet/" target="_blank" rel="external">MatConvNet</a></span>是Matlab下用于机器视觉的一个工具包，主要应用是CNN网络，当然其他的网络也涉及到了。MatConvNet简洁、高效，可以用于图片分类、分割和人脸识别等等深度学习的功能。具体的可以参见官网的介绍。</p>
+<p>在搭建环境的过程中，发现如今网上对其的资源不太多，所以在这做一个总结。以beta22版本为例。</p>
+<p>过程分为下面几个步骤：<br>1.MatConvNet的下载<br>2.GPU模式的使用<br>3.测试</p>
+<p>1.MatConvNet的下载</p>
+<p>在其<span style="color: #3366ff;"><a href="http://www.vlfeat.org/matconvnet/" target="_blank" rel="external">官网的页面</a></span>进行下载，解压到适当的位置。</p>
+<p>运行其中“matconvnet-1.0-beta22\examples\vggfaces”路径下的cnn_vgg_faces.m文件，会出现下面的结果，那么说明已经可以使用了。在运行前最好把其中要下载的一些内容给放到对应的文件夹下，这样可以节省一点等待的时间。</p>
+<p><img src="http://blog.frankge.me/wp-content/uploads/2016/10/matconvnet-installation-in-windows-system-01.png" alt="matconvnet-installation-in-windows-system-01"></p>
+<p>2.GPU模式的使用</p>
+<p>官网的<span style="color: #3366ff;"><a href="http://www.vlfeat.org/matconvnet/install/" target="_blank" rel="external">这个页面</a></span>中，提到了搭建GPU的方式。</p>
+<p>首先，安装CUDA，在<span style="color: #3366ff;"><a href="https://developer.nvidia.com/cuda-downloads" target="_blank" rel="external">这个页面</a></span>有下载。记得下载和自己系统以及显卡支持的CUDA。</p>
+<p>接下来，要下载cuDNN(The NVIDIA CUDA Deep Neural Network library)。cuDNN是用于GPU加速的一个库函数。在<span style="color: #3366ff;"><a href="https://developer.nvidia.com/cudnn" target="_blank" rel="external">这个页面</a></span>有下载。</p>
+<p>然后把解压好的cuDNN放在合适的文件夹下，建议在MatConvNet下建立local文件夹，同时把cuDNN文件夹中bin文件夹下的cudnn64_5.dll文件复制到matconvnet-1.0-beta22\matlab\mex文件夹下。</p>
+<p>最后，在MatConvNet文件夹下建立compileGPU.m文件，其中内容如下。记得把对应的路径给改成自己电脑中的路径。</p>
+<p>[code lang=”cpp”]<br>addpath matlab;</p>
+<p>%% with cudnn<br>vl_compilenn(‘enableGpu’, true, …<br>                ‘cudaRoot’, ‘C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v8.0’, …  % CUDA的安装路径<br>                ‘cudaMethod’, ‘nvcc’, ‘enableCudnn’, ‘true’, …<br>                ‘cudnnRoot’, ‘E:\postgraduate\project\Machine Learning\Deep Learning\CNN\matconvnet-1.0-beta22\local\cudnn’);   % cuDNN的路径</p>
+<p>[/code]</p>
+<p>出现下面图片中类似的结果，就代表成功了。</p>
+<p><img src="http://blog.frankge.me/wp-content/uploads/2016/10/matconvnet-installation-in-windows-system-02.png" alt="matconvnet-installation-in-windows-system-02"></p>
+<p>4.测试</p>
+<p>还是根据官网的<span style="color: #3366ff;"><a href="http://www.vlfeat.org/matconvnet/install/" target="_blank" rel="external">这个页面</a></span>，在命令行窗口输入vl_testnn命令，测试非GPU模式，会出现下面的内容。</p>
+<p><img src="http://blog.frankge.me/wp-content/uploads/2016/10/matconvnet-installation-in-windows-system-03.png" alt="matconvnet-installation-in-windows-system-03"></p>
+<p>接下来测试GPU模式，在命令行窗口输入vl_testnn(‘gpu’, true)，会有类似上面的内容出现。这就是成功了，GPU模式下的速度提示还是很明显的，一般都会有十倍以上。</p>
+<p><img src="http://blog.frankge.me/wp-content/uploads/2016/10/matconvnet-installation-in-windows-system-05.png" alt="matconvnet-installation-in-windows-system-05"></p>
+<p>到此，MatConvNet的安装就结束了。</p>
+<p>同时，把我在安装过程中遇到的一个问题的解决方式给写一下。在安装cuDNN的时候，可能会遇到如下的错误“Error using mex nvcc fatal : Unsupported gpu architecture ‘compute_21’”，其中21可以为其他不能被10整除的数字。这个时候可以把matconvnet-1.0-beta22\matlab下的vl_compilenn.m文件中的732行的代码中”%s”改为向下取10的整数倍。</p>
+<p>比如，原代码为</p>
+<p>[code lang=”cpp”]<br>  cudaArch = …<br>      sprintf(‘-gencode=arch=compute<em>%s,code=\\&amp;quot;sm</em>%s,compute_%s\\&amp;quot; ‘, …<br>              arch_code, arch_code, arch_code) ;<br>[/code]</p>
+<p>可以改为</p>
+<p>[code lang=”cpp”]<br>  cudaArch = …<br>      sprintf(‘-gencode=arch=compute_20,code=\\&amp;quot;sm_20,compute_20\\&amp;quot; ‘, …<br>              arch_code, arch_code, arch_code) ;<br>[/code]</p>
+<p>这样，经常遇到的问题就能解决了。</p>
+<p>&nbsp;</p>
+
+      
+    </div><!-- .entry-content -->
+
+    <footer class="entry-meta">
+    <a href="/matconvnet-installation-in-windows-system/">
+    <time datetime="2016-10-25T08:28:07.000Z" class="entry-date">
+        2016-10-25
+    </time>
+</a>
+    
+  <span class="article-delim">&#8226;</span>
+  <div class="article-category">
+  <a class="article-category-link" href="/categories/编程学习/">编程学习</a>
+  </div>
+
+    
+  <span class="article-delim">&#8226;</span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/深度学习/">深度学习</a></li></ul>
+
+    </footer>
+</article>
+
+
+
+
+
+
+  
+    <article id="post-getting-start-to-dynamic-programming-part1-some-exercises-from-lintcode" class="post-getting-start-to-dynamic-programming-part1-some-exercises-from-lintcode post type-post status-publish format-standard hentry">
+    <!---->
+
+      <header class="entry-header">
+        
+        
+  
+    <h1 class="entry-title">
+      <a class="article-title" href="/getting-start-to-dynamic-programming-part1-some-exercises-from-lintcode/">浅谈动态规划（一）——从lintcode刷题入门</a>
+    </h1>
+  
+
+        
+        <div class="comments-link">
+            
+            <a href="javascript:void(0);" data-url="http://yoursite.com/getting-start-to-dynamic-programming-part1-some-exercises-from-lintcode/" data-id="ciw4tcrz10004r8ezc5a2q4yg" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+
+    <div class="entry-content">
+      
+        <p>动态规划是算法中比较常见的一种分析问题的方式，最近看算法看到这，带着lintcode上面的题目，在这写个总结。</p>
+<p>首先从一个lintcode上面简单的题目开始。</p>
+<p><span style="color: #3366ff;"><a href="http://www.lintcode.com/zh-cn/problem/climbing-stairs/" target="_blank" rel="external">Climbing Stairs（爬楼梯）</a></span></p>
+<p>题目描述：<br>假设你正在爬楼梯，需要n步你才能到达顶部。但每次你只能爬一步或者两步，你能有多少种不同的方法爬到楼顶部？</p>
+<p>样例：<br>比如n=3，1+1+1=1+2=2+1=3，共有3中不同的方法，所以返回 3。</p>
+<p>这是一道非常具有代表性的动态规划的一道问题。</p>
+<p>令f[n]记录到达第n阶台阶的方法数。假设你还有最后一步就能到达第n阶台阶，那么最后一步，你可以选择两种方式：1）踏一步以及，2）踏两步。如果是踏一步，那么你要从第n-1阶台阶踏出，此时的方法数是 f[n-1]；如果是踏两步，那么你要从第n-2阶台阶出发，此时的方法数是f[n-2]。所以爬到第n级台阶的方法总数有f[n] = f[n-1] + f[n-2]种。状态转移方程：</p>
+<p>f[n] = f[n-1] + f[n-2]</p>
+<p>这样可以写出解答的递归形式：</p>
+<p>[code lang=”cpp”]<br>int climbStairs(int n) {<br>    // write your code here<br>    if (n &lt;= 1)<br>        return 1;<br>    else<br>        return climbStairs(n-1) + climbStairs(n-2);<br>}<br>[/code]</p>
+<p>此时我们发现可以用一个一维数组来记录之前出现的结果，这样可以省去递归中不必要的空间开销：</p>
+<p>[code lang=”cpp”]<br>int climbStairs(int n) {<br>    // write your code here<br>    vector&lt;int&gt; f(n+1);</p>
+<pre><code>f[0] = 1;
+f[1] = 1;
+
+for (int i = 2; i &amp;lt;= n; i++)
+    f[i] = f[i-1] + f[i-2];
+
+return f[n];
+</code></pre><p>}<br>[/code]</p>
+<p>其实，这个还可以进一步优化，因为每一步都只需要前两个台阶的结果，所以可以用两个变量来代替一维数组。</p>
+<p>[code lang=”cpp”]<br>int climbStairs(int n) {<br>    // write your code here<br>    if (n == 1 || n == 0)<br>        return 1;</p>
+<pre><code>int ways1 = 1;
+int ways2 = 1;
+int ways = 0;
+
+int i = 2;
+while (i &amp;lt;= n)
+{
+    ways = ways1 + ways2;
+
+    ways1 = ways2;
+    ways2 = ways;
+
+    i++;
+}
+
+return ways;
+</code></pre><p>}<br>[/code]</p>
+<p>接下来，我们再来看一题。</p>
+<p><span style="color: #3366ff;"><a href="http://www.lintcode.com/zh-cn/problem/triangle/" target="_blank" rel="external">Triangle（数字三角形）</a></span></p>
+<p>题目描述：<br>给定一个数字三角形，找到从顶部到底部的最小路径和。每一步可以移动到下面一行的相邻数字上。</p>
+<p>样例<br>比如，给出下列数字三角形：</p>
+<p>[code lang=”cpp”]<br>[<br>     [2],<br>    [3,4],<br>   [6,5,7],<br>  [4,1,8,3]<br>]<br>[/code]</p>
+<p>从顶到底部的最小路径和为11 ( 2 + 3 + 5 + 1 = 11)。</p>
+<p>分析问题，我们发现可以用二维数组来计算到最底层每个位置的最小路径和，令第i层下标为j的位置上最小路径和为f[i][j]。那么，第i层下标为j位置的值f[i][j]，只和i-1层位置j-1下标的最小路径和f[i-1][j-1]以及j位置的最小路径和f[i-1][j]有关。即，f[i][j] = min(f[i-1][j-1],  f[i-1][j])。所以状态转移方程为：</p>
+<p>f[i][j] = min(f[i-1][j-1],  f[i-1][j])</p>
+<p>同时，发现每次的结果只与上面一层的结果有关，所以省去二维数组，只用一维数组作为辅助。代码为：</p>
+<p>[code lang=”cpp”]<br>int minimumTotal(vector&lt;vector&lt;int&gt; &gt; &amp;triangle) {<br>    // write your code here<br>    if (triangle.size() == 0)<br>        return 0;</p>
+<pre><code>vector&amp;lt;int&amp;gt; f(triangle[triangle.size() - 1].size());
+
+// 动态规划过程
+f[0] = triangle[0][0];
+for (int i = 1; i &amp;lt; triangle.size(); i++) 
+    { 
+            for (int j = triangle.size()-1; j &amp;gt;= 0; j--)
+    {
+        if (j == 0)
+            f[j] = f[j] + triangle[i][j];
+        else if (j == triangle[i].size()-1)
+            f[j] = f[j-1] + triangle[i][j];
+        else
+            f[j] = min(f[j-1], f[j]) + triangle[i][j];
+    }
+}
+
+// 从辅助数组中找出最小值
+int result;
+result = f[0];
+for (int i = 1; i &amp;lt; f.size(); i++)
+    result = min(result, f[i]);
+
+return result;
+</code></pre><p>}<br>[/code]</p>
+<p>分析这两道题目，发现它们有两个共同的特征：<br>1.最优子结构：一个问题的最优解包含其子问题的最优解。<br>2.子问题重叠：一个问题的子问题都是相同的。那么这些子问题可以用同样的方式解决，每次将解决的子问题给记录到表中，在计算之后的问题时查找前面的结果来计算当前问题。这也就是“动态规划”名称的由来了。</p>
+<p>在climbing stairs问题中，到达每个位置的方法个数，和之前的所有方法是相关联的。即，到达第n阶台阶的所有的方法个数，同时需要找出第n-1阶台阶的所有的方法以及第n-2阶台阶的所有的方法，以此类推。如果之前的问题找出的不是所有的方法数，那么第n阶台阶找出的结果也不是所有的方法数目。而且，第n阶台阶的求解方式和之前的台阶的求解方式是相同的。</p>
+<p>在triangle问题中，每个位置的最小路径和需要知道前一层此位置和下一个位置的最小路径和，如果前一层的结果不是最小路径和，那么此层求出的就不是最小路径和。同样，每层问题的求解方式和之前层问题的求解方式是相同的。</p>
+<p>所以，这也就是《算法导论》一书中表述的动态规划的两个特征：<br>1.最优子结构<br>2.子问题重叠</p>
+<p>参考资料：</p>
+<p>1.lintcode<br><span style="color: #3366ff;"><a href="http://www.lintcode.com/en/problem/triangle/" target="_blank" rel="external">Triangle</a></span><br><span style="color: #3366ff;"><a href="http://www.lintcode.com/en/problem/climbing-stairs/" target="_blank" rel="external">Climbing Stairs</a></span></p>
+<p>2.《算法导论（第三版）》。<br>第15章动态规划</p>
+
+      
+    </div><!-- .entry-content -->
+
+    <footer class="entry-meta">
+    <a href="/getting-start-to-dynamic-programming-part1-some-exercises-from-lintcode/">
+    <time datetime="2016-10-24T13:10:34.000Z" class="entry-date">
+        2016-10-24
+    </time>
+</a>
+    
+  <span class="article-delim">&#8226;</span>
+  <div class="article-category">
+  <a class="article-category-link" href="/categories/编程学习/">编程学习</a>
+  </div>
+
+    
+  <span class="article-delim">&#8226;</span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li></ul>
+
+    </footer>
+</article>
+
+
+
+
+
+
+  
+    <article id="post-some-tips-for-a-green-hand-in-computer-science" class="post-some-tips-for-a-green-hand-in-computer-science post type-post status-publish format-standard hentry">
+    <!---->
+
+      <header class="entry-header">
+        
+        
+  
+    <h1 class="entry-title">
+      <a class="article-title" href="/some-tips-for-a-green-hand-in-computer-science/">计算机入门的一点经验和对迷茫的一些分析</a>
+    </h1>
+  
+
+        
+        <div class="comments-link">
+            
+            <a href="javascript:void(0);" data-url="http://yoursite.com/some-tips-for-a-green-hand-in-computer-science/" data-id="ciw4tcrz60006r8ezm3y3ivki" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+
+    <div class="entry-content">
+      
+        <p>最近感觉自己在计算机方面有点入门了，而且恰好前几天和研一的新生聚餐，被问道一些所谓的“经验”方面的问题，所以在这里总结一下在前一个阶段自学计算机的一些尝试，也希望给看到这篇博文的自学计算机方面的人一点参考吧。</p>
+<p>首先说明一下，自考研到目前为止，自己看过的书籍（这里所指的看过，是几乎都看完了或者看完至少一大半以上，这样我才能对书做一个评价）。</p>
+<p>考研考的是东南大学计算机的自主命题935，科目包括数据结构，计组，操作系统。我用的书是根据统招408来的那三本，即：</p>
+<ul>
+<li><span style="color: #0000ff;"><a href="https://book.douban.com/subject/1085842/" target="_blank" rel="external">《数据结构（C语言版）》</a></span>，严蔚敏</li>
+<li><span style="color: #0000ff;"><a href="https://book.douban.com/subject/2994636/" target="_blank" rel="external">《计算机组成原理（第二版）》</a></span>，唐朔飞</li>
+<li><span style="color: #0000ff;"><a href="https://book.douban.com/subject/1058576/" target="_blank" rel="external">《计算机操作系统》</a></span>，汤子瀛</li>
+</ul>
+<p>同时参考了程杰所作的那本<span style="color: #0000ff;"><a href="https://book.douban.com/subject/6424904/" target="_blank" rel="external">《大话数据结构》</a></span>，不过当时没敲代码（这点很不对）。当时备考还用过配套的王道的那三本书，就不一一列出了。</p>
+<p>复试是C++笔试，用过的书分别是：</p>
+<ul>
+<li><span style="color: #0000ff;"><a href="https://book.douban.com/subject/1174290/" target="_blank" rel="external">《C++程序设计》</a></span>，谭浩强</li>
+<li><span style="color: #0000ff;"><a href="https://book.douban.com/subject/5349823/" target="_blank" rel="external">《C++大学教程（第七版）》</a></span>，东大指定的那本，书上大部分练习自己敲过一遍</li>
+</ul>
+<p>之后研一，看过的书分别有：</p>
+<ul>
+<li><span style="color: #0000ff;"><a href="https://book.douban.com/subject/10767809/" target="_blank" rel="external">《Accelerated C++: Practical Programming by Eample中文版》</a></span>（中文名太别扭了，所以没敲）</li>
+<li><span style="color: #0000ff;"><a href="https://book.douban.com/subject/5333562/" target="_blank" rel="external">《深入理解计算机系统（原书第二版）》</a></span>，即那本大名鼎鼎的CSAPP</li>
+<li><span style="color: #0000ff;"><a href="https://book.douban.com/subject/1139336/" target="_blank" rel="external">《C程序设计语言（第2版）》</a></span>，即C语言设计者的那本K&amp;R经典</li>
+<li><span style="color: #0000ff;"><a href="https://book.douban.com/subject/3012360/" target="_blank" rel="external">《C和指针》</a></span></li>
+<li><span style="color: #0000ff;"><a href="https://book.douban.com/subject/2230248/" target="_blank" rel="external">《人月神话》</a></span>，软件工程方面的经典</li>
+</ul>
+<p>现在正在开始补数据结构算法方面的内容，看的是<span style="color: #0000ff;"><a href="https://book.douban.com/subject/1139426/" target="_blank" rel="external">《数据结构与算法分析——C语言描述（原书第2版）》</a></span>。</p>
+<p>我所经历过的阶段这里也说明一下，如果你也是这些方面的初学者，也许有点参考意义。</p>
+<ol>
+<li>上网搜集资料，查找经验。网上的推荐书籍有一堆，每个方面的书籍都有很多经典之作，比如计算机入门必看CSAPP啦，C语言是K&amp;R啦，C++是<span style="color: #0000ff;"><a href="https://book.douban.com/subject/25708312/" target="_blank" rel="external">《C++Primer》</a></span>啦，算法必须看<span style="color: #0000ff;"><a href="https://book.douban.com/subject/1885170/" target="_blank" rel="external">《算法导论》</a></span>啦，<span style="color: #0000ff;"><a href="https://book.douban.com/subject/1148282/" target="_blank" rel="external">SICP</a></span>绝对是培养编程思维的神书之类的。总之，网上有浩若烟海的经典书籍是必读的。然后，每本书自己都想细读一番。</li>
+<li>自己实践。显然，在本科阶段把上面这些书自己研究一遍还有点可能，但是在研究生这个阶段，有了导师给布置的任务，而且还是初学者，不太可能把这些一一翻阅。于是开始找一条收益较高的方案。网上推荐的是快速入门C++看《Accelerated C++》，我也是从这本书开始重新敲C++代码的。同时快速的翻看了一遍《CSAPP》。</li>
+<li>入门，有了自己的学习方向。这也就是现在了，当然以后的方向可能还有变化，不过确实现在感觉对计算机编程方面自学有了一点感悟了。</li>
+</ol>
+<p>如果你也是初学者，我的一些建议是：</p>
+<ul>
+<li>看书尽量找国外书籍看，国内的书籍大多数不适合自学。</li>
+<li>如果你的基础确实不太多，可以从以下思路考虑：一门编程语言，数据结构和算法，操作系统，计算机网络。当然，这个更多的是针对互联网企业的后台开发岗位吧，确实我对前端和APP开发不了解。</li>
+<li><strong>每个方向的书籍两本就好，一般书籍的侧重可能不同，交叉着看能帮助理解。</strong>如果书籍太多的话，可能就会脱离自己上机实践了。<strong>前期你不可能看完那么多书的。经典书后面的课后习题，尽量做。</strong></li>
+<li>编程语言和算法互相学习可能效果更好一点。比如看数据结构的时候用编程语言自己实现一遍，多用一些编程语言的一些知识要点。同时，看到数据结构，算法的时候，可以考虑到<span style="color: #0000ff;"><a href="http://www.lintcode.com/" target="_blank" rel="external">lintcode</a></span>上面刷刷类似的题目。</li>
+<li>从网上大神的反馈和校招的情况看，<strong>编程能力、算法等基础很重要。</strong></li>
+</ul>
+<p>推荐的书籍以及考虑的参考顺序：</p>
+<p>编程语言方面，因为我是看的C/C++，所以对JAVA不太懂，不过熟悉哪门语言都是要大量的敲代码，而不仅仅是看书。下面C/C++如果没时间就先看C++吧。看C的话主要是关注指针那块。</p>
+<ol>
+<li>《C程序设计语言（第2版）》K&amp;R那本</li>
+<li>《C和指针》。上面那本书讲的太精炼了，参照这本书可以对C有一个了解</li>
+<li>《Accelerated C++》。这本书最大的好处是把C++很多常用的语法和STL的一些用法给呈现出来了，而不像普通的C++书籍那样按部就班罗列知识点。</li>
+<li>《C++大学教程》。和上面那本书对照着看。</li>
+</ol>
+<p>再强调一遍，<strong>编程语言练习也就是自己多敲代码才是重要的，不要抱着书看完一遍又看一遍。</strong></p>
+<p>数据结构和算法：</p>
+<ol>
+<li>《大话数据结构》，程杰。入门算是不错的书了，有C的代码，自己敲过一遍理解更深。</li>
+<li>《数据结构与算法分析——C语言描述（原书第2版）》。我选这本书是因为它比较薄，上来直接啃《算法导论》我个人感觉有点太难了。</li>
+</ol>
+<p>计算机基础书籍：</p>
+<ol>
+<li>《深入理解计算机系统》。这本书入门计算机绝对没问题，包括了操作系统，汇编，硬件，还有网络的一些简单的东西，现在既然硬件那块需求不大，可以暂时不看吧。</li>
+</ol>
+<p>我这条路在入门上面绝对能走通，不过每个人选择的书籍可能不同，也不用都照着来。方向大抵如此，同时，给出一个我看过的较全的书单：<span style="color: #0000ff;"><a href="http://lucida.me/blog/developer-reading-list/" target="_blank" rel="external">《程序员必读书单 1.0》</a></span>。同样，这个书单也是仅作参考，前期你不可能都掌握的。别贪全，前期要把那些常常出现的问题给解决。</p>
+<p>同时，再把自己所说的“入门”给定义或者说明一下，给你一个参照，以防你也是初学，而我又太low，把你带坑里。</p>
+<p>之前，我敲代码时出错了是照着书上给的代码改自己的代码。有些确实是不懂，有些是感觉进度确实不能太慢，不然容易陷入细节的思考，还有就是时间拉太长了可能会学了后面的忘了前面的。现在，敲代码会自己设置断点改错，能够明白一些C语言的指针方面错误所在了。</p>
+<p><strong>简单的说就是：之前是被动输入，现在能主动输入了。</strong>即，把一些从前学过的C++、数据结构的知识进行组合，实现一些自己想到的功能，并且改错的时候能想通一些指针的特性了。这样融合起来学习，能够更好的理解书上的知识。</p>
+<p>所以我感觉自己入门了。</p>
+<p>我博客中前两篇文章的内容是二叉树的实现，本来其实感觉太简单不想贴出来的，不过想想可以给这篇文章做个铺垫。不信你可以对照着看一下，把<span style="color: #0000ff;"><a href="http://frankge.me/blog/2016/09/11/the-implement-of-binary-tree-in-cpp/" target="_blank" rel="external">《二叉树的实现以及相关操作C/C++》</a></span>中的代码改写成<span style="color: #0000ff;"><a href="http://frankge.me/blog/2016/09/11/the-implement-of-binary-tree-class/" target="_blank" rel="external">《二叉树类的实现》</a></span>中的类，就会遇到很多难题。我自己写的时候想避开《C++大学教程》上的一些方式，不过最后还是没避开，用其他方式我实现不了。当然，也许你写的代码会比我的更简洁。</p>
+<p>同样，这里给出一个我看过的不错的入门建议，可以参考：<span style="color: #0000ff;"><a href="https://www.zhihu.com/question/29702729" target="_blank" rel="external">如何从只会 C++ 语法的水平到达完成项目编写软件的水平？</a></span>。我有空也会尝试的。</p>
+<p>最后想到昨天有几个新生说迷茫，正好我也借这篇文章谈谈这个话题吧。</p>
+<p>迷茫很正常。研一的新生可能因为刚刚开学，环境变了，同时看到以前的同学或者现在这个行业工作的人们工资很高，而自己能力不足，对未来有点担心。同时，可能是有了导师的直接管理而且感觉导师分配的任务和自己想要尝试的事情不太有交集。简单地说，其实迷茫就是对未来或多或少的担忧。</p>
+<p>未来谁知道呢？对吧。没发生的总是没发生，谁也不能说自己的努力方向一定正确，自己的愿景一定实现。</p>
+<p>仔细观察我们可以发现，除了大学之前我们没有过太多的迷茫感，在高考填志愿那时开始，很多人多少都会对未来有些迷茫了。因为在那之前，我们更多是在既定的轨道被动进行教育的。我们在规定的时间上课，规定的时间放学，规定的时间完成作业，每隔一段时间会被排名，从而评估你的成绩。更重要的是，那个时候我们不用直接为自己的行为负责，因为父母会给我们埋单。大学之后，我们要进行更多的选择，对自己的行为负责。同时，评估人的标准渐渐变得不那么单一了：有的人社团混的很好，人际交往让人羡慕；有的人会玩乐器，乐队在自己学校小有名气；有的人竞赛屡获佳绩，让人自愧不如。这些都会使我们努力的方向迷失，从而感觉迷茫。</p>
+<p>现在，可能你迷茫的是一些学习方法。未来，你可能还会迷茫自己的择业，孩子的学校选择，不同城市到底安家到哪，等等。</p>
+<p>那么在迷茫的时候，该做些什么呢？</p>
+<ol>
+<li>上网搜集你所想要努力方向的资料，查找经验。</li>
+<li>进行实践。</li>
+<li>将自己的实践和努力的成果进行分析，修正。</li>
+<li>重复进行2，3步。</li>
+</ol>
+<p>然后，你也会找到自己的方向的。所以我在开始将我努力的过程给描述了一遍。</p>
+<p>这里再分享一个经验：<strong>迷茫的最大敌人是拖延。</strong></p>
+<p>相信聪明的你，能更快地找到属于自己的那条道路。</p>
+
+      
+    </div><!-- .entry-content -->
+
+    <footer class="entry-meta">
+    <a href="/some-tips-for-a-green-hand-in-computer-science/">
+    <time datetime="2016-09-11T11:57:50.000Z" class="entry-date">
+        2016-09-11
+    </time>
+</a>
+    
+  <span class="article-delim">&#8226;</span>
+  <div class="article-category">
+  <a class="article-category-link" href="/categories/编程学习/">编程学习</a>, <a class="article-category-link" href="/categories/编程学习/论方法/">论方法</a>
+  </div>
+
+    
+  <span class="article-delim">&#8226;</span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C-C/">C/C++</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/个人成长/">个人成长</a></li></ul>
+
+    </footer>
+</article>
+
+
+
+
+
+
+  
+    <article id="post-the-implement-of-binary-tree-class" class="post-the-implement-of-binary-tree-class post type-post status-publish format-standard hentry">
+    <!---->
+
+      <header class="entry-header">
+        
+        
+  
+    <h1 class="entry-title">
+      <a class="article-title" href="/the-implement-of-binary-tree-class/">二叉树类的实现</a>
+    </h1>
+  
+
+        
+        <div class="comments-link">
+            
+            <a href="javascript:void(0);" data-url="http://yoursite.com/the-implement-of-binary-tree-class/" data-id="ciw4tcrzb000cr8ez3nhd12he" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+
+    <div class="entry-content">
+      
+        <p>最近看数据结构看到二叉树的时候，自己实现了一下，同时写成了类，正好复习一下以前看C++的一些知识。代码如下。</p>
+<p>[code lang=”cpp”]<br>// BiTNode.h<br>// 参照《c++大学教程》中P639页编写<br>// 模版结点BiTNode类的声明</p>
+<p>#ifndef BITNODE_H</p>
+<p>#define BITNODE_H</p>
+<p>// 声明BiNTree类型<br>template&lt;typename NODETYPE&gt; class BiTree;</p>
+<p>template&lt;typename NODETYPE&gt;<br>class BiTNode<br>{<br>    // 声明友元BiNTree类，使得BiTree类可以访问BiTNode类中的private成员<br>    friend class BiTree&lt;NODETYPE&gt;;</p>
+<p>public:<br>    BiTNode(const NODETYPE &amp;d)<br>        : lchild(0),<br>            data(d),<br>            rchild(0)<br>    {<br>    }</p>
+<pre><code>NODETYPE getData() const
+{
+    return data;
+}
+</code></pre><p>private:<br>    BiTNode&lt;NODETYPE&gt; <em>lchild;<br>    NODETYPE data;<br>    BiTNode&lt;NODETYPE&gt; </em>rchild;<br>};</p>
+<p>#endif<br>[/code]</p>
+<p>[code lang=”cpp”]<br>// BiTree.h<br>// 链表二叉树类模版的定义</p>
+<p>#ifndef BITREE_H</p>
+<p>#define BITREE_H</p>
+<p>#include &lt;iostream&gt;</p>
+<p>#include &lt;iomanip&gt;</p>
+<p>#include &quot;BiTNode.h&quot;</p>
+<p>#include &lt;queue&gt;</p>
+<p>#include &lt;stack&gt;<br>using namespace std;</p>
+<p>typedef int Status;</p>
+<p>#define OK    1</p>
+<p>#define ERROR    0</p>
+<p>#define TRUE    1</p>
+<p>#define FALSE    0</p>
+<p>template&lt;typename NODETYPE&gt;<br>class BiTree<br>{<br>public:<br>    BiTree();</p>
+<pre><code>void CreateBiTree();
+void DestroyBiTree();
+Status BiTreeEmpty();
+NODETYPE Root();
+
+int BiTreeDepth();
+int BiTreeDepthNonRecursion();
+
+void PreOrderTraverse();
+void PreOrderNonRecursion();
+void InOrderTraverse();
+void InOrderNonRecursion();
+void PostOrderTraverse();
+void PostOrderNonRecursion();
+void LevelOrderTraverse();
+
+void PrintLast();
+void PrintByDepth();
+</code></pre><p>private:<br>    BiTNode&lt;NODETYPE&gt; *rootPtr;</p>
+<pre><code>// utility function
+void visit(BiTNode&amp;lt;NODETYPE&amp;gt; *p);
+void CreateBiTreeHelper(BiTNode&amp;lt;NODETYPE&amp;gt; **T);
+void DestroyBiTreeHelper(BiTNode&amp;lt;NODETYPE&amp;gt; **T);
+int BiTreeDepthHelper(BiTNode&amp;lt;NODETYPE&amp;gt; *T);
+
+// 用helper函数的原因是对二叉树进行遍历要传入参数
+void PreOrderTraverseHelper(BiTNode&amp;lt;NODETYPE&amp;gt; *T);
+void InOrderTraverseHelper(BiTNode&amp;lt;NODETYPE&amp;gt; *T);
+void PostOrderTraverseHelper(BiTNode&amp;lt;NODETYPE&amp;gt; *T);
+</code></pre><p>};</p>
+<p>template&lt;typename NODETYPE&gt;<br>BiTree&lt;NODETYPE&gt;::BiTree()<br>{<br>    rootPtr = 0;<br>}</p>
+<p>template&lt;typename NODETYPE&gt;<br>Status BiTree&lt;NODETYPE&gt;::BiTreeEmpty()<br>{<br>    if (rootPtr)<br>        return FALSE;<br>    else<br>        return TRUE;<br>}</p>
+<p>template&lt;typename NODETYPE&gt;<br>void BiTree&lt;NODETYPE&gt;::CreateBiTree()<br>{<br>    CreateBiTreeHelper(&amp;rootPtr);<br>}</p>
+<p>// 按前序输入二叉树中结点的值（一个字符）<br>// #表示空树，构造二叉链表表示二叉树T。<br>template&lt;typename NODETYPE&gt;<br>void BiTree&lt;NODETYPE&gt;::CreateBiTreeHelper(BiTNode&lt;NODETYPE&gt; **T)<br>{<br>    NODETYPE val;</p>
+<pre><code>cin &amp;gt;&amp;gt; val;
+
+if (val == &apos;#&apos;)
+    *T = NULL;
+else
+{
+    *T = new BiTNode&amp;lt;NODETYPE&amp;gt;(val);
+    CreateBiTreeHelper(&amp;amp;(*T)-&amp;gt;lchild);
+    CreateBiTreeHelper(&amp;amp;(*T)-&amp;gt;rchild);
+}
+</code></pre><p>}</p>
+<p>template&lt;typename NODETYPE&gt;<br>void BiTree&lt;NODETYPE&gt;::DestroyBiTree()<br>{<br>    DestroyBiTreeHelper(&amp;rootPtr);<br>}</p>
+<p>template&lt;typename NODETYPE&gt;<br>void BiTree&lt;NODETYPE&gt;::DestroyBiTreeHelper(BiTNode&lt;NODETYPE&gt; <em>*T)<br>{<br>    if (</em>T)<br>    {<br>        if ((<em>T)-&gt;lchild)<br>            DestroyBiTreeHelper(&amp;(</em>T)-&gt;lchild);<br>        if ((<em>T)-&gt;rchild)<br>            DestroyBiTreeHelper(&amp;(</em>T)-&gt;rchild);<br>        free(<em>T);
+        </em>T = NULL;<br>    }<br>}</p>
+<p>template&lt;typename NODETYPE&gt;<br>int BiTree&lt;NODETYPE&gt;::BiTreeDepth()<br>{<br>    return BiTreeDepthHelper(rootPtr);<br>}</p>
+<p>template&lt;typename NODETYPE&gt;<br>int BiTree&lt;NODETYPE&gt;::BiTreeDepthHelper(BiTNode&lt;NODETYPE&gt; *T)<br>{<br>    int i, j;</p>
+<pre><code>if (!T)
+    return 0;
+
+if (T-&amp;gt;lchild)
+    i = BiTreeDepthHelper(T-&amp;gt;lchild);
+else 
+    i = 0;
+if (T-&amp;gt;rchild)
+    j = BiTreeDepthHelper(T-&amp;gt;rchild);
+else
+    j = 0;
+
+return i &amp;gt; j ? i+1 : j+1;
+</code></pre><p>}</p>
+<p>template&lt;typename NODETYPE&gt;<br>NODETYPE BiTree&lt;NODETYPE&gt;::Root()<br>{<br>    if (!rootPtr)<br>        return ‘ ‘;<br>    else<br>        return rootPtr-&gt;data;<br>}</p>
+<p>// 借用层次遍历的思想，实现非递归形式求出二叉树深度<br>template&lt;typename NODETYPE&gt;<br>int BiTree&lt;NODETYPE&gt;::BiTreeDepthNonRecursion()<br>{<br>    if (!rootPtr)<br>        return 0;</p>
+<pre><code>BiTNode&amp;lt;NODETYPE&amp;gt; *p; // 工作指针，每次记录从队列队首弹出的结点
+BiTNode&amp;lt;NODETYPE&amp;gt; *back; // 记录每层二叉树的最右边的结点。此结点在每次遍历一层之后的队列队尾
+int level = 0; // 层数，初始值为0
+queue&amp;lt;BiTNode&amp;lt;NODETYPE&amp;gt; *&amp;gt; Q;
+
+Q.push(rootPtr);
+back = Q.back();
+while (!Q.empty())
+{
+    p = Q.front();
+    Q.pop();
+
+    if (p-&amp;gt;lchild)
+        Q.push(p-&amp;gt;lchild);
+    if (p-&amp;gt;rchild)
+        Q.push(p-&amp;gt;rchild);
+
+    if (p == back) // 如果p == 每层的最右边的结点，则层数+1，同时重新赋值队尾结点
+    {
+        level++;
+        if (!Q.empty()) // 如果队列为空，则下一步的操作出错。主要用于防止最后一个结点弹出队列之后的那次操作
+            back = Q.back();
+    }
+}
+
+return level;
+</code></pre><p>}</p>
+<p>template&lt;typename NODETYPE&gt;<br>void BiTree&lt;NODETYPE&gt;::PreOrderTraverse()<br>{<br>    PreOrderTraverseHelper(rootPtr);<br>}</p>
+<p>template&lt;typename NODETYPE&gt;<br>void BiTree&lt;NODETYPE&gt;::PreOrderTraverseHelper(BiTNode&lt;NODETYPE&gt; *T)<br>{<br>    if (!T)<br>        return;</p>
+<pre><code>visit(T);
+PreOrderTraverseHelper(T-&amp;gt;lchild);
+PreOrderTraverseHelper(T-&amp;gt;rchild);
+</code></pre><p>}</p>
+<p>// 前序遍历非递归形式<br>template&lt;typename NODETYPE&gt;<br>void BiTree&lt;NODETYPE&gt;::PreOrderNonRecursion()<br>{<br>    if (!rootPtr)<br>        return;</p>
+<pre><code>BiTNode&amp;lt;NODETYPE&amp;gt; *p;
+stack&amp;lt;BiTNode&amp;lt;NODETYPE&amp;gt; *&amp;gt; S; // 借助栈实现非递归的前序遍历
+
+p = rootPtr;
+while (p || !S.empty())
+{
+    while (p) 
+    {
+        visit(p); // 在每次入栈之前进行访问
+        S.push(p);
+        p = p-&amp;gt;lchild;
+    }
+    if (!S.empty())
+    {
+        p = S.top();
+        S.pop();
+        p = p-&amp;gt;rchild;
+    }
+}
+</code></pre><p>}</p>
+<p>template&lt;typename NODETYPE&gt;<br>void BiTree&lt;NODETYPE&gt;::InOrderTraverse()<br>{<br>    InOrderTraverseHelper(rootPtr);<br>}</p>
+<p>template&lt;typename NODETYPE&gt;<br>void BiTree&lt;NODETYPE&gt;::InOrderTraverseHelper(BiTNode&lt;NODETYPE&gt; *T)<br>{<br>    if (!T)<br>        return;</p>
+<pre><code>InOrderTraverseHelper(T-&amp;gt;lchild);
+visit(T);
+InOrderTraverseHelper(T-&amp;gt;rchild);
+</code></pre><p>}</p>
+<p>template&lt;typename NODETYPE&gt;<br>void BiTree&lt;NODETYPE&gt;::InOrderNonRecursion()<br>{<br>    if (!rootPtr)<br>        return;</p>
+<pre><code>BiTNode&amp;lt;NODETYPE&amp;gt; *p;
+stack&amp;lt;BiTNode&amp;lt;NODETYPE&amp;gt; *&amp;gt; S;
+
+p = rootPtr;
+while (p || !S.empty())
+{
+    while (p)
+    {
+        S.push(p);
+        p = p-&amp;gt;lchild;
+    }
+    if (!S.empty())
+    {
+        p = S.top();
+        S.pop();
+        visit(p); // 在每次出栈之时进行访问
+        p = p-&amp;gt;rchild;
+    }
+}
+</code></pre><p>}</p>
+<p>template&lt;typename NODETYPE&gt;<br>void BiTree&lt;NODETYPE&gt;::PostOrderTraverse()<br>{<br>    PostOrderTraverseHelper(rootPtr);<br>}</p>
+<p>template&lt;typename NODETYPE&gt;<br>void BiTree&lt;NODETYPE&gt;::PostOrderTraverseHelper(BiTNode&lt;NODETYPE&gt; *T)<br>{<br>    if (!T)<br>        return;</p>
+<pre><code>PostOrderTraverseHelper(T-&amp;gt;lchild);
+PostOrderTraverseHelper(T-&amp;gt;rchild);
+visit(T);
+</code></pre><p>}</p>
+<p>template&lt;typename NODETYPE&gt;<br>void BiTree&lt;NODETYPE&gt;::PostOrderNonRecursion()<br>{<br>    if (!rootPtr)<br>        return;</p>
+<pre><code>BiTNode&amp;lt;NODETYPE&amp;gt; *p;
+BiTNode&amp;lt;NODETYPE&amp;gt; *r; // 用于记录栈中弹出的结点的右子树是否访问过
+stack&amp;lt;BiTNode&amp;lt;NODETYPE&amp;gt; *&amp;gt; S;
+
+p = rootPtr;
+r = NULL;
+while (p || !S.empty())
+{
+    while (p)
+    {
+        S.push(p);
+        p = p-&amp;gt;lchild;
+    }
+    if (!S.empty())
+    {
+        p = S.top();
+        if (p-&amp;gt;rchild &amp;amp;&amp;amp; p-&amp;gt;rchild != r) // 此结点的右子树尚未入栈
+        {
+            p = p-&amp;gt;rchild;
+            S.push(p);
+            p = p-&amp;gt;lchild;
+        }
+        else
+        {
+            S.pop();
+            visit(p); // 每次出栈时访问结点
+            r = p;
+            p = NULL;
+        }
+    }
+}
+</code></pre><p>}</p>
+<p>template&lt;typename NODETYPE&gt;<br>void BiTree&lt;NODETYPE&gt;::LevelOrderTraverse()<br>{<br>    if (!rootPtr)<br>        return;</p>
+<pre><code>BiTNode&amp;lt;NODETYPE&amp;gt; *p;
+BiTNode&amp;lt;NODETYPE&amp;gt; *back; // 操作中记录队列尾部的指针
+queue&amp;lt;BiTNode&amp;lt;NODETYPE&amp;gt; *&amp;gt; Q; // 使用辅助队列
+
+Q.push(rootPtr);
+back = Q.back();
+while (!Q.empty())
+{
+    p = Q.front();
+    Q.pop();
+    visit(p);
+
+    if (p-&amp;gt;lchild)
+        Q.push(p-&amp;gt;lchild);
+    if (p-&amp;gt;rchild)
+        Q.push(p-&amp;gt;rchild);
+}
+</code></pre><p>}</p>
+<p>template&lt;typename NODETYPE&gt;<br>void BiTree&lt;NODETYPE&gt;::PrintLast()<br>{<br>    if (!rootPtr)<br>        return;</p>
+<pre><code>BiTNode&amp;lt;NODETYPE&amp;gt; *p;
+BiTNode&amp;lt;NODETYPE&amp;gt; *back; // 操作中记录队列尾部的指针
+queue&amp;lt;BiTNode&amp;lt;NODETYPE&amp;gt; *&amp;gt; Q; // 使用辅助队列
+
+Q.push(rootPtr);
+back = Q.back();
+while (!Q.empty())
+{
+    p = Q.front();
+    Q.pop();
+
+    if (p-&amp;gt;lchild)
+        Q.push(p-&amp;gt;lchild);
+    if (p-&amp;gt;rchild)
+        Q.push(p-&amp;gt;rchild);
+
+    if (p == back)
+    {
+        visit(p);
+        if (!Q.empty())
+            back = Q.back(); // 更新back指针的位置
+    }
+}
+</code></pre><p>}</p>
+<p>template&lt;typename NODETYPE&gt;<br>void BiTree&lt;NODETYPE&gt;::PrintByDepth()<br>{<br>    if (!rootPtr)<br>        return;</p>
+<pre><code>BiTNode&amp;lt;NODETYPE&amp;gt; *p;
+BiTNode&amp;lt;NODETYPE&amp;gt; *back; // 操作中记录队列尾部的指针
+queue&amp;lt;BiTNode&amp;lt;NODETYPE&amp;gt; *&amp;gt; Q; // 使用辅助队列
+
+Q.push(rootPtr);
+back = Q.back();
+while (!Q.empty())
+{
+    p = Q.front();
+    Q.pop();
+    visit(p);
+
+    if (p-&amp;gt;lchild)
+        Q.push(p-&amp;gt;lchild);
+    if (p-&amp;gt;rchild)
+        Q.push(p-&amp;gt;rchild);
+
+    if (p == back)
+    {
+        cout &amp;lt;&amp;lt; endl;
+        if (!Q.empty())
+            back = Q.back(); // 更新back指针的位置
+    }
+}
+</code></pre><p>}</p>
+<p>template&lt;typename NODETYPE&gt;<br>void BiTree&lt;NODETYPE&gt;::visit(BiTNode&lt;NODETYPE&gt; *p)<br>{<br>    cout &lt;&lt; left &lt;&lt; setw(5) &lt;&lt; p-&gt;data;<br>}</p>
+<p>#endif<br>[/code]</p>
+<p>为了省事，main函数有些代码直接使用了前面一篇文章里面c的代码。</p>
+<p>[code lang=”cpp”]<br>// main.h</p>
+<p>#include &lt;iostream&gt;</p>
+<p>#include &quot;BiTree.h&quot;<br>using namespace std;</p>
+<p>int main()<br>{<br>    int i;<br>    BiTree&lt;char&gt; T;<br>    char e1;</p>
+<pre><code>//StrAssign(str,&amp;quot;ABDH#K###E##CFI###G#J##&amp;quot;);
+
+T.CreateBiTree();
+
+printf(&amp;quot;构造空二叉树后,树空否？%d(1:是 0:否) 树的深度: %d\n&amp;quot;,T.BiTreeEmpty(), T.BiTreeDepthNonRecursion());
+e1 = T.Root();
+printf(&amp;quot;二叉树的根为: %c\n&amp;quot;,e1);
+
+printf(&amp;quot;\n前序遍历二叉树:\n&amp;quot;);
+//T.PreOrderTraverse();
+T.PreOrderNonRecursion();
+
+printf(&amp;quot;\n中序遍历二叉树:\n&amp;quot;);
+T.InOrderTraverse();
+//T.InOrderNonRecursion();
+
+printf(&amp;quot;\n后序遍历二叉树:\n&amp;quot;);
+//T.PostOrderTraverse();
+T.PostOrderNonRecursion();
+
+printf(&amp;quot;\n层次遍历二叉树:\n&amp;quot;);
+T.LevelOrderTraverse();
+
+printf(&amp;quot;\n每行二叉树的最右边的结点为:\n&amp;quot;);
+T.PrintLast();
+
+printf(&amp;quot;\n按层次输出每行的结点:\n&amp;quot;);
+T.PrintByDepth();
+
+T.DestroyBiTree();
+printf(&amp;quot;\n清除二叉树后,树空否？%d(1:是 0:否) 树的深度=%d\n&amp;quot;,T.BiTreeEmpty(),T.BiTreeDepth());
+i = T.Root();
+if(!i)
+    printf(&amp;quot;树空，无根\n&amp;quot;);
+
+getchar();
+getchar();
+return 0;
+</code></pre><p>}<br>[/code]</p>
+<p>写这个代码的时候，感觉自己计算机编程入门了——之前写代码主要都是照着书写，出错了更多都是照着书查找错误。写这个二叉树类的时候有个地方指针出错了，自己设断点改错，改了很久。所以入门的一些经验在下面一篇文章里面谈谈吧。</p>
+<p>参考资料：<br>1.<a href="https://book.douban.com/subject/6424904/" target="_blank" rel="external"><span style="color: #0000ff;">《大话数据结构》</span></a><br>2.<a href="https://book.douban.com/subject/5349823/" target="_blank" rel="external"><span style="color: #0000ff;">《C++大学教程（第七版）》</span></a></p>
+
+      
+    </div><!-- .entry-content -->
+
+    <footer class="entry-meta">
+    <a href="/the-implement-of-binary-tree-class/">
+    <time datetime="2016-09-10T17:05:45.000Z" class="entry-date">
+        2016-09-11
+    </time>
+</a>
+    
+  <span class="article-delim">&#8226;</span>
+  <div class="article-category">
+  <a class="article-category-link" href="/categories/编程学习/">编程学习</a>
+  </div>
+
+    
+  <span class="article-delim">&#8226;</span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C-C/">C/C++</a></li></ul>
+
+    </footer>
+</article>
+
+
+
+
+
+
+  
+    <article id="post-the-implement-of-binary-tree-in-cpp" class="post-the-implement-of-binary-tree-in-cpp post type-post status-publish format-standard hentry">
+    <!---->
+
+      <header class="entry-header">
+        
+        
+  
+    <h1 class="entry-title">
+      <a class="article-title" href="/the-implement-of-binary-tree-in-cpp/">二叉树的实现以及相关操作C/C++</a>
+    </h1>
+  
+
+        
+        <div class="comments-link">
+            
+            <a href="javascript:void(0);" data-url="http://yoursite.com/the-implement-of-binary-tree-in-cpp/" data-id="ciw4tcrzg000ir8ezg7joet1o" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+
+    <div class="entry-content">
+      
+        <p>夏天看机器学习之余，把C语言给过了一遍，现在开始数据结构的学习了。最近看的二叉树，照着书实现了一下。</p>
+<p>其中包括二叉树的一些基本操作：初始化，建立，销毁，判空，深度和几种遍历。因为书上没给出非递归的遍历的非递归形式，自己这边给总结一下。代码本来是用C写的，但是其中有些功能的实现需要用到队列或者栈，直接调用C++的STL了。如下是相关代码。</p>
+<p>[code lang=”cpp”]</p>
+<p>#include &quot;string.h&quot;</p>
+<p>#include &quot;stdio.h&quot;    </p>
+<p>#include &quot;stdlib.h&quot;   </p>
+<p>#include &quot;math.h&quot;  </p>
+<p>#include &lt;queue&gt;</p>
+<p>#include &lt;stack&gt;<br>using namespace std;</p>
+<p>#define OK 1</p>
+<p>#define ERROR 0</p>
+<p>#define TRUE 1</p>
+<p>#define FALSE 0</p>
+<p>#define MAXSIZE 100 /<em> 存储空间初始分配量 </em>/</p>
+<p>typedef int Status;</p>
+<p>typedef char TElemType;<br>TElemType Nil = ‘ ‘;</p>
+<p>/<em> 用于构造二叉树<strong><strong><strong><strong><strong><strong><strong><strong>**</strong></strong></strong></strong></strong></strong></strong></strong> </em>/<br>int index=1;<br>typedef char String[24]; /<em>  0号单元存放串的长度 </em>/<br>String str;</p>
+<p>Status StrAssign(String T,char <em>chars)<br>{<br>    int i;<br>    if(strlen(chars)&gt;MAXSIZE)<br>        return ERROR;<br>    else<br>    {<br>        T[0]=strlen(chars);<br>        for(i=1;i&lt;=T[0];i++)<br>            T[i]=</em>(chars+i-1);<br>        return OK;<br>    }<br>}<br>/<em> <strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><em>**</em></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong> </em>/</p>
+<p>typedef struct BiTNode<br>{<br>    TElemType data;<br>    struct BiTNode <em>lchild, </em>rchild;<br>} BiTNode, *BiTree;</p>
+<p>Status InitBiTree(BiTree <em>T);<br>void CreateBiTree(BiTree </em>T);<br>void DestroyBiTree(BiTree *T);<br>Status BiTreeEmpty(BiTree T);<br>TElemType Root(BiTree T);<br>TElemType Value(BiTree p);<br>void visit(BiTree T);</p>
+<p>int BiTreeDepth(BiTree T);<br>int BiTreeDepthNonRecursion(BiTree T);<br>int BiTreeDepthNonRecursion2(BiTree T);</p>
+<p>void PreOrderTraverse(BiTree T);<br>void PreOrderNonRecursion(BiTree T);<br>void InOrderTraverse(BiTree T);<br>void InOrderNonRecursion(BiTree T);<br>void PostOrderTraverse(BiTree T);<br>void PostOrderNonRecurion(BiTree T);<br>void LevelOrderTraverse(BiTree T);</p>
+<p>void PrintLastInEachLevel(BiTree T);<br>void PrintLevelOrderByLevel(BiTree T);</p>
+<p>int main()<br>{<br>    int i;<br>    BiTree T;<br>    TElemType e1;<br>    InitBiTree(&amp;T);</p>
+<pre><code>//StrAssign(str,&amp;quot;ABDH#K###E##CFI###G#J##&amp;quot;);
+
+CreateBiTree(&amp;amp;T);
+
+printf(&amp;quot;构造空二叉树后,树空否？%d(1:是 0:否) 树的深度=%d\n&amp;quot;,BiTreeEmpty(T),BiTreeDepthNonRecursion2(T));
+e1=Root(T);
+printf(&amp;quot;二叉树的根为: %c\n&amp;quot;,e1);
+
+printf(&amp;quot;\n前序遍历二叉树:\n&amp;quot;);
+PreOrderTraverse(T);
+//PreOrderNonRecursion(T);
+
+printf(&amp;quot;\n中序遍历二叉树:\n&amp;quot;);
+InOrderTraverse(T);
+//InOrderNonRecursion(T);
+
+printf(&amp;quot;\n后序遍历二叉树:\n&amp;quot;);
+PostOrderTraverse(T);
+//PostOrderNonRecurion(T);
+
+printf(&amp;quot;\n层次遍历二叉树:\n&amp;quot;);
+//LevelOrderTraverse(T);
+PrintLevelOrderByLevel(T);
+printf(&amp;quot;\n输出每层的最后一个结点:\n&amp;quot;);
+PrintLastInEachLevel(T);
+
+DestroyBiTree(&amp;amp;T);
+printf(&amp;quot;\n清除二叉树后,树空否？%d(1:是 0:否) 树的深度=%d\n&amp;quot;,BiTreeEmpty(T),BiTreeDepth(T));
+i=Root(T);
+if(!i)
+    printf(&amp;quot;树空，无根\n&amp;quot;);
+
+getchar();
+getchar();
+return 0;
+</code></pre><p>}</p>
+<p>//<em> 构造空二叉树T </em>/<br>Status InitBiTree(BiTree <em>T)<br>{
+    </em>T = NULL;<br>    return OK;<br>}</p>
+<p>// 按前序输入二叉树中结点的值（一个字符）<br>// #表示空树，构造二叉链表表示二叉树T。<br>void CreateBiTree(BiTree *T)<br>{<br>    TElemType ch;</p>
+<pre><code>scanf(&amp;quot;%c&amp;quot;, &amp;amp;ch);
+
+if (ch == &apos;#&apos;)
+    (*T) = NULL;
+else
+{
+    *T = (BiTree)malloc(sizeof(BiTNode));
+    if (!*T)
+        exit(OVERFLOW);
+    (*T)-&amp;gt;data = ch;
+    CreateBiTree(&amp;amp;(*T)-&amp;gt;lchild);
+    CreateBiTree(&amp;amp;(*T)-&amp;gt;rchild);
+}
+</code></pre><p>}</p>
+<p>// 初始条件: 二叉树T存在。操作结果: 销毁二叉树T<br>void DestroyBiTree(BiTree <em>T)<br>{<br>    if (</em>T)<br>    {<br>        if ((<em>T)-&gt;lchild)<br>            DestroyBiTree(&amp;(</em>T)-&gt;lchild);<br>        if ((<em>T)-&gt;rchild)<br>            DestroyBiTree(&amp;(</em>T)-&gt;rchild);<br>        free(<em>T);
+        </em>T = NULL;<br>    }<br>}</p>
+<p>// 初始条件：二叉树存在<br>// 操作结果：若T为空，则返回TRUE；否则返回FALSE<br>Status BiTreeEmpty(BiTree T)<br>{<br>    if (!T)<br>        return TRUE;<br>    else<br>        return FALSE;<br>}</p>
+<p>// 初始条件：二叉树存在<br>// 操作结果：返回T的根<br>TElemType Root(BiTree T)<br>{<br>    if (!T)<br>        return Nil;<br>    else<br>        return T-&gt;data;<br>}</p>
+<p>// 初始条件：节点存在<br>// 操作结果：输出结点的数据域<br>void visit(BiTNode *p)<br>{<br>    if (p)<br>        printf(&quot;%c &quot;, p-&gt;data);<br>}</p>
+<p>// 初始条件：二叉树存在<br>// 操作结果：返回二叉树深度<br>// 递归实现<br>int BiTreeDepth(BiTree T)<br>{<br>    if (!T)<br>        return 0;</p>
+<pre><code>int i, j;
+
+if (T-&amp;gt;lchild)
+    i = BiTreeDepth(T-&amp;gt;lchild); // 递归求出左子树高度
+else
+    i = 0;
+
+if (T-&amp;gt;rchild)
+    j = BiTreeDepth(T-&amp;gt;rchild); // 递归求出右子树高度
+else
+    j = 0;
+
+return i &amp;gt; j ? i+1 : j+1;
+</code></pre><p>}</p>
+<p>// 求二叉树高度的非递归形式<br>int BiTreeDepthNonRecursion(BiTree T)<br>{<br>    if (!T)<br>        return 0;</p>
+<pre><code>queue&amp;lt;BiTNode *&amp;gt; Q; // 借助队列实现层次遍历，从而求出高度
+BiTNode *p; // 记录队列头部
+BiTNode *back; // 记录队列尾部指针
+int level = 0; // 队列高度
+
+Q.push(T);
+back = Q.back();
+while (!Q.empty())
+{
+    p = Q.front();
+    Q.pop();
+
+    if (p-&amp;gt;lchild)
+        Q.push(p-&amp;gt;lchild);
+    if (p-&amp;gt;rchild)
+        Q.push(p-&amp;gt;rchild);
+
+    if (p == back)
+    {
+        level++;
+        if (!Q.empty()) // 防止最后Q为空时出错
+            back = Q.back();
+    }
+}
+
+return level;
+</code></pre><p>}</p>
+<p>// 求二叉树高度的非递归形式<br>int BiTreeDepthNonRecursion2(BiTree T)<br>{<br>    BiTNode <em>Q[MAXSIZE]; // 借助队列实现层次遍历，从而求出高度。此时用数组实现队列<br>    int level = 0; // 二叉树高度<br>    int last = 0; // 每层次最后一个结点<br>    int front = -1; // 队列头指针<br>    int rear = -1; // 队列尾指针<br>    BiTNode </em>p;</p>
+<pre><code>Q[++rear] = T;
+last = rear;
+while (front &amp;lt; rear) // 队列不空
+{
+    p = Q[++front];
+
+    if (p-&amp;gt;lchild)
+        Q[++rear] = p-&amp;gt;lchild;
+    if (p-&amp;gt;rchild)
+        Q[++rear] = p-&amp;gt;rchild;
+
+    if (front == last)
+    {
+        level++;
+        if (front &amp;lt; rear)
+            last = rear;
+    }
+}
+
+return level;
+</code></pre><p>}</p>
+<p>// 初始条件：二叉树存在<br>// 操作结果：前序遍历二叉树<br>void PreOrderTraverse(BiTree T)<br>{<br>    if (!T)<br>        return;</p>
+<pre><code>visit(T);
+PreOrderTraverse(T-&amp;gt;lchild);
+PreOrderTraverse(T-&amp;gt;rchild);
+</code></pre><p>}</p>
+<p>// 前序遍历非递归形式<br>void PreOrderNonRecursion(BiTree T)<br>{<br>    if (!T)<br>        return;</p>
+<pre><code>stack&amp;lt;BiTNode *&amp;gt; S; // 借助栈实现非递归遍历
+BiTNode *p;
+
+p = T;
+while (p || !S.empty())
+{
+    while (p)
+    {
+        S.push(p);
+        visit(p); // 在每次入栈时进行访问
+        p = p-&amp;gt;lchild;
+    }
+    if (!S.empty())
+    {
+        p = S.top(); 
+        S.pop();
+        p = p-&amp;gt;rchild;
+    }
+}
+</code></pre><p>}</p>
+<p>// 初始条件：二叉树存在<br>// 操作结果：中序遍历二叉树<br>void InOrderTraverse(BiTree T)<br>{<br>    if (!T)<br>        return;</p>
+<pre><code>InOrderTraverse(T-&amp;gt;lchild);
+visit(T);
+InOrderTraverse(T-&amp;gt;rchild);
+</code></pre><p>}</p>
+<p>// 中序遍历二叉树非递归形式<br>void InOrderNonRecursion(BiTree T)<br>{<br>    if (!T)<br>        return;</p>
+<pre><code>stack&amp;lt;BiTNode *&amp;gt; S;
+BiTNode *p;
+
+p = T;
+while (p || !S.empty())
+{
+    while (p)
+    {
+        S.push(p);
+        p = p-&amp;gt;lchild;
+    }
+    if (!S.empty())
+    {
+        p = S.top();
+        S.pop();
+        visit(p); // 每次从栈中弹出的时候访问结点
+        p = p-&amp;gt;rchild;
+    }
+}
+</code></pre><p>}</p>
+<p>// 初始条件：二叉树存在<br>// 操作结果：后序递归遍历二叉树<br>void PostOrderTraverse(BiTree T)<br>{<br>    if (!T)<br>        return;</p>
+<pre><code>PostOrderTraverse(T-&amp;gt;lchild);
+PostOrderTraverse(T-&amp;gt;rchild);
+visit(T);
+</code></pre><p>}</p>
+<p>// 后序遍历非递归形式<br>// 难点是分清栈中弹出根结点时，是从左子树弹出还是右子树弹出。所以使用辅助指针r。<br>void PostOrderNonRecurion(BiTree T)<br>{<br>    if (!T)<br>        return;</p>
+<pre><code>stack&amp;lt;BiTNode *&amp;gt; S;
+BiTNode *p;
+BiTNode *r; // 用指针r记录最近访问的结点
+
+p = T;
+r = NULL;
+while (p || !S.empty())
+{
+    while (p)
+    {
+        S.push(p);
+        p = p-&amp;gt;lchild;
+    }
+    if (!S.empty())
+    {
+        p = S.top();
+        if (p-&amp;gt;rchild &amp;amp;&amp;amp; p-&amp;gt;rchild != r) // 如果右子树存在，且未访问过
+        {
+            p = p-&amp;gt;rchild;
+            S.push(p);
+            p = p-&amp;gt;lchild;
+        }
+        else
+        {
+            S.pop();
+            visit(p);
+            r = p;
+            p = NULL;
+        }
+    }
+}
+</code></pre><p>}</p>
+<p>// 初始条件：二叉树存在<br>// 操作结果：层次遍历二叉树<br>void LevelOrderTraverse(BiTree T)<br>{<br>    if (!T)<br>        return;</p>
+<pre><code>queue&amp;lt;BiTNode *&amp;gt; Q; // 借助队列实现层次遍历
+BiTNode *p;
+
+Q.push(T);
+while (!Q.empty())
+{
+    p = Q.front();
+    Q.pop();
+    visit(p); // 每次弹出的时候访问结点
+
+    if (p-&amp;gt;lchild)
+        Q.push(p-&amp;gt;lchild);
+    if (p-&amp;gt;rchild)
+        Q.push(p-&amp;gt;rchild);
+}
+</code></pre><p>}</p>
+<p>// 初始条件：二叉树存在<br>// 操作结果：访问每层二叉树最右边的结点<br>void PrintLastInEachLevel(BiTree T)<br>{<br>    if (!T) // 如果树为空，则返回<br>        return;</p>
+<pre><code>queue&amp;lt;BiTNode *&amp;gt; Q;
+BiTNode *p;
+BiTNode *back; // 指向每层最后一个结点的指针
+
+Q.push(T);
+back = Q.back();
+while (!Q.empty())
+{
+    p = Q.front();
+    Q.pop();
+
+    if (p-&amp;gt;lchild)
+        Q.push(p-&amp;gt;lchild);
+    if (p-&amp;gt;rchild)
+        Q.push(p-&amp;gt;rchild);
+
+    if (p == back)
+    {
+        visit(p);
+        if (!Q.empty())
+            back = Q.back();
+    }
+}
+</code></pre><p>}</p>
+<p>// 初始条件：二叉树存在<br>// 操作结果：分行输出每层二叉树的结点<br>void PrintLevelOrderByLevel(BiTree T)<br>{<br>    if (!T)<br>        return;</p>
+<pre><code>queue&amp;lt;BiTNode *&amp;gt; Q;
+BiTNode *p;
+BiTNode *back; // 记录每层最右边的结点，从而实现分行输出
+
+Q.push(T);
+back = Q.back();
+while (!Q.empty())
+{
+    p = Q.front();
+    Q.pop();
+    visit(p);
+
+    if (p-&amp;gt;lchild)
+        Q.push(p-&amp;gt;lchild);
+    if (p-&amp;gt;rchild)
+        Q.push(p-&amp;gt;rchild);
+
+    if (p == back)
+    {
+        putchar(&apos;\n&apos;);
+        if (!Q.empty())
+            back = Q.back();
+    }
+}
+</code></pre><p>}<br>[/code]</p>
+<p>本身感觉现在这些在计算机专业里面应该是太基础的东西了，不想贴出来的，但是确实这个算是一个里程碑吧——感觉自己对编程有点入门了。下一篇会把用类实现的二叉树的代码贴上来，之后再写点自学编程上面的一些感悟或者说一些经验吧。</p>
+<p>参考资料：</p>
+<p>1.<span style="color: #0000ff;"><a href="https://book.douban.com/subject/6424904/" target="_blank" rel="external">《大话数据结构》</a></span></p>
+
+      
+    </div><!-- .entry-content -->
+
+    <footer class="entry-meta">
+    <a href="/the-implement-of-binary-tree-in-cpp/">
+    <time datetime="2016-09-10T16:38:36.000Z" class="entry-date">
+        2016-09-11
+    </time>
+</a>
+    
+  <span class="article-delim">&#8226;</span>
+  <div class="article-category">
+  <a class="article-category-link" href="/categories/编程学习/">编程学习</a>
+  </div>
+
+    
+  <span class="article-delim">&#8226;</span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C-C/">C/C++</a></li></ul>
+
+    </footer>
+</article>
+
+
+
+
+
+
+  
+    <article id="post-a-smart-way-to-insert-a-new-node-in-sorted-singly-linked-list" class="post-a-smart-way-to-insert-a-new-node-in-sorted-singly-linked-list post type-post status-publish format-standard hentry">
+    <!---->
+
+      <header class="entry-header">
+        
+        
+  
+    <h1 class="entry-title">
+      <a class="article-title" href="/a-smart-way-to-insert-a-new-node-in-sorted-singly-linked-list/">顺序单链表插入新节点的一种方法</a>
+    </h1>
+  
+
+        
+        <div class="comments-link">
+            
+            <a href="javascript:void(0);" data-url="http://yoursite.com/a-smart-way-to-insert-a-new-node-in-sorted-singly-linked-list/" data-id="ciw4tcryk0000r8ezoo0a6ct8" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+
+    <div class="entry-content">
+      
+        <p>在学习链表的时候我们都接触过单链表插入新结点的问题。其中有一类就是在顺序链表中插入新节点，并保持链表的递增或者递减性质。</p>
+<p>最近看《C和指针》一书中提到了一种方法，我个人感觉不错，并且思想非常好。</p>
+<p>这是最常见的思维：</p>
+<p>[code lang=”cpp”]<br>//sll_node.h  </p>
+<p>typedef struct Node<br>{<br>    int value;<br>    Node *next;<br>} Node;<br>[/code]</p>
+<p>[code lang=”cpp”]</p>
+<p>#include &quot;sll_node.h&quot;  </p>
+<p>#include &lt;stdio.h&gt;  </p>
+<p>#define TRUE    1  </p>
+<p>#define FALSE   0  </p>
+<p>// insertNode:把newValue的值插入到递增排序的链表中，正确返回TRUE，错误返回FALSE<br>// rootp是链表的头指针。<br>int insertNode(Node <em>*rootp, int newValue)<br>{<br>    Node </em>newNode; // 新节点的指针<br>    Node <em>previous; // 当前指针的前一个指针<br>    Node </em>current; // 当前指针  </p>
+<pre><code>current = *rootp; // 初始化  
+previous = NULL;  
+
+// 查找插入的位置  
+while (current != NULL &amp;amp;&amp;amp; current-&amp;gt;value &amp;lt; newValue)
+{
+    previous = current;
+    current = current-&amp;gt;next;
+}
+
+// 给新节点分配空间  
+newNode = (Node *)malloc(sizeof(Node));  
+if (newNode == NULL)  
+    return FALSE;  
+newNode-&amp;gt;value = newValue;  
+
+// 更改新节点的前驱和后继节点  
+newNode-&amp;gt;next = current;  
+if (previous == NULL) // 此时插入节点的为链表中第一个节点，修改头指针  
+    *rootp = newNode;  
+else  
+    previous-&amp;gt;next = newNode;
+
+return TRUE;
+</code></pre><p>}<br>[/code]</p>
+<p>我以前编写的时候也会用这样的方法：一个当前指针和指向当前指针之前的指针，这样需要讨论原链表是否为空。书中提到了一种抽象，每次插入新的节点，都是改变一个指向这个新节点的指针以及指向下一个节点，这样可以省略讨论插入的节点是否为第一个节点的步骤。代码如下：</p>
+<p>[code lang=”cpp”]</p>
+<p>#include &quot;sll_node.h&quot;</p>
+<p>#include &lt;stdio.h&gt;</p>
+<p>#define    FALSE    0</p>
+<p>#define TRUE    1</p>
+<p>// insertNode2:把newValue的值插入到递增排序的链表中，正确返回TRUE，错误返回FALSE<br>// nextp是指向当前节点的指针，最初是头指针<br>int insertNode2(Node <em>*nextp, int newValue)<br>{<br>    Node </em>newNode; // 新节点指针<br>    Node *current; // 当前节点指针</p>
+<pre><code>current = *nextp; // 最初当前节点为nextp指针指向的节点
+// 查找新插入节点的位置
+while (current != NULL &amp;amp;&amp;amp; current-&amp;gt;value &amp;lt; newValue)
+{
+    nextp = &amp;amp;current-&amp;gt;next;
+    current = current-&amp;gt;next;
+}
+
+// 为新节点分配内存
+newNode = (Node *)malloc(sizeof(Node));
+if (newNode == NULL)
+    return FALSE;
+newNode-&amp;gt;value = newValue;
+
+// 统一了插入的步骤。即：每次插入，都是前一个指针指向新节点，新节点指向下一个节点
+*nextp = newNode;
+newNode-&amp;gt;next = current;
+
+return TRUE;
+</code></pre><p>}</p>
+<p>[/code]</p>
+<p>main函数</p>
+<p>[code lang=”cpp”]</p>
+<p>#include &lt;stdio.h&gt;</p>
+<p>#include &lt;stdlib.h&gt;</p>
+<p>#include &lt;time.h&gt;</p>
+<p>#include &quot;sll_node.h&quot;</p>
+<p>int insertNode(Node <strong>rootp, int newValue);<br>int insertNode2(Node </strong>nextp, int newValue);</p>
+<p>int main()<br>{<br>    srand(time(0));</p>
+<pre><code>Node *head = (Node *)malloc(sizeof(Node));
+head-&amp;gt;next = NULL;
+
+for (int i = 0; i &amp;lt; 5; i++)
+{
+    int temp = rand() % 50;
+    printf(&amp;quot;%d\n&amp;quot;, temp);
+    //insertNode(&amp;amp;head,temp);
+    insertNode2(&amp;amp;head,temp);
+}
+
+Node *p = head-&amp;gt;next;
+while (p != NULL)
+{
+    printf(&amp;quot;%d\n&amp;quot;, p-&amp;gt;value);
+    p = p-&amp;gt;next;
+}
+
+getchar();
+getchar();
+return 0;
+</code></pre><p>}</p>
+<p>[/code]</p>
+<p>因为我个人没有经过正经的课堂训练，自己考研才接触编程、数据结构之类的。看了很多对自学编程提的建议都是多编写，并且要有抽象的思想，所以将这个方法写了下来，可能对很对科班出身的人不算什么问题了吧。</p>
+<p>我感觉这个抽象很好，希望是给自己编程道路的一个好的开端吧:)</p>
+<p>同时，因为我在初学时发现测试代码也会花费很多时间，所以将完成的代码都贴了上来，而不仅仅是函数，希望也能帮助到更多的想我这样的初学者吧。</p>
+
+      
+    </div><!-- .entry-content -->
+
+    <footer class="entry-meta">
+    <a href="/a-smart-way-to-insert-a-new-node-in-sorted-singly-linked-list/">
+    <time datetime="2016-08-17T16:09:39.000Z" class="entry-date">
+        2016-08-18
+    </time>
+</a>
+    
+  <span class="article-delim">&#8226;</span>
+  <div class="article-category">
+  <a class="article-category-link" href="/categories/编程学习/">编程学习</a>
+  </div>
+
+    
+  <span class="article-delim">&#8226;</span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C-C/">C/C++</a></li></ul>
+
+    </footer>
+</article>
+
+
+
+
+
+
+  
     <article id="post-the-timeline-of-my-blog" class="post-the-timeline-of-my-blog post type-post status-publish format-standard hentry">
     <!---->
 
@@ -195,7 +1600,7 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/the-timeline-of-my-blog/" data-id="ciw4t2yl600045kezkxtffl3l" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/the-timeline-of-my-blog/" data-id="ciw4tcrze000fr8ez7m5iunvt" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -287,7 +1692,7 @@
   <aside class="widget">
     <h3 class="widget-title">Categories</h3>
     <div class="widget-content">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/建站相关/">建站相关</a><span class="category-list-count">3</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/建站相关/">建站相关</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/编程学习/">编程学习</a><span class="category-list-count">7</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/编程学习/论方法/">论方法</a><span class="category-list-count">1</span></li></ul></li></ul>
     </div>
   </aside>
 
@@ -307,7 +1712,15 @@
           </li>
         
           <li>
-            <a href="/the-timeline-of-my-blog/">博客时间轴</a>
+            <a href="/getting-start-to-dynamic-programming-part2-some-exercises-slightly-difficult-from-lintcode-2/">浅谈动态规划（二）——进阶题</a>
+          </li>
+        
+          <li>
+            <a href="/matconvnet-installation-in-windows-system/">windows下MatConvNet深度学习框架的搭建</a>
+          </li>
+        
+          <li>
+            <a href="/getting-start-to-dynamic-programming-part1-some-exercises-from-lintcode/">浅谈动态规划（一）——从lintcode刷题入门</a>
           </li>
         
       </ul>
@@ -319,7 +1732,7 @@
   <aside class="widget">
     <h3 class="widget-title">Tags</h3>
     <div class="widget-content">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/我的博客/">我的博客</a><span class="tag-list-count">3</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C-C/">C/C++</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/个人成长/">个人成长</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/我的博客/">我的博客</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/深度学习/">深度学习</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a><span class="tag-list-count">2</span></li></ul>
     </div>
   </aside>
 
@@ -328,7 +1741,7 @@
   <aside class="widget">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget-content tagcloud">
-      <a href="/tags/我的博客/" style="font-size: 10px;">我的博客</a>
+      <a href="/tags/C-C/" style="font-size: 20px;">C/C++</a> <a href="/tags/个人成长/" style="font-size: 10px;">个人成长</a> <a href="/tags/我的博客/" style="font-size: 16.67px;">我的博客</a> <a href="/tags/深度学习/" style="font-size: 10px;">深度学习</a> <a href="/tags/算法/" style="font-size: 13.33px;">算法</a>
     </div>
   </aside>
 
