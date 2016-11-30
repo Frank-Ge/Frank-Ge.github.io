@@ -4,30 +4,17 @@
 <head>
   <meta charset="utf-8">
   
-  <title>二叉树类的实现 | Frank</title>
+  <title>Frank</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="最近看数据结构看到二叉树的时候，自己实现了一下，同时写成了类，正好复习一下以前看C++的一些知识。代码如下。
-[code lang=”cpp”]// BiTNode.h// 参照《c++大学教程》中P639页编写// 模版结点BiTNode类的声明
-#ifndef BITNODE_H
-#define BITNODE_H
-// 声明BiNTree类型template&amp;lt;typename NODE">
-<meta property="og:type" content="article">
-<meta property="og:title" content="二叉树类的实现">
-<meta property="og:url" content="http://yoursite.com/the-implement-of-binary-tree-class/index.html">
+  <meta name="description" content="Skills">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Frank">
+<meta property="og:url" content="http://yoursite.com/page/3/index.html">
 <meta property="og:site_name" content="Frank">
-<meta property="og:description" content="最近看数据结构看到二叉树的时候，自己实现了一下，同时写成了类，正好复习一下以前看C++的一些知识。代码如下。
-[code lang=”cpp”]// BiTNode.h// 参照《c++大学教程》中P639页编写// 模版结点BiTNode类的声明
-#ifndef BITNODE_H
-#define BITNODE_H
-// 声明BiNTree类型template&amp;lt;typename NODE">
-<meta property="og:updated_time" content="2016-11-30T10:52:32.235Z">
+<meta property="og:description" content="Skills">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="二叉树类的实现">
-<meta name="twitter:description" content="最近看数据结构看到二叉树的时候，自己实现了一下，同时写成了类，正好复习一下以前看C++的一些知识。代码如下。
-[code lang=”cpp”]// BiTNode.h// 参照《c++大学教程》中P639页编写// 模版结点BiTNode类的声明
-#ifndef BITNODE_H
-#define BITNODE_H
-// 声明BiNTree类型template&amp;lt;typename NODE">
+<meta name="twitter:title" content="Frank">
+<meta name="twitter:description" content="Skills">
   
     <link rel="alternative" href="/atom.xml" title="Frank" type="application/atom+xml">
   
@@ -83,7 +70,9 @@
   </div>
 </header>
     <div class="outer">
-      <section id="main"><article id="post-the-implement-of-binary-tree-class" class="article article-type-post" itemscope itemprop="blogPost">
+      <section id="main">
+  
+    <article id="post-the-implement-of-binary-tree-class" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/the-implement-of-binary-tree-class/" class="article-date">
   <time datetime="2016-09-10T17:05:45.000Z" itemprop="datePublished">2016-09-11</time>
@@ -100,8 +89,8 @@
       <header class="article-header">
         
   
-    <h1 class="article-title" itemprop="name">
-      二叉树类的实现
+    <h1 itemprop="name">
+      <a class="article-title" href="/the-implement-of-binary-tree-class/">二叉树类的实现</a>
     </h1>
   
 
@@ -458,33 +447,517 @@ return 0;
     </footer>
   </div>
   
-    
-<nav id="article-nav">
-  
-    <a href="/some-tips-for-a-green-hand-in-computer-science/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          计算机入门的一点经验和对迷茫的一些分析
-        
-      </div>
-    </a>
-  
-  
-    <a href="/the-implement-of-binary-tree-in-cpp/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">二叉树的实现以及相关操作C/C++</div>
-    </a>
-  
-</nav>
+</article>
 
+
+  
+    <article id="post-the-implement-of-binary-tree-in-cpp" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/the-implement-of-binary-tree-in-cpp/" class="article-date">
+  <time datetime="2016-09-10T16:38:36.000Z" itemprop="datePublished">2016-09-11</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/编程学习/">编程学习</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/the-implement-of-binary-tree-in-cpp/">二叉树的实现以及相关操作C/C++</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>夏天看机器学习之余，把C语言给过了一遍，现在开始数据结构的学习了。最近看的二叉树，照着书实现了一下。</p>
+<p>其中包括二叉树的一些基本操作：初始化，建立，销毁，判空，深度和几种遍历。因为书上没给出非递归的遍历的非递归形式，自己这边给总结一下。代码本来是用C写的，但是其中有些功能的实现需要用到队列或者栈，直接调用C++的STL了。如下是相关代码。</p>
+<p>[code lang=”cpp”]</p>
+<p>#include &quot;string.h&quot;</p>
+<p>#include &quot;stdio.h&quot;    </p>
+<p>#include &quot;stdlib.h&quot;   </p>
+<p>#include &quot;math.h&quot;  </p>
+<p>#include &lt;queue&gt;</p>
+<p>#include &lt;stack&gt;<br>using namespace std;</p>
+<p>#define OK 1</p>
+<p>#define ERROR 0</p>
+<p>#define TRUE 1</p>
+<p>#define FALSE 0</p>
+<p>#define MAXSIZE 100 /<em> 存储空间初始分配量 </em>/</p>
+<p>typedef int Status;</p>
+<p>typedef char TElemType;<br>TElemType Nil = ‘ ‘;</p>
+<p>/<em> 用于构造二叉树<strong><strong><strong><strong><strong><strong><strong><strong>**</strong></strong></strong></strong></strong></strong></strong></strong> </em>/<br>int index=1;<br>typedef char String[24]; /<em>  0号单元存放串的长度 </em>/<br>String str;</p>
+<p>Status StrAssign(String T,char <em>chars)<br>{<br>    int i;<br>    if(strlen(chars)&gt;MAXSIZE)<br>        return ERROR;<br>    else<br>    {<br>        T[0]=strlen(chars);<br>        for(i=1;i&lt;=T[0];i++)<br>            T[i]=</em>(chars+i-1);<br>        return OK;<br>    }<br>}<br>/<em> <strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><em>**</em></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong> </em>/</p>
+<p>typedef struct BiTNode<br>{<br>    TElemType data;<br>    struct BiTNode <em>lchild, </em>rchild;<br>} BiTNode, *BiTree;</p>
+<p>Status InitBiTree(BiTree <em>T);<br>void CreateBiTree(BiTree </em>T);<br>void DestroyBiTree(BiTree *T);<br>Status BiTreeEmpty(BiTree T);<br>TElemType Root(BiTree T);<br>TElemType Value(BiTree p);<br>void visit(BiTree T);</p>
+<p>int BiTreeDepth(BiTree T);<br>int BiTreeDepthNonRecursion(BiTree T);<br>int BiTreeDepthNonRecursion2(BiTree T);</p>
+<p>void PreOrderTraverse(BiTree T);<br>void PreOrderNonRecursion(BiTree T);<br>void InOrderTraverse(BiTree T);<br>void InOrderNonRecursion(BiTree T);<br>void PostOrderTraverse(BiTree T);<br>void PostOrderNonRecurion(BiTree T);<br>void LevelOrderTraverse(BiTree T);</p>
+<p>void PrintLastInEachLevel(BiTree T);<br>void PrintLevelOrderByLevel(BiTree T);</p>
+<p>int main()<br>{<br>    int i;<br>    BiTree T;<br>    TElemType e1;<br>    InitBiTree(&amp;T);</p>
+<pre><code>//StrAssign(str,&amp;quot;ABDH#K###E##CFI###G#J##&amp;quot;);
+
+CreateBiTree(&amp;amp;T);
+
+printf(&amp;quot;构造空二叉树后,树空否？%d(1:是 0:否) 树的深度=%d\n&amp;quot;,BiTreeEmpty(T),BiTreeDepthNonRecursion2(T));
+e1=Root(T);
+printf(&amp;quot;二叉树的根为: %c\n&amp;quot;,e1);
+
+printf(&amp;quot;\n前序遍历二叉树:\n&amp;quot;);
+PreOrderTraverse(T);
+//PreOrderNonRecursion(T);
+
+printf(&amp;quot;\n中序遍历二叉树:\n&amp;quot;);
+InOrderTraverse(T);
+//InOrderNonRecursion(T);
+
+printf(&amp;quot;\n后序遍历二叉树:\n&amp;quot;);
+PostOrderTraverse(T);
+//PostOrderNonRecurion(T);
+
+printf(&amp;quot;\n层次遍历二叉树:\n&amp;quot;);
+//LevelOrderTraverse(T);
+PrintLevelOrderByLevel(T);
+printf(&amp;quot;\n输出每层的最后一个结点:\n&amp;quot;);
+PrintLastInEachLevel(T);
+
+DestroyBiTree(&amp;amp;T);
+printf(&amp;quot;\n清除二叉树后,树空否？%d(1:是 0:否) 树的深度=%d\n&amp;quot;,BiTreeEmpty(T),BiTreeDepth(T));
+i=Root(T);
+if(!i)
+    printf(&amp;quot;树空，无根\n&amp;quot;);
+
+getchar();
+getchar();
+return 0;
+</code></pre><p>}</p>
+<p>//<em> 构造空二叉树T </em>/<br>Status InitBiTree(BiTree <em>T)<br>{
+    </em>T = NULL;<br>    return OK;<br>}</p>
+<p>// 按前序输入二叉树中结点的值（一个字符）<br>// #表示空树，构造二叉链表表示二叉树T。<br>void CreateBiTree(BiTree *T)<br>{<br>    TElemType ch;</p>
+<pre><code>scanf(&amp;quot;%c&amp;quot;, &amp;amp;ch);
+
+if (ch == &apos;#&apos;)
+    (*T) = NULL;
+else
+{
+    *T = (BiTree)malloc(sizeof(BiTNode));
+    if (!*T)
+        exit(OVERFLOW);
+    (*T)-&amp;gt;data = ch;
+    CreateBiTree(&amp;amp;(*T)-&amp;gt;lchild);
+    CreateBiTree(&amp;amp;(*T)-&amp;gt;rchild);
+}
+</code></pre><p>}</p>
+<p>// 初始条件: 二叉树T存在。操作结果: 销毁二叉树T<br>void DestroyBiTree(BiTree <em>T)<br>{<br>    if (</em>T)<br>    {<br>        if ((<em>T)-&gt;lchild)<br>            DestroyBiTree(&amp;(</em>T)-&gt;lchild);<br>        if ((<em>T)-&gt;rchild)<br>            DestroyBiTree(&amp;(</em>T)-&gt;rchild);<br>        free(<em>T);
+        </em>T = NULL;<br>    }<br>}</p>
+<p>// 初始条件：二叉树存在<br>// 操作结果：若T为空，则返回TRUE；否则返回FALSE<br>Status BiTreeEmpty(BiTree T)<br>{<br>    if (!T)<br>        return TRUE;<br>    else<br>        return FALSE;<br>}</p>
+<p>// 初始条件：二叉树存在<br>// 操作结果：返回T的根<br>TElemType Root(BiTree T)<br>{<br>    if (!T)<br>        return Nil;<br>    else<br>        return T-&gt;data;<br>}</p>
+<p>// 初始条件：节点存在<br>// 操作结果：输出结点的数据域<br>void visit(BiTNode *p)<br>{<br>    if (p)<br>        printf(&quot;%c &quot;, p-&gt;data);<br>}</p>
+<p>// 初始条件：二叉树存在<br>// 操作结果：返回二叉树深度<br>// 递归实现<br>int BiTreeDepth(BiTree T)<br>{<br>    if (!T)<br>        return 0;</p>
+<pre><code>int i, j;
+
+if (T-&amp;gt;lchild)
+    i = BiTreeDepth(T-&amp;gt;lchild); // 递归求出左子树高度
+else
+    i = 0;
+
+if (T-&amp;gt;rchild)
+    j = BiTreeDepth(T-&amp;gt;rchild); // 递归求出右子树高度
+else
+    j = 0;
+
+return i &amp;gt; j ? i+1 : j+1;
+</code></pre><p>}</p>
+<p>// 求二叉树高度的非递归形式<br>int BiTreeDepthNonRecursion(BiTree T)<br>{<br>    if (!T)<br>        return 0;</p>
+<pre><code>queue&amp;lt;BiTNode *&amp;gt; Q; // 借助队列实现层次遍历，从而求出高度
+BiTNode *p; // 记录队列头部
+BiTNode *back; // 记录队列尾部指针
+int level = 0; // 队列高度
+
+Q.push(T);
+back = Q.back();
+while (!Q.empty())
+{
+    p = Q.front();
+    Q.pop();
+
+    if (p-&amp;gt;lchild)
+        Q.push(p-&amp;gt;lchild);
+    if (p-&amp;gt;rchild)
+        Q.push(p-&amp;gt;rchild);
+
+    if (p == back)
+    {
+        level++;
+        if (!Q.empty()) // 防止最后Q为空时出错
+            back = Q.back();
+    }
+}
+
+return level;
+</code></pre><p>}</p>
+<p>// 求二叉树高度的非递归形式<br>int BiTreeDepthNonRecursion2(BiTree T)<br>{<br>    BiTNode <em>Q[MAXSIZE]; // 借助队列实现层次遍历，从而求出高度。此时用数组实现队列<br>    int level = 0; // 二叉树高度<br>    int last = 0; // 每层次最后一个结点<br>    int front = -1; // 队列头指针<br>    int rear = -1; // 队列尾指针<br>    BiTNode </em>p;</p>
+<pre><code>Q[++rear] = T;
+last = rear;
+while (front &amp;lt; rear) // 队列不空
+{
+    p = Q[++front];
+
+    if (p-&amp;gt;lchild)
+        Q[++rear] = p-&amp;gt;lchild;
+    if (p-&amp;gt;rchild)
+        Q[++rear] = p-&amp;gt;rchild;
+
+    if (front == last)
+    {
+        level++;
+        if (front &amp;lt; rear)
+            last = rear;
+    }
+}
+
+return level;
+</code></pre><p>}</p>
+<p>// 初始条件：二叉树存在<br>// 操作结果：前序遍历二叉树<br>void PreOrderTraverse(BiTree T)<br>{<br>    if (!T)<br>        return;</p>
+<pre><code>visit(T);
+PreOrderTraverse(T-&amp;gt;lchild);
+PreOrderTraverse(T-&amp;gt;rchild);
+</code></pre><p>}</p>
+<p>// 前序遍历非递归形式<br>void PreOrderNonRecursion(BiTree T)<br>{<br>    if (!T)<br>        return;</p>
+<pre><code>stack&amp;lt;BiTNode *&amp;gt; S; // 借助栈实现非递归遍历
+BiTNode *p;
+
+p = T;
+while (p || !S.empty())
+{
+    while (p)
+    {
+        S.push(p);
+        visit(p); // 在每次入栈时进行访问
+        p = p-&amp;gt;lchild;
+    }
+    if (!S.empty())
+    {
+        p = S.top(); 
+        S.pop();
+        p = p-&amp;gt;rchild;
+    }
+}
+</code></pre><p>}</p>
+<p>// 初始条件：二叉树存在<br>// 操作结果：中序遍历二叉树<br>void InOrderTraverse(BiTree T)<br>{<br>    if (!T)<br>        return;</p>
+<pre><code>InOrderTraverse(T-&amp;gt;lchild);
+visit(T);
+InOrderTraverse(T-&amp;gt;rchild);
+</code></pre><p>}</p>
+<p>// 中序遍历二叉树非递归形式<br>void InOrderNonRecursion(BiTree T)<br>{<br>    if (!T)<br>        return;</p>
+<pre><code>stack&amp;lt;BiTNode *&amp;gt; S;
+BiTNode *p;
+
+p = T;
+while (p || !S.empty())
+{
+    while (p)
+    {
+        S.push(p);
+        p = p-&amp;gt;lchild;
+    }
+    if (!S.empty())
+    {
+        p = S.top();
+        S.pop();
+        visit(p); // 每次从栈中弹出的时候访问结点
+        p = p-&amp;gt;rchild;
+    }
+}
+</code></pre><p>}</p>
+<p>// 初始条件：二叉树存在<br>// 操作结果：后序递归遍历二叉树<br>void PostOrderTraverse(BiTree T)<br>{<br>    if (!T)<br>        return;</p>
+<pre><code>PostOrderTraverse(T-&amp;gt;lchild);
+PostOrderTraverse(T-&amp;gt;rchild);
+visit(T);
+</code></pre><p>}</p>
+<p>// 后序遍历非递归形式<br>// 难点是分清栈中弹出根结点时，是从左子树弹出还是右子树弹出。所以使用辅助指针r。<br>void PostOrderNonRecurion(BiTree T)<br>{<br>    if (!T)<br>        return;</p>
+<pre><code>stack&amp;lt;BiTNode *&amp;gt; S;
+BiTNode *p;
+BiTNode *r; // 用指针r记录最近访问的结点
+
+p = T;
+r = NULL;
+while (p || !S.empty())
+{
+    while (p)
+    {
+        S.push(p);
+        p = p-&amp;gt;lchild;
+    }
+    if (!S.empty())
+    {
+        p = S.top();
+        if (p-&amp;gt;rchild &amp;amp;&amp;amp; p-&amp;gt;rchild != r) // 如果右子树存在，且未访问过
+        {
+            p = p-&amp;gt;rchild;
+            S.push(p);
+            p = p-&amp;gt;lchild;
+        }
+        else
+        {
+            S.pop();
+            visit(p);
+            r = p;
+            p = NULL;
+        }
+    }
+}
+</code></pre><p>}</p>
+<p>// 初始条件：二叉树存在<br>// 操作结果：层次遍历二叉树<br>void LevelOrderTraverse(BiTree T)<br>{<br>    if (!T)<br>        return;</p>
+<pre><code>queue&amp;lt;BiTNode *&amp;gt; Q; // 借助队列实现层次遍历
+BiTNode *p;
+
+Q.push(T);
+while (!Q.empty())
+{
+    p = Q.front();
+    Q.pop();
+    visit(p); // 每次弹出的时候访问结点
+
+    if (p-&amp;gt;lchild)
+        Q.push(p-&amp;gt;lchild);
+    if (p-&amp;gt;rchild)
+        Q.push(p-&amp;gt;rchild);
+}
+</code></pre><p>}</p>
+<p>// 初始条件：二叉树存在<br>// 操作结果：访问每层二叉树最右边的结点<br>void PrintLastInEachLevel(BiTree T)<br>{<br>    if (!T) // 如果树为空，则返回<br>        return;</p>
+<pre><code>queue&amp;lt;BiTNode *&amp;gt; Q;
+BiTNode *p;
+BiTNode *back; // 指向每层最后一个结点的指针
+
+Q.push(T);
+back = Q.back();
+while (!Q.empty())
+{
+    p = Q.front();
+    Q.pop();
+
+    if (p-&amp;gt;lchild)
+        Q.push(p-&amp;gt;lchild);
+    if (p-&amp;gt;rchild)
+        Q.push(p-&amp;gt;rchild);
+
+    if (p == back)
+    {
+        visit(p);
+        if (!Q.empty())
+            back = Q.back();
+    }
+}
+</code></pre><p>}</p>
+<p>// 初始条件：二叉树存在<br>// 操作结果：分行输出每层二叉树的结点<br>void PrintLevelOrderByLevel(BiTree T)<br>{<br>    if (!T)<br>        return;</p>
+<pre><code>queue&amp;lt;BiTNode *&amp;gt; Q;
+BiTNode *p;
+BiTNode *back; // 记录每层最右边的结点，从而实现分行输出
+
+Q.push(T);
+back = Q.back();
+while (!Q.empty())
+{
+    p = Q.front();
+    Q.pop();
+    visit(p);
+
+    if (p-&amp;gt;lchild)
+        Q.push(p-&amp;gt;lchild);
+    if (p-&amp;gt;rchild)
+        Q.push(p-&amp;gt;rchild);
+
+    if (p == back)
+    {
+        putchar(&apos;\n&apos;);
+        if (!Q.empty())
+            back = Q.back();
+    }
+}
+</code></pre><p>}<br>[/code]</p>
+<p>本身感觉现在这些在计算机专业里面应该是太基础的东西了，不想贴出来的，但是确实这个算是一个里程碑吧——感觉自己对编程有点入门了。下一篇会把用类实现的二叉树的代码贴上来，之后再写点自学编程上面的一些感悟或者说一些经验吧。</p>
+<p>参考资料：</p>
+<p>1.<span style="color: #0000ff;"><a href="https://book.douban.com/subject/6424904/" target="_blank" rel="external">《大话数据结构》</a></span></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://yoursite.com/the-implement-of-binary-tree-in-cpp/" data-id="ciw55lqge000he0ez2hycfvb9" class="article-share-link" data-share="baidu" data-title="二叉树的实现以及相关操作C/C++">Share</a>
+      
+
+      
+        <a href="http://yoursite.com/the-implement-of-binary-tree-in-cpp/#ds-thread" class="article-comment-link">Comments</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C-C/">C/C++</a></li></ul>
+
+    </footer>
+  </div>
   
 </article>
 
 
-  <section id="comments">
-    <div id="ds-thread" class="ds-thread" data-thread-key="the-implement-of-binary-tree-class/" data-title="二叉树类的实现" data-url="http://yoursite.com/the-implement-of-binary-tree-class/"></div>
-  </section>
+  
+    <article id="post-a-smart-way-to-insert-a-new-node-in-sorted-singly-linked-list" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/a-smart-way-to-insert-a-new-node-in-sorted-singly-linked-list/" class="article-date">
+  <time datetime="2016-08-17T16:09:39.000Z" itemprop="datePublished">2016-08-18</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/编程学习/">编程学习</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/a-smart-way-to-insert-a-new-node-in-sorted-singly-linked-list/">顺序单链表插入新节点的一种方法</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在学习链表的时候我们都接触过单链表插入新结点的问题。其中有一类就是在顺序链表中插入新节点，并保持链表的递增或者递减性质。</p>
+<p>最近看《C和指针》一书中提到了一种方法，我个人感觉不错，并且思想非常好。</p>
+<p>这是最常见的思维：</p>
+<p>[code lang=”cpp”]<br>//sll_node.h  </p>
+<p>typedef struct Node<br>{<br>    int value;<br>    Node *next;<br>} Node;<br>[/code]</p>
+<p>[code lang=”cpp”]</p>
+<p>#include &quot;sll_node.h&quot;  </p>
+<p>#include &lt;stdio.h&gt;  </p>
+<p>#define TRUE    1  </p>
+<p>#define FALSE   0  </p>
+<p>// insertNode:把newValue的值插入到递增排序的链表中，正确返回TRUE，错误返回FALSE<br>// rootp是链表的头指针。<br>int insertNode(Node <em>*rootp, int newValue)<br>{<br>    Node </em>newNode; // 新节点的指针<br>    Node <em>previous; // 当前指针的前一个指针<br>    Node </em>current; // 当前指针  </p>
+<pre><code>current = *rootp; // 初始化  
+previous = NULL;  
+
+// 查找插入的位置  
+while (current != NULL &amp;amp;&amp;amp; current-&amp;gt;value &amp;lt; newValue)
+{
+    previous = current;
+    current = current-&amp;gt;next;
+}
+
+// 给新节点分配空间  
+newNode = (Node *)malloc(sizeof(Node));  
+if (newNode == NULL)  
+    return FALSE;  
+newNode-&amp;gt;value = newValue;  
+
+// 更改新节点的前驱和后继节点  
+newNode-&amp;gt;next = current;  
+if (previous == NULL) // 此时插入节点的为链表中第一个节点，修改头指针  
+    *rootp = newNode;  
+else  
+    previous-&amp;gt;next = newNode;
+
+return TRUE;
+</code></pre><p>}<br>[/code]</p>
+<p>我以前编写的时候也会用这样的方法：一个当前指针和指向当前指针之前的指针，这样需要讨论原链表是否为空。书中提到了一种抽象，每次插入新的节点，都是改变一个指向这个新节点的指针以及指向下一个节点，这样可以省略讨论插入的节点是否为第一个节点的步骤。代码如下：</p>
+<p>[code lang=”cpp”]</p>
+<p>#include &quot;sll_node.h&quot;</p>
+<p>#include &lt;stdio.h&gt;</p>
+<p>#define    FALSE    0</p>
+<p>#define TRUE    1</p>
+<p>// insertNode2:把newValue的值插入到递增排序的链表中，正确返回TRUE，错误返回FALSE<br>// nextp是指向当前节点的指针，最初是头指针<br>int insertNode2(Node <em>*nextp, int newValue)<br>{<br>    Node </em>newNode; // 新节点指针<br>    Node *current; // 当前节点指针</p>
+<pre><code>current = *nextp; // 最初当前节点为nextp指针指向的节点
+// 查找新插入节点的位置
+while (current != NULL &amp;amp;&amp;amp; current-&amp;gt;value &amp;lt; newValue)
+{
+    nextp = &amp;amp;current-&amp;gt;next;
+    current = current-&amp;gt;next;
+}
+
+// 为新节点分配内存
+newNode = (Node *)malloc(sizeof(Node));
+if (newNode == NULL)
+    return FALSE;
+newNode-&amp;gt;value = newValue;
+
+// 统一了插入的步骤。即：每次插入，都是前一个指针指向新节点，新节点指向下一个节点
+*nextp = newNode;
+newNode-&amp;gt;next = current;
+
+return TRUE;
+</code></pre><p>}</p>
+<p>[/code]</p>
+<p>main函数</p>
+<p>[code lang=”cpp”]</p>
+<p>#include &lt;stdio.h&gt;</p>
+<p>#include &lt;stdlib.h&gt;</p>
+<p>#include &lt;time.h&gt;</p>
+<p>#include &quot;sll_node.h&quot;</p>
+<p>int insertNode(Node <strong>rootp, int newValue);<br>int insertNode2(Node </strong>nextp, int newValue);</p>
+<p>int main()<br>{<br>    srand(time(0));</p>
+<pre><code>Node *head = (Node *)malloc(sizeof(Node));
+head-&amp;gt;next = NULL;
+
+for (int i = 0; i &amp;lt; 5; i++)
+{
+    int temp = rand() % 50;
+    printf(&amp;quot;%d\n&amp;quot;, temp);
+    //insertNode(&amp;amp;head,temp);
+    insertNode2(&amp;amp;head,temp);
+}
+
+Node *p = head-&amp;gt;next;
+while (p != NULL)
+{
+    printf(&amp;quot;%d\n&amp;quot;, p-&amp;gt;value);
+    p = p-&amp;gt;next;
+}
+
+getchar();
+getchar();
+return 0;
+</code></pre><p>}</p>
+<p>[/code]</p>
+<p>因为我个人没有经过正经的课堂训练，自己考研才接触编程、数据结构之类的。看了很多对自学编程提的建议都是多编写，并且要有抽象的思想，所以将这个方法写了下来，可能对很对科班出身的人不算什么问题了吧。</p>
+<p>我感觉这个抽象很好，希望是给自己编程道路的一个好的开端吧:)</p>
+<p>同时，因为我在初学时发现测试代码也会花费很多时间，所以将完成的代码都贴了上来，而不仅仅是函数，希望也能帮助到更多的想我这样的初学者吧。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://yoursite.com/a-smart-way-to-insert-a-new-node-in-sorted-singly-linked-list/" data-id="ciw55lqfs0000e0ezrjg8r54p" class="article-share-link" data-share="baidu" data-title="顺序单链表插入新节点的一种方法">Share</a>
+      
+
+      
+        <a href="http://yoursite.com/a-smart-way-to-insert-a-new-node-in-sorted-singly-linked-list/#ds-thread" class="article-comment-link">Comments</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C-C/">C/C++</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+
+  <nav id="page-nav">
+    <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
+  </nav>
 </section>
       
       <aside id="sidebar">
