@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <meta name="description" content="Frank&#39;s Blog" />
+  
+
+  
+  
+  
+  
+  
+  
+  <title>子域名下安装wordpress总结 | Frank</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="最近折腾博客，把frankge.me/blog迁移到了blog.frankge.me。这样就要在子域名下安装wordpress。现在把步骤总结一下。
+0.你付费的主机可以建立多个站点。有些主机你付费的时候只是给予一个站点的配额，这应该是不能开通子域名的好像。1.创建子域。打开cPanel表盘，找到域-&amp;gt;子域，选择创建子域（此处以growth为例），点击生成邮件列表（图1）。发现下面多了一个条">
+<meta property="og:type" content="article">
+<meta property="og:title" content="子域名下安装wordpress总结">
+<meta property="og:url" content="http://yoursite.com/install-wordpress-on-a-subdomain-using-cpanel/index.html">
+<meta property="og:site_name" content="Frank">
+<meta property="og:description" content="最近折腾博客，把frankge.me/blog迁移到了blog.frankge.me。这样就要在子域名下安装wordpress。现在把步骤总结一下。
+0.你付费的主机可以建立多个站点。有些主机你付费的时候只是给予一个站点的配额，这应该是不能开通子域名的好像。1.创建子域。打开cPanel表盘，找到域-&amp;gt;子域，选择创建子域（此处以growth为例），点击生成邮件列表（图1）。发现下面多了一个条">
+<meta property="og:image" content="http://blog.frankge.me/wp-content/uploads/2016/11/install-wordpress-on-a-subdomain-using-cpanel-01-1024x423.png">
+<meta property="og:image" content="http://blog.frankge.me/wp-content/uploads/2016/11/install-wordpress-on-a-subdomain-using-cpanel-02.png">
+<meta property="og:image" content="http://blog.frankge.me/wp-content/uploads/2016/11/install-wordpress-on-a-subdomain-using-cpanel-03-1024x430.png">
+<meta property="og:updated_time" content="2016-11-30T10:37:35.463Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="子域名下安装wordpress总结">
+<meta name="twitter:description" content="最近折腾博客，把frankge.me/blog迁移到了blog.frankge.me。这样就要在子域名下安装wordpress。现在把步骤总结一下。
+0.你付费的主机可以建立多个站点。有些主机你付费的时候只是给予一个站点的配额，这应该是不能开通子域名的好像。1.创建子域。打开cPanel表盘，找到域-&amp;gt;子域，选择创建子域（此处以growth为例），点击生成邮件列表（图1）。发现下面多了一个条">
+<meta name="twitter:image" content="http://blog.frankge.me/wp-content/uploads/2016/11/install-wordpress-on-a-subdomain-using-cpanel-01-1024x423.png">
+  
+  
+    <link rel="icon" href="/css/images/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+  
+  <!-- baidu webmaster push -->
+  <script src='//push.zhanzhang.baidu.com/push.js'></script>
+</head>
+<body class="home blog custom-background custom-font-enabled single-author">
+  <div id="page" class="hfeed site">
+      <header id="masthead" class="site-header" role="banner">
+    <hgroup>
+      <h1 class="site-title">
+        <a href="/" title="Frank" rel="home">Frank</a>
+      </h1>
+      
+        <h2 class="site-description">
+          <a href="/" id="subtitle">去探索更大的世界</a>
+        </h2>
+      
+    </hgroup>
+
+    <nav id="site-navigation" class="main-navigation" role="navigation">
+            <button class="menu-toggle">菜单</button>
+            <a class="assistive-text" href="/#content" title="跳至内容">跳至内容</a><!--TODO-->
+            <div class="menu-main-container">
+                <ul id="menu-main" class="nav-menu">
+                
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/">Home</a></li>
+                
+                    <li class="menu-item menu-item-type-post_type menu-item-object-page"><a href="/archives">Archives</a></li>
+                
+                </ul>
+            </div>
+    </nav>
+</header>
+      <div id="main" class="wrapper">
+        <div id="primary" class="site-content"><div id="content" role="main"><article id="post-install-wordpress-on-a-subdomain-using-cpanel" class="post-install-wordpress-on-a-subdomain-using-cpanel post type-post status-publish format-standard hentry">
+    <!---->
+
+      <header class="entry-header">
+        
+        
+  
+    <h1 class="entry-title article-title">
+      子域名下安装wordpress总结
+    </h1>
+  
+
+        
+        <div class="comments-link">
+            
+            <a href="javascript:void(0);" data-url="http://yoursite.com/install-wordpress-on-a-subdomain-using-cpanel/" data-id="ciw4swl7k0000zcezkvbdoyk1" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+        </div><!-- .comments-link -->
+      </header><!-- .entry-header -->
+
+    <div class="entry-content">
+      
+        <p>最近折腾博客，把<span style="color: #3366ff;"><a href="http://frankge.me/blog-old-site/" target="_blank" rel="external">frankge.me/blog</a></span>迁移到了<span style="color: #3366ff;"><a href="http://blog.frankge.me" target="_blank" rel="external">blog.frankge.me</a></span>。这样就要在子域名下安装wordpress。现在把步骤总结一下。</p>
+<p>0.你付费的主机可以建立多个站点。有些主机你付费的时候只是给予一个站点的配额，这应该是不能开通子域名的好像。<br>1.创建子域。打开cPanel表盘，找到域-&gt;子域，选择创建子域（此处以growth为例），点击生成邮件列表（图1）。发现下面多了一个条目（图2）。</p>
+<p>[caption id=”attachment_289” align=”aligncenter” width=”660”]<img src="http://blog.frankge.me/wp-content/uploads/2016/11/install-wordpress-on-a-subdomain-using-cpanel-01-1024x423.png" alt="install-wordpress-on-a-subdomain-using-cpanel-01"> <center>图1</center>[/caption]</p>
+<p>[caption id=”attachment_290” align=”aligncenter” width=”768”]<img src="http://blog.frankge.me/wp-content/uploads/2016/11/install-wordpress-on-a-subdomain-using-cpanel-02.png" alt="install-wordpress-on-a-subdomain-using-cpanel-02"> <center>图2</center>[/caption]</p>
+<p>2.上传wordpress。把wordpress上传到刚才生成的文件夹中（/public_html/growth）。<br>3.新建一个数据库，用于新站点。创建方法参见《<span style="color: #3366ff;"><a href="http://blog.frankge.me/the-timeline-of-my-blog/" target="_blank" rel="external">博客时间轴</a></span>》中安装wordpress部分。<br>4.解析域名。参见《<span style="color: #3366ff;"><a href="http://blog.frankge.me/the-timeline-of-my-blog/" target="_blank" rel="external">博客时间轴</a></span>》中域名解析部分。在根站点下添加A记录。画红线的位置填你主机的ip地址（图3）。</p>
+<p>[caption id=”attachment_291” align=”aligncenter” width=”660”]<img src="http://blog.frankge.me/wp-content/uploads/2016/11/install-wordpress-on-a-subdomain-using-cpanel-03-1024x430.png" alt="install-wordpress-on-a-subdomain-using-cpanel-03"> <center>图3</center>[/caption]</p>
+<p>5.访问站点，安装wordpress，设置成对应的数据库即可。</p>
+
+      
+    </div><!-- .entry-content -->
+
+    <footer class="entry-meta">
+    <a href="/install-wordpress-on-a-subdomain-using-cpanel/">
+    <time datetime="2016-11-22T03:48:59.000Z" class="entry-date">
+        2016-11-22
+    </time>
+</a>
+    
+  <span class="article-delim">&#8226;</span>
+  <div class="article-category">
+  <a class="article-category-link" href="/categories/建站相关/">建站相关</a>
+  </div>
+
+    
+  <span class="article-delim">&#8226;</span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/我的博客/">我的博客</a></li></ul>
+
+    </footer>
+</article>
+
+
+    
+<nav class="nav-single">
+    <h3 class="assistive-text">文章导航</h3>
+    
+        <span class="nav-previous"><a href="/the-way-to-migrate-your-wordpress-website/" rel="prev"><span class="meta-nav">←</span> wordpress站点迁移方法</a></span>
+    
+    
+        <span class="nav-next"><a href="/the-timeline-of-my-blog/" rel="next">博客时间轴 <span class="meta-nav">→</span></a></span>
+    
+</nav><!-- .nav-single -->
+
+
+
+
+
+
+
+</div></div>
+        <div id="secondary" class="widget-area" role="complementary">
+  
+    <aside id="search" class="widget widget_search"><form role="search" method="get" accept-charset="utf-8" id="searchform" class="searchform" action="//google.com/search">
+    <div>
+        <input type="text" value="" name="s" id="s" />
+        <input type="submit" id="searchsubmit" value="搜索" />
+    </div>
+</form></aside>
+  
+    
+  
+    
+  <aside class="widget">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget-content">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/建站相关/">建站相关</a><span class="category-list-count">3</span></li></ul>
+    </div>
+  </aside>
+
+  
+    
+  <aside class="widget">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget-content">
+      <ul>
+        
+          <li>
+            <a href="/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/the-way-to-migrate-your-wordpress-website/">wordpress站点迁移方法</a>
+          </li>
+        
+          <li>
+            <a href="/install-wordpress-on-a-subdomain-using-cpanel/">子域名下安装wordpress总结</a>
+          </li>
+        
+          <li>
+            <a href="/the-timeline-of-my-blog/">博客时间轴</a>
+          </li>
+        
+      </ul>
+    </div>
+  </aside>
+
+  
+    
+  <aside class="widget">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget-content">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/我的博客/">我的博客</a><span class="tag-list-count">3</span></li></ul>
+    </div>
+  </aside>
+
+  
+    
+  <aside class="widget">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget-content tagcloud">
+      <a href="/tags/我的博客/" style="font-size: 10px;">我的博客</a>
+    </div>
+  </aside>
+
+  
+</div>
+      </div>
+      <footer id="colophon" role="contentinfo">
+    <p>&copy;2016 Frank. All rights reserved.</p>
+    <p>Powered by Hexo.</p>
+</footer>
+    <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+<script src="/js/navigation.js"></script>
+
+<div id="bg"></div>
+
+  </div>
+</body>
+</html>
