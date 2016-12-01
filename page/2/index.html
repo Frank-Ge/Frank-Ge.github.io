@@ -145,7 +145,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/matconvnet-installation-in-windows-system/" data-id="ciw56rckp0005dgezyfxlvvip" class="article-share-link" data-share="baidu" data-title="windows下MatConvNet深度学习框架的搭建">Share</a>
+        <a data-url="http://yoursite.com/matconvnet-installation-in-windows-system/" data-id="ciw6hew1p000er8ez4dpkgi1l" class="article-share-link" data-share="baidu" data-title="windows下MatConvNet深度学习框架的搭建">Share</a>
       
 
       
@@ -239,7 +239,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/getting-start-to-dynamic-programming-part1-some-exercises-from-lintcode/" data-id="ciw56rckk0004dgezii1izofj" class="article-share-link" data-share="baidu" data-title="浅谈动态规划（一）——从lintcode刷题入门">Share</a>
+        <a data-url="http://yoursite.com/getting-start-to-dynamic-programming-part1-some-exercises-from-lintcode/" data-id="ciw6hew0q0000r8ezhqwlpszo" class="article-share-link" data-share="baidu" data-title="浅谈动态规划（一）——从lintcode刷题入门">Share</a>
       
 
       
@@ -256,10 +256,10 @@
 
 
   
-    <article id="post-some-tips-for-a-green-hand-in-computer-science" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-the-implement-of-binary-tree-class" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/some-tips-for-a-green-hand-in-computer-science/" class="article-date">
-  <time datetime="2016-09-11T11:57:50.000Z" itemprop="datePublished">2016-09-11</time>
+    <a href="/the-implement-of-binary-tree-class/" class="article-date">
+  <time datetime="2016-09-10T17:05:45.000Z" itemprop="datePublished">2016-09-11</time>
 </a>
     
   <div class="article-category">
@@ -274,7 +274,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/some-tips-for-a-green-hand-in-computer-science/">计算机入门的一点经验和对迷茫的一些分析</a>
+      <a class="article-title" href="/the-implement-of-binary-tree-class/">二叉树类的实现</a>
     </h1>
   
 
@@ -282,97 +282,351 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>最近感觉自己在计算机方面有点入门了，而且恰好前几天和研一的新生聚餐，被问道一些所谓的“经验”方面的问题，所以在这里总结一下在前一个阶段自学计算机的一些尝试，也希望给看到这篇博文的自学计算机方面的人一点参考吧。</p>
-<p>首先说明一下，自考研到目前为止，自己看过的书籍（这里所指的看过，是几乎都看完了或者看完至少一大半以上，这样我才能对书做一个评价）。</p>
-<p>考研考的是东南大学计算机的自主命题935，科目包括数据结构，计组，操作系统。我用的书是根据统招408来的那三本，即：</p>
-<ul>
-<li><span style="color: #0000ff;"><a href="https://book.douban.com/subject/1085842/" target="_blank" rel="external">《数据结构（C语言版）》</a></span>，严蔚敏</li>
-<li><span style="color: #0000ff;"><a href="https://book.douban.com/subject/2994636/" target="_blank" rel="external">《计算机组成原理（第二版）》</a></span>，唐朔飞</li>
-<li><span style="color: #0000ff;"><a href="https://book.douban.com/subject/1058576/" target="_blank" rel="external">《计算机操作系统》</a></span>，汤子瀛</li>
-</ul>
-<p>同时参考了程杰所作的那本<span style="color: #0000ff;"><a href="https://book.douban.com/subject/6424904/" target="_blank" rel="external">《大话数据结构》</a></span>，不过当时没敲代码（这点很不对）。当时备考还用过配套的王道的那三本书，就不一一列出了。</p>
-<p>复试是C++笔试，用过的书分别是：</p>
-<ul>
-<li><span style="color: #0000ff;"><a href="https://book.douban.com/subject/1174290/" target="_blank" rel="external">《C++程序设计》</a></span>，谭浩强</li>
-<li><span style="color: #0000ff;"><a href="https://book.douban.com/subject/5349823/" target="_blank" rel="external">《C++大学教程（第七版）》</a></span>，东大指定的那本，书上大部分练习自己敲过一遍</li>
-</ul>
-<p>之后研一，看过的书分别有：</p>
-<ul>
-<li><span style="color: #0000ff;"><a href="https://book.douban.com/subject/10767809/" target="_blank" rel="external">《Accelerated C++: Practical Programming by Eample中文版》</a></span>（中文名太别扭了，所以没敲）</li>
-<li><span style="color: #0000ff;"><a href="https://book.douban.com/subject/5333562/" target="_blank" rel="external">《深入理解计算机系统（原书第二版）》</a></span>，即那本大名鼎鼎的CSAPP</li>
-<li><span style="color: #0000ff;"><a href="https://book.douban.com/subject/1139336/" target="_blank" rel="external">《C程序设计语言（第2版）》</a></span>，即C语言设计者的那本K&amp;R经典</li>
-<li><span style="color: #0000ff;"><a href="https://book.douban.com/subject/3012360/" target="_blank" rel="external">《C和指针》</a></span></li>
-<li><span style="color: #0000ff;"><a href="https://book.douban.com/subject/2230248/" target="_blank" rel="external">《人月神话》</a></span>，软件工程方面的经典</li>
-</ul>
-<p>现在正在开始补数据结构算法方面的内容，看的是<span style="color: #0000ff;"><a href="https://book.douban.com/subject/1139426/" target="_blank" rel="external">《数据结构与算法分析——C语言描述（原书第2版）》</a></span>。</p>
-<p>我所经历过的阶段这里也说明一下，如果你也是这些方面的初学者，也许有点参考意义。</p>
-<ol>
-<li>上网搜集资料，查找经验。网上的推荐书籍有一堆，每个方面的书籍都有很多经典之作，比如计算机入门必看CSAPP啦，C语言是K&amp;R啦，C++是<span style="color: #0000ff;"><a href="https://book.douban.com/subject/25708312/" target="_blank" rel="external">《C++Primer》</a></span>啦，算法必须看<span style="color: #0000ff;"><a href="https://book.douban.com/subject/1885170/" target="_blank" rel="external">《算法导论》</a></span>啦，<span style="color: #0000ff;"><a href="https://book.douban.com/subject/1148282/" target="_blank" rel="external">SICP</a></span>绝对是培养编程思维的神书之类的。总之，网上有浩若烟海的经典书籍是必读的。然后，每本书自己都想细读一番。</li>
-<li>自己实践。显然，在本科阶段把上面这些书自己研究一遍还有点可能，但是在研究生这个阶段，有了导师给布置的任务，而且还是初学者，不太可能把这些一一翻阅。于是开始找一条收益较高的方案。网上推荐的是快速入门C++看《Accelerated C++》，我也是从这本书开始重新敲C++代码的。同时快速的翻看了一遍《CSAPP》。</li>
-<li>入门，有了自己的学习方向。这也就是现在了，当然以后的方向可能还有变化，不过确实现在感觉对计算机编程方面自学有了一点感悟了。</li>
-</ol>
-<p>如果你也是初学者，我的一些建议是：</p>
-<ul>
-<li>看书尽量找国外书籍看，国内的书籍大多数不适合自学。</li>
-<li>如果你的基础确实不太多，可以从以下思路考虑：一门编程语言，数据结构和算法，操作系统，计算机网络。当然，这个更多的是针对互联网企业的后台开发岗位吧，确实我对前端和APP开发不了解。</li>
-<li><strong>每个方向的书籍两本就好，一般书籍的侧重可能不同，交叉着看能帮助理解。</strong>如果书籍太多的话，可能就会脱离自己上机实践了。<strong>前期你不可能看完那么多书的。经典书后面的课后习题，尽量做。</strong></li>
-<li>编程语言和算法互相学习可能效果更好一点。比如看数据结构的时候用编程语言自己实现一遍，多用一些编程语言的一些知识要点。同时，看到数据结构，算法的时候，可以考虑到<span style="color: #0000ff;"><a href="http://www.lintcode.com/" target="_blank" rel="external">lintcode</a></span>上面刷刷类似的题目。</li>
-<li>从网上大神的反馈和校招的情况看，<strong>编程能力、算法等基础很重要。</strong></li>
-</ul>
-<p>推荐的书籍以及考虑的参考顺序：</p>
-<p>编程语言方面，因为我是看的C/C++，所以对JAVA不太懂，不过熟悉哪门语言都是要大量的敲代码，而不仅仅是看书。下面C/C++如果没时间就先看C++吧。看C的话主要是关注指针那块。</p>
-<ol>
-<li>《C程序设计语言（第2版）》K&amp;R那本</li>
-<li>《C和指针》。上面那本书讲的太精炼了，参照这本书可以对C有一个了解</li>
-<li>《Accelerated C++》。这本书最大的好处是把C++很多常用的语法和STL的一些用法给呈现出来了，而不像普通的C++书籍那样按部就班罗列知识点。</li>
-<li>《C++大学教程》。和上面那本书对照着看。</li>
-</ol>
-<p>再强调一遍，<strong>编程语言练习也就是自己多敲代码才是重要的，不要抱着书看完一遍又看一遍。</strong></p>
-<p>数据结构和算法：</p>
-<ol>
-<li>《大话数据结构》，程杰。入门算是不错的书了，有C的代码，自己敲过一遍理解更深。</li>
-<li>《数据结构与算法分析——C语言描述（原书第2版）》。我选这本书是因为它比较薄，上来直接啃《算法导论》我个人感觉有点太难了。</li>
-</ol>
-<p>计算机基础书籍：</p>
-<ol>
-<li>《深入理解计算机系统》。这本书入门计算机绝对没问题，包括了操作系统，汇编，硬件，还有网络的一些简单的东西，现在既然硬件那块需求不大，可以暂时不看吧。</li>
-</ol>
-<p>我这条路在入门上面绝对能走通，不过每个人选择的书籍可能不同，也不用都照着来。方向大抵如此，同时，给出一个我看过的较全的书单：<span style="color: #0000ff;"><a href="http://lucida.me/blog/developer-reading-list/" target="_blank" rel="external">《程序员必读书单 1.0》</a></span>。同样，这个书单也是仅作参考，前期你不可能都掌握的。别贪全，前期要把那些常常出现的问题给解决。</p>
-<p>同时，再把自己所说的“入门”给定义或者说明一下，给你一个参照，以防你也是初学，而我又太low，把你带坑里。</p>
-<p>之前，我敲代码时出错了是照着书上给的代码改自己的代码。有些确实是不懂，有些是感觉进度确实不能太慢，不然容易陷入细节的思考，还有就是时间拉太长了可能会学了后面的忘了前面的。现在，敲代码会自己设置断点改错，能够明白一些C语言的指针方面错误所在了。</p>
-<p><strong>简单的说就是：之前是被动输入，现在能主动输入了。</strong>即，把一些从前学过的C++、数据结构的知识进行组合，实现一些自己想到的功能，并且改错的时候能想通一些指针的特性了。这样融合起来学习，能够更好的理解书上的知识。</p>
-<p>所以我感觉自己入门了。</p>
-<p>我博客中前两篇文章的内容是二叉树的实现，本来其实感觉太简单不想贴出来的，不过想想可以给这篇文章做个铺垫。不信你可以对照着看一下，把<span style="color: #0000ff;"><a href="http://frankge.me/blog/2016/09/11/the-implement-of-binary-tree-in-cpp/" target="_blank" rel="external">《二叉树的实现以及相关操作C/C++》</a></span>中的代码改写成<span style="color: #0000ff;"><a href="http://frankge.me/blog/2016/09/11/the-implement-of-binary-tree-class/" target="_blank" rel="external">《二叉树类的实现》</a></span>中的类，就会遇到很多难题。我自己写的时候想避开《C++大学教程》上的一些方式，不过最后还是没避开，用其他方式我实现不了。当然，也许你写的代码会比我的更简洁。</p>
-<p>同样，这里给出一个我看过的不错的入门建议，可以参考：<span style="color: #0000ff;"><a href="https://www.zhihu.com/question/29702729" target="_blank" rel="external">如何从只会 C++ 语法的水平到达完成项目编写软件的水平？</a></span>。我有空也会尝试的。</p>
-<p>最后想到昨天有几个新生说迷茫，正好我也借这篇文章谈谈这个话题吧。</p>
-<p>迷茫很正常。研一的新生可能因为刚刚开学，环境变了，同时看到以前的同学或者现在这个行业工作的人们工资很高，而自己能力不足，对未来有点担心。同时，可能是有了导师的直接管理而且感觉导师分配的任务和自己想要尝试的事情不太有交集。简单地说，其实迷茫就是对未来或多或少的担忧。</p>
-<p>未来谁知道呢？对吧。没发生的总是没发生，谁也不能说自己的努力方向一定正确，自己的愿景一定实现。</p>
-<p>仔细观察我们可以发现，除了大学之前我们没有过太多的迷茫感，在高考填志愿那时开始，很多人多少都会对未来有些迷茫了。因为在那之前，我们更多是在既定的轨道被动进行教育的。我们在规定的时间上课，规定的时间放学，规定的时间完成作业，每隔一段时间会被排名，从而评估你的成绩。更重要的是，那个时候我们不用直接为自己的行为负责，因为父母会给我们埋单。大学之后，我们要进行更多的选择，对自己的行为负责。同时，评估人的标准渐渐变得不那么单一了：有的人社团混的很好，人际交往让人羡慕；有的人会玩乐器，乐队在自己学校小有名气；有的人竞赛屡获佳绩，让人自愧不如。这些都会使我们努力的方向迷失，从而感觉迷茫。</p>
-<p>现在，可能你迷茫的是一些学习方法。未来，你可能还会迷茫自己的择业，孩子的学校选择，不同城市到底安家到哪，等等。</p>
-<p>那么在迷茫的时候，该做些什么呢？</p>
-<ol>
-<li>上网搜集你所想要努力方向的资料，查找经验。</li>
-<li>进行实践。</li>
-<li>将自己的实践和努力的成果进行分析，修正。</li>
-<li>重复进行2，3步。</li>
-</ol>
-<p>然后，你也会找到自己的方向的。所以我在开始将我努力的过程给描述了一遍。</p>
-<p>这里再分享一个经验：<strong>迷茫的最大敌人是拖延。</strong></p>
-<p>相信聪明的你，能更快地找到属于自己的那条道路。</p>
+        <p>最近看数据结构看到二叉树的时候，自己实现了一下，同时写成了类，正好复习一下以前看C++的一些知识。代码如下。</p>
+<p>[code lang=”cpp”]<br>// BiTNode.h<br>// 参照《c++大学教程》中P639页编写<br>// 模版结点BiTNode类的声明</p>
+<p>#ifndef BITNODE_H</p>
+<p>#define BITNODE_H</p>
+<p>// 声明BiNTree类型<br>template&lt;typename NODETYPE&gt; class BiTree;</p>
+<p>template&lt;typename NODETYPE&gt;<br>class BiTNode<br>{<br>    // 声明友元BiNTree类，使得BiTree类可以访问BiTNode类中的private成员<br>    friend class BiTree&lt;NODETYPE&gt;;</p>
+<p>public:<br>    BiTNode(const NODETYPE &amp;d)<br>        : lchild(0),<br>            data(d),<br>            rchild(0)<br>    {<br>    }</p>
+<pre><code>NODETYPE getData() const
+{
+    return data;
+}
+</code></pre><p>private:<br>    BiTNode&lt;NODETYPE&gt; <em>lchild;<br>    NODETYPE data;<br>    BiTNode&lt;NODETYPE&gt; </em>rchild;<br>};</p>
+<p>#endif<br>[/code]</p>
+<p>[code lang=”cpp”]<br>// BiTree.h<br>// 链表二叉树类模版的定义</p>
+<p>#ifndef BITREE_H</p>
+<p>#define BITREE_H</p>
+<p>#include &lt;iostream&gt;</p>
+<p>#include &lt;iomanip&gt;</p>
+<p>#include &quot;BiTNode.h&quot;</p>
+<p>#include &lt;queue&gt;</p>
+<p>#include &lt;stack&gt;<br>using namespace std;</p>
+<p>typedef int Status;</p>
+<p>#define OK    1</p>
+<p>#define ERROR    0</p>
+<p>#define TRUE    1</p>
+<p>#define FALSE    0</p>
+<p>template&lt;typename NODETYPE&gt;<br>class BiTree<br>{<br>public:<br>    BiTree();</p>
+<pre><code>void CreateBiTree();
+void DestroyBiTree();
+Status BiTreeEmpty();
+NODETYPE Root();
+
+int BiTreeDepth();
+int BiTreeDepthNonRecursion();
+
+void PreOrderTraverse();
+void PreOrderNonRecursion();
+void InOrderTraverse();
+void InOrderNonRecursion();
+void PostOrderTraverse();
+void PostOrderNonRecursion();
+void LevelOrderTraverse();
+
+void PrintLast();
+void PrintByDepth();
+</code></pre><p>private:<br>    BiTNode&lt;NODETYPE&gt; *rootPtr;</p>
+<pre><code>// utility function
+void visit(BiTNode&amp;lt;NODETYPE&amp;gt; *p);
+void CreateBiTreeHelper(BiTNode&amp;lt;NODETYPE&amp;gt; **T);
+void DestroyBiTreeHelper(BiTNode&amp;lt;NODETYPE&amp;gt; **T);
+int BiTreeDepthHelper(BiTNode&amp;lt;NODETYPE&amp;gt; *T);
+
+// 用helper函数的原因是对二叉树进行遍历要传入参数
+void PreOrderTraverseHelper(BiTNode&amp;lt;NODETYPE&amp;gt; *T);
+void InOrderTraverseHelper(BiTNode&amp;lt;NODETYPE&amp;gt; *T);
+void PostOrderTraverseHelper(BiTNode&amp;lt;NODETYPE&amp;gt; *T);
+</code></pre><p>};</p>
+<p>template&lt;typename NODETYPE&gt;<br>BiTree&lt;NODETYPE&gt;::BiTree()<br>{<br>    rootPtr = 0;<br>}</p>
+<p>template&lt;typename NODETYPE&gt;<br>Status BiTree&lt;NODETYPE&gt;::BiTreeEmpty()<br>{<br>    if (rootPtr)<br>        return FALSE;<br>    else<br>        return TRUE;<br>}</p>
+<p>template&lt;typename NODETYPE&gt;<br>void BiTree&lt;NODETYPE&gt;::CreateBiTree()<br>{<br>    CreateBiTreeHelper(&amp;rootPtr);<br>}</p>
+<p>// 按前序输入二叉树中结点的值（一个字符）<br>// #表示空树，构造二叉链表表示二叉树T。<br>template&lt;typename NODETYPE&gt;<br>void BiTree&lt;NODETYPE&gt;::CreateBiTreeHelper(BiTNode&lt;NODETYPE&gt; **T)<br>{<br>    NODETYPE val;</p>
+<pre><code>cin &amp;gt;&amp;gt; val;
+
+if (val == &apos;#&apos;)
+    *T = NULL;
+else
+{
+    *T = new BiTNode&amp;lt;NODETYPE&amp;gt;(val);
+    CreateBiTreeHelper(&amp;amp;(*T)-&amp;gt;lchild);
+    CreateBiTreeHelper(&amp;amp;(*T)-&amp;gt;rchild);
+}
+</code></pre><p>}</p>
+<p>template&lt;typename NODETYPE&gt;<br>void BiTree&lt;NODETYPE&gt;::DestroyBiTree()<br>{<br>    DestroyBiTreeHelper(&amp;rootPtr);<br>}</p>
+<p>template&lt;typename NODETYPE&gt;<br>void BiTree&lt;NODETYPE&gt;::DestroyBiTreeHelper(BiTNode&lt;NODETYPE&gt; <em>*T)<br>{<br>    if (</em>T)<br>    {<br>        if ((<em>T)-&gt;lchild)<br>            DestroyBiTreeHelper(&amp;(</em>T)-&gt;lchild);<br>        if ((<em>T)-&gt;rchild)<br>            DestroyBiTreeHelper(&amp;(</em>T)-&gt;rchild);<br>        free(<em>T);
+        </em>T = NULL;<br>    }<br>}</p>
+<p>template&lt;typename NODETYPE&gt;<br>int BiTree&lt;NODETYPE&gt;::BiTreeDepth()<br>{<br>    return BiTreeDepthHelper(rootPtr);<br>}</p>
+<p>template&lt;typename NODETYPE&gt;<br>int BiTree&lt;NODETYPE&gt;::BiTreeDepthHelper(BiTNode&lt;NODETYPE&gt; *T)<br>{<br>    int i, j;</p>
+<pre><code>if (!T)
+    return 0;
+
+if (T-&amp;gt;lchild)
+    i = BiTreeDepthHelper(T-&amp;gt;lchild);
+else 
+    i = 0;
+if (T-&amp;gt;rchild)
+    j = BiTreeDepthHelper(T-&amp;gt;rchild);
+else
+    j = 0;
+
+return i &amp;gt; j ? i+1 : j+1;
+</code></pre><p>}</p>
+<p>template&lt;typename NODETYPE&gt;<br>NODETYPE BiTree&lt;NODETYPE&gt;::Root()<br>{<br>    if (!rootPtr)<br>        return ‘ ‘;<br>    else<br>        return rootPtr-&gt;data;<br>}</p>
+<p>// 借用层次遍历的思想，实现非递归形式求出二叉树深度<br>template&lt;typename NODETYPE&gt;<br>int BiTree&lt;NODETYPE&gt;::BiTreeDepthNonRecursion()<br>{<br>    if (!rootPtr)<br>        return 0;</p>
+<pre><code>BiTNode&amp;lt;NODETYPE&amp;gt; *p; // 工作指针，每次记录从队列队首弹出的结点
+BiTNode&amp;lt;NODETYPE&amp;gt; *back; // 记录每层二叉树的最右边的结点。此结点在每次遍历一层之后的队列队尾
+int level = 0; // 层数，初始值为0
+queue&amp;lt;BiTNode&amp;lt;NODETYPE&amp;gt; *&amp;gt; Q;
+
+Q.push(rootPtr);
+back = Q.back();
+while (!Q.empty())
+{
+    p = Q.front();
+    Q.pop();
+
+    if (p-&amp;gt;lchild)
+        Q.push(p-&amp;gt;lchild);
+    if (p-&amp;gt;rchild)
+        Q.push(p-&amp;gt;rchild);
+
+    if (p == back) // 如果p == 每层的最右边的结点，则层数+1，同时重新赋值队尾结点
+    {
+        level++;
+        if (!Q.empty()) // 如果队列为空，则下一步的操作出错。主要用于防止最后一个结点弹出队列之后的那次操作
+            back = Q.back();
+    }
+}
+
+return level;
+</code></pre><p>}</p>
+<p>template&lt;typename NODETYPE&gt;<br>void BiTree&lt;NODETYPE&gt;::PreOrderTraverse()<br>{<br>    PreOrderTraverseHelper(rootPtr);<br>}</p>
+<p>template&lt;typename NODETYPE&gt;<br>void BiTree&lt;NODETYPE&gt;::PreOrderTraverseHelper(BiTNode&lt;NODETYPE&gt; *T)<br>{<br>    if (!T)<br>        return;</p>
+<pre><code>visit(T);
+PreOrderTraverseHelper(T-&amp;gt;lchild);
+PreOrderTraverseHelper(T-&amp;gt;rchild);
+</code></pre><p>}</p>
+<p>// 前序遍历非递归形式<br>template&lt;typename NODETYPE&gt;<br>void BiTree&lt;NODETYPE&gt;::PreOrderNonRecursion()<br>{<br>    if (!rootPtr)<br>        return;</p>
+<pre><code>BiTNode&amp;lt;NODETYPE&amp;gt; *p;
+stack&amp;lt;BiTNode&amp;lt;NODETYPE&amp;gt; *&amp;gt; S; // 借助栈实现非递归的前序遍历
+
+p = rootPtr;
+while (p || !S.empty())
+{
+    while (p) 
+    {
+        visit(p); // 在每次入栈之前进行访问
+        S.push(p);
+        p = p-&amp;gt;lchild;
+    }
+    if (!S.empty())
+    {
+        p = S.top();
+        S.pop();
+        p = p-&amp;gt;rchild;
+    }
+}
+</code></pre><p>}</p>
+<p>template&lt;typename NODETYPE&gt;<br>void BiTree&lt;NODETYPE&gt;::InOrderTraverse()<br>{<br>    InOrderTraverseHelper(rootPtr);<br>}</p>
+<p>template&lt;typename NODETYPE&gt;<br>void BiTree&lt;NODETYPE&gt;::InOrderTraverseHelper(BiTNode&lt;NODETYPE&gt; *T)<br>{<br>    if (!T)<br>        return;</p>
+<pre><code>InOrderTraverseHelper(T-&amp;gt;lchild);
+visit(T);
+InOrderTraverseHelper(T-&amp;gt;rchild);
+</code></pre><p>}</p>
+<p>template&lt;typename NODETYPE&gt;<br>void BiTree&lt;NODETYPE&gt;::InOrderNonRecursion()<br>{<br>    if (!rootPtr)<br>        return;</p>
+<pre><code>BiTNode&amp;lt;NODETYPE&amp;gt; *p;
+stack&amp;lt;BiTNode&amp;lt;NODETYPE&amp;gt; *&amp;gt; S;
+
+p = rootPtr;
+while (p || !S.empty())
+{
+    while (p)
+    {
+        S.push(p);
+        p = p-&amp;gt;lchild;
+    }
+    if (!S.empty())
+    {
+        p = S.top();
+        S.pop();
+        visit(p); // 在每次出栈之时进行访问
+        p = p-&amp;gt;rchild;
+    }
+}
+</code></pre><p>}</p>
+<p>template&lt;typename NODETYPE&gt;<br>void BiTree&lt;NODETYPE&gt;::PostOrderTraverse()<br>{<br>    PostOrderTraverseHelper(rootPtr);<br>}</p>
+<p>template&lt;typename NODETYPE&gt;<br>void BiTree&lt;NODETYPE&gt;::PostOrderTraverseHelper(BiTNode&lt;NODETYPE&gt; *T)<br>{<br>    if (!T)<br>        return;</p>
+<pre><code>PostOrderTraverseHelper(T-&amp;gt;lchild);
+PostOrderTraverseHelper(T-&amp;gt;rchild);
+visit(T);
+</code></pre><p>}</p>
+<p>template&lt;typename NODETYPE&gt;<br>void BiTree&lt;NODETYPE&gt;::PostOrderNonRecursion()<br>{<br>    if (!rootPtr)<br>        return;</p>
+<pre><code>BiTNode&amp;lt;NODETYPE&amp;gt; *p;
+BiTNode&amp;lt;NODETYPE&amp;gt; *r; // 用于记录栈中弹出的结点的右子树是否访问过
+stack&amp;lt;BiTNode&amp;lt;NODETYPE&amp;gt; *&amp;gt; S;
+
+p = rootPtr;
+r = NULL;
+while (p || !S.empty())
+{
+    while (p)
+    {
+        S.push(p);
+        p = p-&amp;gt;lchild;
+    }
+    if (!S.empty())
+    {
+        p = S.top();
+        if (p-&amp;gt;rchild &amp;amp;&amp;amp; p-&amp;gt;rchild != r) // 此结点的右子树尚未入栈
+        {
+            p = p-&amp;gt;rchild;
+            S.push(p);
+            p = p-&amp;gt;lchild;
+        }
+        else
+        {
+            S.pop();
+            visit(p); // 每次出栈时访问结点
+            r = p;
+            p = NULL;
+        }
+    }
+}
+</code></pre><p>}</p>
+<p>template&lt;typename NODETYPE&gt;<br>void BiTree&lt;NODETYPE&gt;::LevelOrderTraverse()<br>{<br>    if (!rootPtr)<br>        return;</p>
+<pre><code>BiTNode&amp;lt;NODETYPE&amp;gt; *p;
+BiTNode&amp;lt;NODETYPE&amp;gt; *back; // 操作中记录队列尾部的指针
+queue&amp;lt;BiTNode&amp;lt;NODETYPE&amp;gt; *&amp;gt; Q; // 使用辅助队列
+
+Q.push(rootPtr);
+back = Q.back();
+while (!Q.empty())
+{
+    p = Q.front();
+    Q.pop();
+    visit(p);
+
+    if (p-&amp;gt;lchild)
+        Q.push(p-&amp;gt;lchild);
+    if (p-&amp;gt;rchild)
+        Q.push(p-&amp;gt;rchild);
+}
+</code></pre><p>}</p>
+<p>template&lt;typename NODETYPE&gt;<br>void BiTree&lt;NODETYPE&gt;::PrintLast()<br>{<br>    if (!rootPtr)<br>        return;</p>
+<pre><code>BiTNode&amp;lt;NODETYPE&amp;gt; *p;
+BiTNode&amp;lt;NODETYPE&amp;gt; *back; // 操作中记录队列尾部的指针
+queue&amp;lt;BiTNode&amp;lt;NODETYPE&amp;gt; *&amp;gt; Q; // 使用辅助队列
+
+Q.push(rootPtr);
+back = Q.back();
+while (!Q.empty())
+{
+    p = Q.front();
+    Q.pop();
+
+    if (p-&amp;gt;lchild)
+        Q.push(p-&amp;gt;lchild);
+    if (p-&amp;gt;rchild)
+        Q.push(p-&amp;gt;rchild);
+
+    if (p == back)
+    {
+        visit(p);
+        if (!Q.empty())
+            back = Q.back(); // 更新back指针的位置
+    }
+}
+</code></pre><p>}</p>
+<p>template&lt;typename NODETYPE&gt;<br>void BiTree&lt;NODETYPE&gt;::PrintByDepth()<br>{<br>    if (!rootPtr)<br>        return;</p>
+<pre><code>BiTNode&amp;lt;NODETYPE&amp;gt; *p;
+BiTNode&amp;lt;NODETYPE&amp;gt; *back; // 操作中记录队列尾部的指针
+queue&amp;lt;BiTNode&amp;lt;NODETYPE&amp;gt; *&amp;gt; Q; // 使用辅助队列
+
+Q.push(rootPtr);
+back = Q.back();
+while (!Q.empty())
+{
+    p = Q.front();
+    Q.pop();
+    visit(p);
+
+    if (p-&amp;gt;lchild)
+        Q.push(p-&amp;gt;lchild);
+    if (p-&amp;gt;rchild)
+        Q.push(p-&amp;gt;rchild);
+
+    if (p == back)
+    {
+        cout &amp;lt;&amp;lt; endl;
+        if (!Q.empty())
+            back = Q.back(); // 更新back指针的位置
+    }
+}
+</code></pre><p>}</p>
+<p>template&lt;typename NODETYPE&gt;<br>void BiTree&lt;NODETYPE&gt;::visit(BiTNode&lt;NODETYPE&gt; *p)<br>{<br>    cout &lt;&lt; left &lt;&lt; setw(5) &lt;&lt; p-&gt;data;<br>}</p>
+<p>#endif<br>[/code]</p>
+<p>为了省事，main函数有些代码直接使用了前面一篇文章里面c的代码。</p>
+<p>[code lang=”cpp”]<br>// main.h</p>
+<p>#include &lt;iostream&gt;</p>
+<p>#include &quot;BiTree.h&quot;<br>using namespace std;</p>
+<p>int main()<br>{<br>    int i;<br>    BiTree&lt;char&gt; T;<br>    char e1;</p>
+<pre><code>//StrAssign(str,&amp;quot;ABDH#K###E##CFI###G#J##&amp;quot;);
+
+T.CreateBiTree();
+
+printf(&amp;quot;构造空二叉树后,树空否？%d(1:是 0:否) 树的深度: %d\n&amp;quot;,T.BiTreeEmpty(), T.BiTreeDepthNonRecursion());
+e1 = T.Root();
+printf(&amp;quot;二叉树的根为: %c\n&amp;quot;,e1);
+
+printf(&amp;quot;\n前序遍历二叉树:\n&amp;quot;);
+//T.PreOrderTraverse();
+T.PreOrderNonRecursion();
+
+printf(&amp;quot;\n中序遍历二叉树:\n&amp;quot;);
+T.InOrderTraverse();
+//T.InOrderNonRecursion();
+
+printf(&amp;quot;\n后序遍历二叉树:\n&amp;quot;);
+//T.PostOrderTraverse();
+T.PostOrderNonRecursion();
+
+printf(&amp;quot;\n层次遍历二叉树:\n&amp;quot;);
+T.LevelOrderTraverse();
+
+printf(&amp;quot;\n每行二叉树的最右边的结点为:\n&amp;quot;);
+T.PrintLast();
+
+printf(&amp;quot;\n按层次输出每行的结点:\n&amp;quot;);
+T.PrintByDepth();
+
+T.DestroyBiTree();
+printf(&amp;quot;\n清除二叉树后,树空否？%d(1:是 0:否) 树的深度=%d\n&amp;quot;,T.BiTreeEmpty(),T.BiTreeDepth());
+i = T.Root();
+if(!i)
+    printf(&amp;quot;树空，无根\n&amp;quot;);
+
+getchar();
+getchar();
+return 0;
+</code></pre><p>}<br>[/code]</p>
+<p>写这个代码的时候，感觉自己计算机编程入门了——之前写代码主要都是照着书写，出错了更多都是照着书查找错误。写这个二叉树类的时候有个地方指针出错了，自己设断点改错，改了很久。所以入门的一些经验在下面一篇文章里面谈谈吧。</p>
+<p>参考资料：<br>1.<a href="https://book.douban.com/subject/6424904/" target="_blank" rel="external"><span style="color: #0000ff;">《大话数据结构》</span></a><br>2.<a href="https://book.douban.com/subject/5349823/" target="_blank" rel="external"><span style="color: #0000ff;">《C++大学教程（第七版）》</span></a></p>
 
       
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/some-tips-for-a-green-hand-in-computer-science/" data-id="ciw56rcku000adgezdr1kvxoh" class="article-share-link" data-share="baidu" data-title="计算机入门的一点经验和对迷茫的一些分析">Share</a>
+        <a data-url="http://yoursite.com/the-implement-of-binary-tree-class/" data-id="ciw6hew1v000jr8ezajgvm74o" class="article-share-link" data-share="baidu" data-title="二叉树类的实现">Share</a>
       
 
       
-        <a href="http://yoursite.com/some-tips-for-a-green-hand-in-computer-science/#ds-thread" class="article-comment-link">Comments</a>
+        <a href="http://yoursite.com/the-implement-of-binary-tree-class/#ds-thread" class="article-comment-link">Comments</a>
       
 
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C-C/">C/C++</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/个人成长/">个人成长</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C-C/">C/C++</a></li></ul>
 
     </footer>
   </div>
@@ -384,7 +638,7 @@
 
 
   <nav id="page-nav">
-    <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
+    <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
   </nav>
 </section>
       
@@ -394,7 +648,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a><span class="archive-list-count">2</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a><span class="archive-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -403,7 +657,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/建站相关/">建站相关</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/编程学习/">编程学习</a><span class="category-list-count">7</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/建站相关/">建站相关</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/编程学习/">编程学习</a><span class="category-list-count">6</span></li></ul>
     </div>
   </div>
 
@@ -412,7 +666,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C-C/">C/C++</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/个人成长/">个人成长</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/我的博客/">我的博客</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/深度学习/">深度学习</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a><span class="tag-list-count">2</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C-C/">C/C++</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/我的博客/">我的博客</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/深度学习/">深度学习</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a><span class="tag-list-count">2</span></li></ul>
     </div>
   </div>
 
