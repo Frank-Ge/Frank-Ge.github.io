@@ -98,312 +98,13 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>夏天看机器学习之余，把C语言给过了一遍，现在开始数据结构的学习了。最近看的二叉树，照着书实现了一下。</p>
-<p>其中包括二叉树的一些基本操作：初始化，建立，销毁，判空，深度和几种遍历。因为书上没给出非递归的遍历的非递归形式，自己这边给总结一下。代码本来是用C写的，但是其中有些功能的实现需要用到队列或者栈，直接调用C++的STL了。如下是相关代码。</p>
-<p>[code lang=”cpp”]</p>
-<p>#include &quot;string.h&quot;</p>
-<p>#include &quot;stdio.h&quot;    </p>
-<p>#include &quot;stdlib.h&quot;   </p>
-<p>#include &quot;math.h&quot;  </p>
-<p>#include &lt;queue&gt;</p>
-<p>#include &lt;stack&gt;<br>using namespace std;</p>
-<p>#define OK 1</p>
-<p>#define ERROR 0</p>
-<p>#define TRUE 1</p>
-<p>#define FALSE 0</p>
-<p>#define MAXSIZE 100 /<em> 存储空间初始分配量 </em>/</p>
-<p>typedef int Status;</p>
-<p>typedef char TElemType;<br>TElemType Nil = ‘ ‘;</p>
-<p>/<em> 用于构造二叉树<strong><strong><strong><strong><strong><strong><strong><strong>**</strong></strong></strong></strong></strong></strong></strong></strong> </em>/<br>int index=1;<br>typedef char String[24]; /<em>  0号单元存放串的长度 </em>/<br>String str;</p>
-<p>Status StrAssign(String T,char <em>chars)<br>{<br>    int i;<br>    if(strlen(chars)&gt;MAXSIZE)<br>        return ERROR;<br>    else<br>    {<br>        T[0]=strlen(chars);<br>        for(i=1;i&lt;=T[0];i++)<br>            T[i]=</em>(chars+i-1);<br>        return OK;<br>    }<br>}<br>/<em> <strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><em>**</em></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong> </em>/</p>
-<p>typedef struct BiTNode<br>{<br>    TElemType data;<br>    struct BiTNode <em>lchild, </em>rchild;<br>} BiTNode, *BiTree;</p>
-<p>Status InitBiTree(BiTree <em>T);<br>void CreateBiTree(BiTree </em>T);<br>void DestroyBiTree(BiTree *T);<br>Status BiTreeEmpty(BiTree T);<br>TElemType Root(BiTree T);<br>TElemType Value(BiTree p);<br>void visit(BiTree T);</p>
-<p>int BiTreeDepth(BiTree T);<br>int BiTreeDepthNonRecursion(BiTree T);<br>int BiTreeDepthNonRecursion2(BiTree T);</p>
-<p>void PreOrderTraverse(BiTree T);<br>void PreOrderNonRecursion(BiTree T);<br>void InOrderTraverse(BiTree T);<br>void InOrderNonRecursion(BiTree T);<br>void PostOrderTraverse(BiTree T);<br>void PostOrderNonRecurion(BiTree T);<br>void LevelOrderTraverse(BiTree T);</p>
-<p>void PrintLastInEachLevel(BiTree T);<br>void PrintLevelOrderByLevel(BiTree T);</p>
-<p>int main()<br>{<br>    int i;<br>    BiTree T;<br>    TElemType e1;<br>    InitBiTree(&amp;T);</p>
-<pre><code>//StrAssign(str,&amp;quot;ABDH#K###E##CFI###G#J##&amp;quot;);
+        <p style="text-align: justify;">夏天看机器学习之余，把C语言给过了一遍，现在开始数据结构的学习了。最近看的二叉树，照着书实现了一下。</p>
 
-CreateBiTree(&amp;amp;T);
+<p style="text-align: justify;">其中包括二叉树的一些基本操作：初始化，建立，销毁，判空，深度和几种遍历。因为书上没给出非递归的遍历的非递归形式，自己这边给总结一下。代码本来是用C写的，但是其中有些功能的实现需要用到队列或者栈，直接调用C++的STL了。如下是相关代码。</p>
 
-printf(&amp;quot;构造空二叉树后,树空否？%d(1:是 0:否) 树的深度=%d\n&amp;quot;,BiTreeEmpty(T),BiTreeDepthNonRecursion2(T));
-e1=Root(T);
-printf(&amp;quot;二叉树的根为: %c\n&amp;quot;,e1);
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div><div class="line">158</div><div class="line">159</div><div class="line">160</div><div class="line">161</div><div class="line">162</div><div class="line">163</div><div class="line">164</div><div class="line">165</div><div class="line">166</div><div class="line">167</div><div class="line">168</div><div class="line">169</div><div class="line">170</div><div class="line">171</div><div class="line">172</div><div class="line">173</div><div class="line">174</div><div class="line">175</div><div class="line">176</div><div class="line">177</div><div class="line">178</div><div class="line">179</div><div class="line">180</div><div class="line">181</div><div class="line">182</div><div class="line">183</div><div class="line">184</div><div class="line">185</div><div class="line">186</div><div class="line">187</div><div class="line">188</div><div class="line">189</div><div class="line">190</div><div class="line">191</div><div class="line">192</div><div class="line">193</div><div class="line">194</div><div class="line">195</div><div class="line">196</div><div class="line">197</div><div class="line">198</div><div class="line">199</div><div class="line">200</div><div class="line">201</div><div class="line">202</div><div class="line">203</div><div class="line">204</div><div class="line">205</div><div class="line">206</div><div class="line">207</div><div class="line">208</div><div class="line">209</div><div class="line">210</div><div class="line">211</div><div class="line">212</div><div class="line">213</div><div class="line">214</div><div class="line">215</div><div class="line">216</div><div class="line">217</div><div class="line">218</div><div class="line">219</div><div class="line">220</div><div class="line">221</div><div class="line">222</div><div class="line">223</div><div class="line">224</div><div class="line">225</div><div class="line">226</div><div class="line">227</div><div class="line">228</div><div class="line">229</div><div class="line">230</div><div class="line">231</div><div class="line">232</div><div class="line">233</div><div class="line">234</div><div class="line">235</div><div class="line">236</div><div class="line">237</div><div class="line">238</div><div class="line">239</div><div class="line">240</div><div class="line">241</div><div class="line">242</div><div class="line">243</div><div class="line">244</div><div class="line">245</div><div class="line">246</div><div class="line">247</div><div class="line">248</div><div class="line">249</div><div class="line">250</div><div class="line">251</div><div class="line">252</div><div class="line">253</div><div class="line">254</div><div class="line">255</div><div class="line">256</div><div class="line">257</div><div class="line">258</div><div class="line">259</div><div class="line">260</div><div class="line">261</div><div class="line">262</div><div class="line">263</div><div class="line">264</div><div class="line">265</div><div class="line">266</div><div class="line">267</div><div class="line">268</div><div class="line">269</div><div class="line">270</div><div class="line">271</div><div class="line">272</div><div class="line">273</div><div class="line">274</div><div class="line">275</div><div class="line">276</div><div class="line">277</div><div class="line">278</div><div class="line">279</div><div class="line">280</div><div class="line">281</div><div class="line">282</div><div class="line">283</div><div class="line">284</div><div class="line">285</div><div class="line">286</div><div class="line">287</div><div class="line">288</div><div class="line">289</div><div class="line">290</div><div class="line">291</div><div class="line">292</div><div class="line">293</div><div class="line">294</div><div class="line">295</div><div class="line">296</div><div class="line">297</div><div class="line">298</div><div class="line">299</div><div class="line">300</div><div class="line">301</div><div class="line">302</div><div class="line">303</div><div class="line">304</div><div class="line">305</div><div class="line">306</div><div class="line">307</div><div class="line">308</div><div class="line">309</div><div class="line">310</div><div class="line">311</div><div class="line">312</div><div class="line">313</div><div class="line">314</div><div class="line">315</div><div class="line">316</div><div class="line">317</div><div class="line">318</div><div class="line">319</div><div class="line">320</div><div class="line">321</div><div class="line">322</div><div class="line">323</div><div class="line">324</div><div class="line">325</div><div class="line">326</div><div class="line">327</div><div class="line">328</div><div class="line">329</div><div class="line">330</div><div class="line">331</div><div class="line">332</div><div class="line">333</div><div class="line">334</div><div class="line">335</div><div class="line">336</div><div class="line">337</div><div class="line">338</div><div class="line">339</div><div class="line">340</div><div class="line">341</div><div class="line">342</div><div class="line">343</div><div class="line">344</div><div class="line">345</div><div class="line">346</div><div class="line">347</div><div class="line">348</div><div class="line">349</div><div class="line">350</div><div class="line">351</div><div class="line">352</div><div class="line">353</div><div class="line">354</div><div class="line">355</div><div class="line">356</div><div class="line">357</div><div class="line">358</div><div class="line">359</div><div class="line">360</div><div class="line">361</div><div class="line">362</div><div class="line">363</div><div class="line">364</div><div class="line">365</div><div class="line">366</div><div class="line">367</div><div class="line">368</div><div class="line">369</div><div class="line">370</div><div class="line">371</div><div class="line">372</div><div class="line">373</div><div class="line">374</div><div class="line">375</div><div class="line">376</div><div class="line">377</div><div class="line">378</div><div class="line">379</div><div class="line">380</div><div class="line">381</div><div class="line">382</div><div class="line">383</div><div class="line">384</div><div class="line">385</div><div class="line">386</div><div class="line">387</div><div class="line">388</div><div class="line">389</div><div class="line">390</div><div class="line">391</div><div class="line">392</div><div class="line">393</div><div class="line">394</div><div class="line">395</div><div class="line">396</div><div class="line">397</div><div class="line">398</div><div class="line">399</div><div class="line">400</div><div class="line">401</div><div class="line">402</div><div class="line">403</div><div class="line">404</div><div class="line">405</div><div class="line">406</div><div class="line">407</div><div class="line">408</div><div class="line">409</div><div class="line">410</div><div class="line">411</div><div class="line">412</div><div class="line">413</div><div class="line">414</div><div class="line">415</div><div class="line">416</div><div class="line">417</div><div class="line">418</div><div class="line">419</div><div class="line">420</div><div class="line">421</div><div class="line">422</div><div class="line">423</div><div class="line">424</div><div class="line">425</div><div class="line">426</div><div class="line">427</div><div class="line">428</div><div class="line">429</div><div class="line">430</div><div class="line">431</div><div class="line">432</div><div class="line">433</div><div class="line">434</div><div class="line">435</div><div class="line">436</div><div class="line">437</div><div class="line">438</div><div class="line">439</div><div class="line">440</div><div class="line">441</div><div class="line">442</div><div class="line">443</div><div class="line">444</div><div class="line">445</div><div class="line">446</div><div class="line">447</div><div class="line">448</div><div class="line">449</div><div class="line">450</div><div class="line">451</div><div class="line">452</div><div class="line">453</div><div class="line">454</div><div class="line">455</div><div class="line">456</div><div class="line">457</div><div class="line">458</div><div class="line">459</div><div class="line">460</div><div class="line">461</div><div class="line">462</div><div class="line">463</div><div class="line">464</div><div class="line">465</div><div class="line">466</div><div class="line">467</div><div class="line">468</div><div class="line">469</div><div class="line">470</div><div class="line">471</div><div class="line">472</div><div class="line">473</div><div class="line">474</div><div class="line">475</div><div class="line">476</div><div class="line">477</div><div class="line">478</div><div class="line">479</div><div class="line">480</div><div class="line">481</div><div class="line">482</div><div class="line">483</div><div class="line">484</div><div class="line">485</div><div class="line">486</div><div class="line">487</div><div class="line">488</div><div class="line">489</div><div class="line">490</div><div class="line">491</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"string.h"</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"stdio.h"</span>    </span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"stdlib.h"</span>   </span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"math.h"</span>  </span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;queue&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stack&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> OK 1</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> ERROR 0</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> TRUE 1</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> FALSE 0</span></div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXSIZE 100 <span class="comment">/* 存储空间初始分配量 */</span></span></div><div class="line"></div><div class="line"><span class="keyword">typedef</span> <span class="keyword">int</span> Status;</div><div class="line"></div><div class="line"><span class="keyword">typedef</span> <span class="keyword">char</span> TElemType;</div><div class="line">TElemType Nil = <span class="string">' '</span>;</div><div class="line"></div><div class="line"><span class="comment">/* 用于构造二叉树********************************** */</span></div><div class="line"><span class="keyword">int</span> index=<span class="number">1</span>;</div><div class="line"><span class="keyword">typedef</span> <span class="keyword">char</span> String[<span class="number">24</span>]; <span class="comment">/*  0号单元存放串的长度 */</span></div><div class="line">String str;</div><div class="line"></div><div class="line"><span class="function">Status <span class="title">StrAssign</span><span class="params">(String T,<span class="keyword">char</span> *chars)</span></span></div><div class="line">&#123; </div><div class="line">	<span class="keyword">int</span> i;</div><div class="line">	<span class="keyword">if</span>(<span class="built_in">strlen</span>(chars)&gt;MAXSIZE)</div><div class="line">		<span class="keyword">return</span> ERROR;</div><div class="line">	<span class="keyword">else</span></div><div class="line">	&#123;</div><div class="line">		T[<span class="number">0</span>]=<span class="built_in">strlen</span>(chars);</div><div class="line">		<span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;=T[<span class="number">0</span>];i++)</div><div class="line">			T[i]=*(chars+i<span class="number">-1</span>);</div><div class="line">		<span class="keyword">return</span> OK;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"><span class="comment">/* ************************************************ */</span></div><div class="line"></div><div class="line"><span class="keyword">typedef</span> <span class="keyword">struct</span> BiTNode</div><div class="line">&#123;</div><div class="line">	TElemType data;</div><div class="line">	<span class="keyword">struct</span> BiTNode *lchild, *rchild;</div><div class="line">&#125; BiTNode, *BiTree;</div><div class="line"></div><div class="line"><span class="function">Status <span class="title">InitBiTree</span><span class="params">(BiTree *T)</span></span>;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">CreateBiTree</span><span class="params">(BiTree *T)</span></span>;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">DestroyBiTree</span><span class="params">(BiTree *T)</span></span>;</div><div class="line"><span class="function">Status <span class="title">BiTreeEmpty</span><span class="params">(BiTree T)</span></span>;</div><div class="line"><span class="function">TElemType <span class="title">Root</span><span class="params">(BiTree T)</span></span>;</div><div class="line"><span class="function">TElemType <span class="title">Value</span><span class="params">(BiTree p)</span></span>;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">visit</span><span class="params">(BiTree T)</span></span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">BiTreeDepth</span><span class="params">(BiTree T)</span></span>;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">BiTreeDepthNonRecursion</span><span class="params">(BiTree T)</span></span>;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">BiTreeDepthNonRecursion2</span><span class="params">(BiTree T)</span></span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">PreOrderTraverse</span><span class="params">(BiTree T)</span></span>;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">PreOrderNonRecursion</span><span class="params">(BiTree T)</span></span>;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">InOrderTraverse</span><span class="params">(BiTree T)</span></span>;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">InOrderNonRecursion</span><span class="params">(BiTree T)</span></span>;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">PostOrderTraverse</span><span class="params">(BiTree T)</span></span>;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">PostOrderNonRecurion</span><span class="params">(BiTree T)</span></span>;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">LevelOrderTraverse</span><span class="params">(BiTree T)</span></span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">PrintLastInEachLevel</span><span class="params">(BiTree T)</span></span>;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">PrintLevelOrderByLevel</span><span class="params">(BiTree T)</span></span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">int</span> i;</div><div class="line">	BiTree T;</div><div class="line">	TElemType e1;</div><div class="line">	InitBiTree(&amp;T);</div><div class="line">	</div><div class="line">	<span class="comment">//StrAssign(str,"ABDH#K###E##CFI###G#J##");</span></div><div class="line"></div><div class="line">	CreateBiTree(&amp;T);</div><div class="line"></div><div class="line">	<span class="built_in">printf</span>(<span class="string">"构造空二叉树后,树空否？%d(1:是 0:否) 树的深度=%d\n"</span>,BiTreeEmpty(T),BiTreeDepthNonRecursion2(T));</div><div class="line">	e1=Root(T);</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"二叉树的根为: %c\n"</span>,e1);</div><div class="line"></div><div class="line">	<span class="built_in">printf</span>(<span class="string">"\n前序遍历二叉树:\n"</span>);</div><div class="line">	PreOrderTraverse(T);</div><div class="line">	<span class="comment">//PreOrderNonRecursion(T);</span></div><div class="line"></div><div class="line">	<span class="built_in">printf</span>(<span class="string">"\n中序遍历二叉树:\n"</span>);</div><div class="line">	InOrderTraverse(T);</div><div class="line">	<span class="comment">//InOrderNonRecursion(T);</span></div><div class="line"></div><div class="line">	<span class="built_in">printf</span>(<span class="string">"\n后序遍历二叉树:\n"</span>);</div><div class="line">	PostOrderTraverse(T);</div><div class="line">	<span class="comment">//PostOrderNonRecurion(T);</span></div><div class="line"></div><div class="line">	<span class="built_in">printf</span>(<span class="string">"\n层次遍历二叉树:\n"</span>);</div><div class="line">	<span class="comment">//LevelOrderTraverse(T);</span></div><div class="line">	PrintLevelOrderByLevel(T);</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"\n输出每层的最后一个结点:\n"</span>);</div><div class="line">	PrintLastInEachLevel(T);</div><div class="line">	</div><div class="line">	DestroyBiTree(&amp;T);</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"\n清除二叉树后,树空否？%d(1:是 0:否) 树的深度=%d\n"</span>,BiTreeEmpty(T),BiTreeDepth(T));</div><div class="line">	i=Root(T);</div><div class="line">	<span class="keyword">if</span>(!i)</div><div class="line">		<span class="built_in">printf</span>(<span class="string">"树空，无根\n"</span>);</div><div class="line">	</div><div class="line">	getchar();</div><div class="line">	getchar();</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//* 构造空二叉树T */</span></div><div class="line"><span class="function">Status <span class="title">InitBiTree</span><span class="params">(BiTree *T)</span></span></div><div class="line">&#123;</div><div class="line">	*T = <span class="literal">NULL</span>;</div><div class="line">	<span class="keyword">return</span> OK;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 按前序输入二叉树中结点的值（一个字符）</span></div><div class="line"><span class="comment">// #表示空树，构造二叉链表表示二叉树T。 </span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">CreateBiTree</span><span class="params">(BiTree *T)</span></span></div><div class="line">&#123;</div><div class="line">	TElemType ch;</div><div class="line"></div><div class="line">	<span class="built_in">scanf</span>(<span class="string">"%c"</span>, &amp;ch);</div><div class="line"></div><div class="line">	<span class="keyword">if</span> (ch == <span class="string">'#'</span>)</div><div class="line">		(*T) = <span class="literal">NULL</span>;</div><div class="line">	<span class="keyword">else</span></div><div class="line">	&#123;</div><div class="line">		*T = (BiTree)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(BiTNode));</div><div class="line">		<span class="keyword">if</span> (!*T)</div><div class="line">			<span class="built_in">exit</span>(OVERFLOW);</div><div class="line">		(*T)-&gt;data = ch;</div><div class="line">		CreateBiTree(&amp;(*T)-&gt;lchild);</div><div class="line">		CreateBiTree(&amp;(*T)-&gt;rchild);</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 初始条件: 二叉树T存在。操作结果: 销毁二叉树T </span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">DestroyBiTree</span><span class="params">(BiTree *T)</span></span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">if</span> (*T)</div><div class="line">	&#123;</div><div class="line">		<span class="keyword">if</span> ((*T)-&gt;lchild)</div><div class="line">			DestroyBiTree(&amp;(*T)-&gt;lchild);</div><div class="line">		<span class="keyword">if</span> ((*T)-&gt;rchild)</div><div class="line">			DestroyBiTree(&amp;(*T)-&gt;rchild);</div><div class="line">		<span class="built_in">free</span>(*T);</div><div class="line">		*T = <span class="literal">NULL</span>;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 初始条件：二叉树存在</span></div><div class="line"><span class="comment">// 操作结果：若T为空，则返回TRUE；否则返回FALSE</span></div><div class="line"><span class="function">Status <span class="title">BiTreeEmpty</span><span class="params">(BiTree T)</span></span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">if</span> (!T)</div><div class="line">		<span class="keyword">return</span> TRUE;</div><div class="line">	<span class="keyword">else</span></div><div class="line">		<span class="keyword">return</span> FALSE;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 初始条件：二叉树存在</span></div><div class="line"><span class="comment">// 操作结果：返回T的根</span></div><div class="line"><span class="function">TElemType <span class="title">Root</span><span class="params">(BiTree T)</span></span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">if</span> (!T)</div><div class="line">		<span class="keyword">return</span> Nil;</div><div class="line">	<span class="keyword">else</span></div><div class="line">		<span class="keyword">return</span> T-&gt;data;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 初始条件：节点存在</span></div><div class="line"><span class="comment">// 操作结果：输出结点的数据域</span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">visit</span><span class="params">(BiTNode *p)</span></span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">if</span> (p)</div><div class="line">		<span class="built_in">printf</span>(<span class="string">"%c "</span>, p-&gt;data);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 初始条件：二叉树存在</span></div><div class="line"><span class="comment">// 操作结果：返回二叉树深度</span></div><div class="line"><span class="comment">// 递归实现</span></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">BiTreeDepth</span><span class="params">(BiTree T)</span></span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">if</span> (!T)</div><div class="line">		<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line"></div><div class="line">	<span class="keyword">int</span> i, j;</div><div class="line"></div><div class="line">	<span class="keyword">if</span> (T-&gt;lchild)</div><div class="line">		i = BiTreeDepth(T-&gt;lchild); <span class="comment">// 递归求出左子树高度</span></div><div class="line">	<span class="keyword">else</span></div><div class="line">		i = <span class="number">0</span>;</div><div class="line"></div><div class="line">	<span class="keyword">if</span> (T-&gt;rchild)</div><div class="line">		j = BiTreeDepth(T-&gt;rchild); <span class="comment">// 递归求出右子树高度</span></div><div class="line">	<span class="keyword">else</span></div><div class="line">		j = <span class="number">0</span>;</div><div class="line"></div><div class="line">	<span class="keyword">return</span> i &gt; j ? i+<span class="number">1</span> : j+<span class="number">1</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 求二叉树高度的非递归形式</span></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">BiTreeDepthNonRecursion</span><span class="params">(BiTree T)</span></span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">if</span> (!T)</div><div class="line">		<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line"></div><div class="line">	<span class="built_in">queue</span>&lt;BiTNode *&gt; Q; <span class="comment">// 借助队列实现层次遍历，从而求出高度</span></div><div class="line">	BiTNode *p; <span class="comment">// 记录队列头部</span></div><div class="line">	BiTNode *back; <span class="comment">// 记录队列尾部指针</span></div><div class="line">	<span class="keyword">int</span> level = <span class="number">0</span>; <span class="comment">// 队列高度</span></div><div class="line"></div><div class="line">	Q.push(T);</div><div class="line">	back = Q.back();</div><div class="line">	<span class="keyword">while</span> (!Q.empty())</div><div class="line">	&#123;</div><div class="line">		p = Q.front();</div><div class="line">		Q.pop();</div><div class="line"></div><div class="line">		<span class="keyword">if</span> (p-&gt;lchild)</div><div class="line">			Q.push(p-&gt;lchild);</div><div class="line">		<span class="keyword">if</span> (p-&gt;rchild)</div><div class="line">			Q.push(p-&gt;rchild);</div><div class="line"></div><div class="line">		<span class="keyword">if</span> (p == back)</div><div class="line">		&#123;</div><div class="line">			level++;</div><div class="line">			<span class="keyword">if</span> (!Q.empty()) <span class="comment">// 防止最后Q为空时出错</span></div><div class="line">				back = Q.back();</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="keyword">return</span> level;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 求二叉树高度的非递归形式</span></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">BiTreeDepthNonRecursion2</span><span class="params">(BiTree T)</span></span></div><div class="line">&#123;</div><div class="line">	BiTNode *Q[MAXSIZE]; <span class="comment">// 借助队列实现层次遍历，从而求出高度。此时用数组实现队列</span></div><div class="line">	<span class="keyword">int</span> level = <span class="number">0</span>; <span class="comment">// 二叉树高度</span></div><div class="line">	<span class="keyword">int</span> last = <span class="number">0</span>; <span class="comment">// 每层次最后一个结点</span></div><div class="line">	<span class="keyword">int</span> front = <span class="number">-1</span>; <span class="comment">// 队列头指针</span></div><div class="line">	<span class="keyword">int</span> rear = <span class="number">-1</span>; <span class="comment">// 队列尾指针</span></div><div class="line">	BiTNode *p;</div><div class="line"></div><div class="line">	Q[++rear] = T;</div><div class="line">	last = rear;</div><div class="line">	<span class="keyword">while</span> (front &lt; rear) <span class="comment">// 队列不空</span></div><div class="line">	&#123;</div><div class="line">		p = Q[++front];</div><div class="line"></div><div class="line">		<span class="keyword">if</span> (p-&gt;lchild)</div><div class="line">			Q[++rear] = p-&gt;lchild;</div><div class="line">		<span class="keyword">if</span> (p-&gt;rchild)</div><div class="line">			Q[++rear] = p-&gt;rchild;</div><div class="line"></div><div class="line">		<span class="keyword">if</span> (front == last)</div><div class="line">		&#123;</div><div class="line">			level++;</div><div class="line">			<span class="keyword">if</span> (front &lt; rear)</div><div class="line">				last = rear;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="keyword">return</span> level;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 初始条件：二叉树存在</span></div><div class="line"><span class="comment">// 操作结果：前序遍历二叉树</span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">PreOrderTraverse</span><span class="params">(BiTree T)</span></span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">if</span> (!T)</div><div class="line">		<span class="keyword">return</span>;</div><div class="line"></div><div class="line">	visit(T);</div><div class="line">	PreOrderTraverse(T-&gt;lchild);</div><div class="line">	PreOrderTraverse(T-&gt;rchild);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 前序遍历非递归形式</span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">PreOrderNonRecursion</span><span class="params">(BiTree T)</span></span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">if</span> (!T)</div><div class="line">		<span class="keyword">return</span>;</div><div class="line"></div><div class="line">	<span class="built_in">stack</span>&lt;BiTNode *&gt; S; <span class="comment">// 借助栈实现非递归遍历</span></div><div class="line">	BiTNode *p;</div><div class="line"></div><div class="line">	p = T;</div><div class="line">	<span class="keyword">while</span> (p || !S.empty())</div><div class="line">	&#123;</div><div class="line">		<span class="keyword">while</span> (p)</div><div class="line">		&#123;</div><div class="line">			S.push(p);</div><div class="line">			visit(p); <span class="comment">// 在每次入栈时进行访问</span></div><div class="line">			p = p-&gt;lchild;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">if</span> (!S.empty())</div><div class="line">		&#123;</div><div class="line">			p = S.top(); </div><div class="line">			S.pop();</div><div class="line">			p = p-&gt;rchild;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 初始条件：二叉树存在</span></div><div class="line"><span class="comment">// 操作结果：中序遍历二叉树</span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">InOrderTraverse</span><span class="params">(BiTree T)</span></span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">if</span> (!T)</div><div class="line">		<span class="keyword">return</span>;</div><div class="line"></div><div class="line">	InOrderTraverse(T-&gt;lchild);</div><div class="line">	visit(T);</div><div class="line">	InOrderTraverse(T-&gt;rchild);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 中序遍历二叉树非递归形式</span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">InOrderNonRecursion</span><span class="params">(BiTree T)</span></span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">if</span> (!T)</div><div class="line">		<span class="keyword">return</span>;</div><div class="line"></div><div class="line">	<span class="built_in">stack</span>&lt;BiTNode *&gt; S;</div><div class="line">	BiTNode *p;</div><div class="line">	</div><div class="line">	p = T;</div><div class="line">	<span class="keyword">while</span> (p || !S.empty())</div><div class="line">	&#123;</div><div class="line">		<span class="keyword">while</span> (p)</div><div class="line">		&#123;</div><div class="line">			S.push(p);</div><div class="line">			p = p-&gt;lchild;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">if</span> (!S.empty())</div><div class="line">		&#123;</div><div class="line">			p = S.top();</div><div class="line">			S.pop();</div><div class="line">			visit(p); <span class="comment">// 每次从栈中弹出的时候访问结点</span></div><div class="line">			p = p-&gt;rchild;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">// 初始条件：二叉树存在</span></div><div class="line"><span class="comment">// 操作结果：后序递归遍历二叉树</span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">PostOrderTraverse</span><span class="params">(BiTree T)</span></span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">if</span> (!T)</div><div class="line">		<span class="keyword">return</span>;</div><div class="line"></div><div class="line">	PostOrderTraverse(T-&gt;lchild);</div><div class="line">	PostOrderTraverse(T-&gt;rchild);</div><div class="line">	visit(T);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 后序遍历非递归形式</span></div><div class="line"><span class="comment">// 难点是分清栈中弹出根结点时，是从左子树弹出还是右子树弹出。所以使用辅助指针r。</span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">PostOrderNonRecurion</span><span class="params">(BiTree T)</span></span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">if</span> (!T)</div><div class="line">		<span class="keyword">return</span>;</div><div class="line"></div><div class="line">	<span class="built_in">stack</span>&lt;BiTNode *&gt; S;</div><div class="line">	BiTNode *p;</div><div class="line">	BiTNode *r; <span class="comment">// 用指针r记录最近访问的结点</span></div><div class="line"></div><div class="line">	p = T;</div><div class="line">	r = <span class="literal">NULL</span>;</div><div class="line">	<span class="keyword">while</span> (p || !S.empty())</div><div class="line">	&#123;</div><div class="line">		<span class="keyword">while</span> (p)</div><div class="line">		&#123;</div><div class="line">			S.push(p);</div><div class="line">			p = p-&gt;lchild;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">if</span> (!S.empty())</div><div class="line">		&#123;</div><div class="line">			p = S.top();</div><div class="line">			<span class="keyword">if</span> (p-&gt;rchild &amp;&amp; p-&gt;rchild != r) <span class="comment">// 如果右子树存在，且未访问过</span></div><div class="line">			&#123;</div><div class="line">				p = p-&gt;rchild;</div><div class="line">				S.push(p);</div><div class="line">				p = p-&gt;lchild;</div><div class="line">			&#125;</div><div class="line">			<span class="keyword">else</span></div><div class="line">			&#123;</div><div class="line">				S.pop();</div><div class="line">				visit(p);</div><div class="line">				r = p;</div><div class="line">				p = <span class="literal">NULL</span>;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 初始条件：二叉树存在</span></div><div class="line"><span class="comment">// 操作结果：层次遍历二叉树</span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">LevelOrderTraverse</span><span class="params">(BiTree T)</span></span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">if</span> (!T)</div><div class="line">		<span class="keyword">return</span>;</div><div class="line"></div><div class="line">	<span class="built_in">queue</span>&lt;BiTNode *&gt; Q; <span class="comment">// 借助队列实现层次遍历</span></div><div class="line">	BiTNode *p;</div><div class="line"></div><div class="line">	Q.push(T);</div><div class="line">	<span class="keyword">while</span> (!Q.empty())</div><div class="line">	&#123;</div><div class="line">		p = Q.front();</div><div class="line">		Q.pop();</div><div class="line">		visit(p); <span class="comment">// 每次弹出的时候访问结点</span></div><div class="line"></div><div class="line">		<span class="keyword">if</span> (p-&gt;lchild)</div><div class="line">			Q.push(p-&gt;lchild);</div><div class="line">		<span class="keyword">if</span> (p-&gt;rchild)</div><div class="line">			Q.push(p-&gt;rchild);</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 初始条件：二叉树存在</span></div><div class="line"><span class="comment">// 操作结果：访问每层二叉树最右边的结点</span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">PrintLastInEachLevel</span><span class="params">(BiTree T)</span></span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">if</span> (!T) <span class="comment">// 如果树为空，则返回</span></div><div class="line">		<span class="keyword">return</span>;</div><div class="line"></div><div class="line">	<span class="built_in">queue</span>&lt;BiTNode *&gt; Q;</div><div class="line">	BiTNode *p;</div><div class="line">	BiTNode *back; <span class="comment">// 指向每层最后一个结点的指针</span></div><div class="line"></div><div class="line">	Q.push(T);</div><div class="line">	back = Q.back();</div><div class="line">	<span class="keyword">while</span> (!Q.empty())</div><div class="line">	&#123;</div><div class="line">		p = Q.front();</div><div class="line">		Q.pop();</div><div class="line"></div><div class="line">		<span class="keyword">if</span> (p-&gt;lchild)</div><div class="line">			Q.push(p-&gt;lchild);</div><div class="line">		<span class="keyword">if</span> (p-&gt;rchild)</div><div class="line">			Q.push(p-&gt;rchild);</div><div class="line"></div><div class="line">		<span class="keyword">if</span> (p == back)</div><div class="line">		&#123;</div><div class="line">			visit(p);</div><div class="line">			<span class="keyword">if</span> (!Q.empty())</div><div class="line">				back = Q.back();</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 初始条件：二叉树存在</span></div><div class="line"><span class="comment">// 操作结果：分行输出每层二叉树的结点</span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">PrintLevelOrderByLevel</span><span class="params">(BiTree T)</span></span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">if</span> (!T)</div><div class="line">		<span class="keyword">return</span>;</div><div class="line"></div><div class="line">	<span class="built_in">queue</span>&lt;BiTNode *&gt; Q;</div><div class="line">	BiTNode *p;</div><div class="line">	BiTNode *back; <span class="comment">// 记录每层最右边的结点，从而实现分行输出</span></div><div class="line"></div><div class="line">	Q.push(T);</div><div class="line">	back = Q.back();</div><div class="line">	<span class="keyword">while</span> (!Q.empty())</div><div class="line">	&#123;</div><div class="line">		p = Q.front();</div><div class="line">		Q.pop();</div><div class="line">		visit(p);</div><div class="line"></div><div class="line">		<span class="keyword">if</span> (p-&gt;lchild)</div><div class="line">			Q.push(p-&gt;lchild);</div><div class="line">		<span class="keyword">if</span> (p-&gt;rchild)</div><div class="line">			Q.push(p-&gt;rchild);</div><div class="line"></div><div class="line">		<span class="keyword">if</span> (p == back)</div><div class="line">		&#123;</div><div class="line">			<span class="built_in">putchar</span>(<span class="string">'\n'</span>);</div><div class="line">			<span class="keyword">if</span> (!Q.empty())</div><div class="line">				back = Q.back();</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p style="text-align: justify;">本身感觉现在这些在计算机专业里面应该是太基础的东西了，不想贴出来的，但是确实这个算是一个里程碑吧——感觉自己对编程有点入门了。下一篇会把用类实现的二叉树的代码贴上来，之后再写点自学编程上面的一些感悟或者说一些经验吧。</p>
 
-printf(&amp;quot;\n前序遍历二叉树:\n&amp;quot;);
-PreOrderTraverse(T);
-//PreOrderNonRecursion(T);
-
-printf(&amp;quot;\n中序遍历二叉树:\n&amp;quot;);
-InOrderTraverse(T);
-//InOrderNonRecursion(T);
-
-printf(&amp;quot;\n后序遍历二叉树:\n&amp;quot;);
-PostOrderTraverse(T);
-//PostOrderNonRecurion(T);
-
-printf(&amp;quot;\n层次遍历二叉树:\n&amp;quot;);
-//LevelOrderTraverse(T);
-PrintLevelOrderByLevel(T);
-printf(&amp;quot;\n输出每层的最后一个结点:\n&amp;quot;);
-PrintLastInEachLevel(T);
-
-DestroyBiTree(&amp;amp;T);
-printf(&amp;quot;\n清除二叉树后,树空否？%d(1:是 0:否) 树的深度=%d\n&amp;quot;,BiTreeEmpty(T),BiTreeDepth(T));
-i=Root(T);
-if(!i)
-    printf(&amp;quot;树空，无根\n&amp;quot;);
-
-getchar();
-getchar();
-return 0;
-</code></pre><p>}</p>
-<p>//<em> 构造空二叉树T </em>/<br>Status InitBiTree(BiTree <em>T)<br>{
-    </em>T = NULL;<br>    return OK;<br>}</p>
-<p>// 按前序输入二叉树中结点的值（一个字符）<br>// #表示空树，构造二叉链表表示二叉树T。<br>void CreateBiTree(BiTree *T)<br>{<br>    TElemType ch;</p>
-<pre><code>scanf(&amp;quot;%c&amp;quot;, &amp;amp;ch);
-
-if (ch == &apos;#&apos;)
-    (*T) = NULL;
-else
-{
-    *T = (BiTree)malloc(sizeof(BiTNode));
-    if (!*T)
-        exit(OVERFLOW);
-    (*T)-&amp;gt;data = ch;
-    CreateBiTree(&amp;amp;(*T)-&amp;gt;lchild);
-    CreateBiTree(&amp;amp;(*T)-&amp;gt;rchild);
-}
-</code></pre><p>}</p>
-<p>// 初始条件: 二叉树T存在。操作结果: 销毁二叉树T<br>void DestroyBiTree(BiTree <em>T)<br>{<br>    if (</em>T)<br>    {<br>        if ((<em>T)-&gt;lchild)<br>            DestroyBiTree(&amp;(</em>T)-&gt;lchild);<br>        if ((<em>T)-&gt;rchild)<br>            DestroyBiTree(&amp;(</em>T)-&gt;rchild);<br>        free(<em>T);
-        </em>T = NULL;<br>    }<br>}</p>
-<p>// 初始条件：二叉树存在<br>// 操作结果：若T为空，则返回TRUE；否则返回FALSE<br>Status BiTreeEmpty(BiTree T)<br>{<br>    if (!T)<br>        return TRUE;<br>    else<br>        return FALSE;<br>}</p>
-<p>// 初始条件：二叉树存在<br>// 操作结果：返回T的根<br>TElemType Root(BiTree T)<br>{<br>    if (!T)<br>        return Nil;<br>    else<br>        return T-&gt;data;<br>}</p>
-<p>// 初始条件：节点存在<br>// 操作结果：输出结点的数据域<br>void visit(BiTNode *p)<br>{<br>    if (p)<br>        printf(&quot;%c &quot;, p-&gt;data);<br>}</p>
-<p>// 初始条件：二叉树存在<br>// 操作结果：返回二叉树深度<br>// 递归实现<br>int BiTreeDepth(BiTree T)<br>{<br>    if (!T)<br>        return 0;</p>
-<pre><code>int i, j;
-
-if (T-&amp;gt;lchild)
-    i = BiTreeDepth(T-&amp;gt;lchild); // 递归求出左子树高度
-else
-    i = 0;
-
-if (T-&amp;gt;rchild)
-    j = BiTreeDepth(T-&amp;gt;rchild); // 递归求出右子树高度
-else
-    j = 0;
-
-return i &amp;gt; j ? i+1 : j+1;
-</code></pre><p>}</p>
-<p>// 求二叉树高度的非递归形式<br>int BiTreeDepthNonRecursion(BiTree T)<br>{<br>    if (!T)<br>        return 0;</p>
-<pre><code>queue&amp;lt;BiTNode *&amp;gt; Q; // 借助队列实现层次遍历，从而求出高度
-BiTNode *p; // 记录队列头部
-BiTNode *back; // 记录队列尾部指针
-int level = 0; // 队列高度
-
-Q.push(T);
-back = Q.back();
-while (!Q.empty())
-{
-    p = Q.front();
-    Q.pop();
-
-    if (p-&amp;gt;lchild)
-        Q.push(p-&amp;gt;lchild);
-    if (p-&amp;gt;rchild)
-        Q.push(p-&amp;gt;rchild);
-
-    if (p == back)
-    {
-        level++;
-        if (!Q.empty()) // 防止最后Q为空时出错
-            back = Q.back();
-    }
-}
-
-return level;
-</code></pre><p>}</p>
-<p>// 求二叉树高度的非递归形式<br>int BiTreeDepthNonRecursion2(BiTree T)<br>{<br>    BiTNode <em>Q[MAXSIZE]; // 借助队列实现层次遍历，从而求出高度。此时用数组实现队列<br>    int level = 0; // 二叉树高度<br>    int last = 0; // 每层次最后一个结点<br>    int front = -1; // 队列头指针<br>    int rear = -1; // 队列尾指针<br>    BiTNode </em>p;</p>
-<pre><code>Q[++rear] = T;
-last = rear;
-while (front &amp;lt; rear) // 队列不空
-{
-    p = Q[++front];
-
-    if (p-&amp;gt;lchild)
-        Q[++rear] = p-&amp;gt;lchild;
-    if (p-&amp;gt;rchild)
-        Q[++rear] = p-&amp;gt;rchild;
-
-    if (front == last)
-    {
-        level++;
-        if (front &amp;lt; rear)
-            last = rear;
-    }
-}
-
-return level;
-</code></pre><p>}</p>
-<p>// 初始条件：二叉树存在<br>// 操作结果：前序遍历二叉树<br>void PreOrderTraverse(BiTree T)<br>{<br>    if (!T)<br>        return;</p>
-<pre><code>visit(T);
-PreOrderTraverse(T-&amp;gt;lchild);
-PreOrderTraverse(T-&amp;gt;rchild);
-</code></pre><p>}</p>
-<p>// 前序遍历非递归形式<br>void PreOrderNonRecursion(BiTree T)<br>{<br>    if (!T)<br>        return;</p>
-<pre><code>stack&amp;lt;BiTNode *&amp;gt; S; // 借助栈实现非递归遍历
-BiTNode *p;
-
-p = T;
-while (p || !S.empty())
-{
-    while (p)
-    {
-        S.push(p);
-        visit(p); // 在每次入栈时进行访问
-        p = p-&amp;gt;lchild;
-    }
-    if (!S.empty())
-    {
-        p = S.top(); 
-        S.pop();
-        p = p-&amp;gt;rchild;
-    }
-}
-</code></pre><p>}</p>
-<p>// 初始条件：二叉树存在<br>// 操作结果：中序遍历二叉树<br>void InOrderTraverse(BiTree T)<br>{<br>    if (!T)<br>        return;</p>
-<pre><code>InOrderTraverse(T-&amp;gt;lchild);
-visit(T);
-InOrderTraverse(T-&amp;gt;rchild);
-</code></pre><p>}</p>
-<p>// 中序遍历二叉树非递归形式<br>void InOrderNonRecursion(BiTree T)<br>{<br>    if (!T)<br>        return;</p>
-<pre><code>stack&amp;lt;BiTNode *&amp;gt; S;
-BiTNode *p;
-
-p = T;
-while (p || !S.empty())
-{
-    while (p)
-    {
-        S.push(p);
-        p = p-&amp;gt;lchild;
-    }
-    if (!S.empty())
-    {
-        p = S.top();
-        S.pop();
-        visit(p); // 每次从栈中弹出的时候访问结点
-        p = p-&amp;gt;rchild;
-    }
-}
-</code></pre><p>}</p>
-<p>// 初始条件：二叉树存在<br>// 操作结果：后序递归遍历二叉树<br>void PostOrderTraverse(BiTree T)<br>{<br>    if (!T)<br>        return;</p>
-<pre><code>PostOrderTraverse(T-&amp;gt;lchild);
-PostOrderTraverse(T-&amp;gt;rchild);
-visit(T);
-</code></pre><p>}</p>
-<p>// 后序遍历非递归形式<br>// 难点是分清栈中弹出根结点时，是从左子树弹出还是右子树弹出。所以使用辅助指针r。<br>void PostOrderNonRecurion(BiTree T)<br>{<br>    if (!T)<br>        return;</p>
-<pre><code>stack&amp;lt;BiTNode *&amp;gt; S;
-BiTNode *p;
-BiTNode *r; // 用指针r记录最近访问的结点
-
-p = T;
-r = NULL;
-while (p || !S.empty())
-{
-    while (p)
-    {
-        S.push(p);
-        p = p-&amp;gt;lchild;
-    }
-    if (!S.empty())
-    {
-        p = S.top();
-        if (p-&amp;gt;rchild &amp;amp;&amp;amp; p-&amp;gt;rchild != r) // 如果右子树存在，且未访问过
-        {
-            p = p-&amp;gt;rchild;
-            S.push(p);
-            p = p-&amp;gt;lchild;
-        }
-        else
-        {
-            S.pop();
-            visit(p);
-            r = p;
-            p = NULL;
-        }
-    }
-}
-</code></pre><p>}</p>
-<p>// 初始条件：二叉树存在<br>// 操作结果：层次遍历二叉树<br>void LevelOrderTraverse(BiTree T)<br>{<br>    if (!T)<br>        return;</p>
-<pre><code>queue&amp;lt;BiTNode *&amp;gt; Q; // 借助队列实现层次遍历
-BiTNode *p;
-
-Q.push(T);
-while (!Q.empty())
-{
-    p = Q.front();
-    Q.pop();
-    visit(p); // 每次弹出的时候访问结点
-
-    if (p-&amp;gt;lchild)
-        Q.push(p-&amp;gt;lchild);
-    if (p-&amp;gt;rchild)
-        Q.push(p-&amp;gt;rchild);
-}
-</code></pre><p>}</p>
-<p>// 初始条件：二叉树存在<br>// 操作结果：访问每层二叉树最右边的结点<br>void PrintLastInEachLevel(BiTree T)<br>{<br>    if (!T) // 如果树为空，则返回<br>        return;</p>
-<pre><code>queue&amp;lt;BiTNode *&amp;gt; Q;
-BiTNode *p;
-BiTNode *back; // 指向每层最后一个结点的指针
-
-Q.push(T);
-back = Q.back();
-while (!Q.empty())
-{
-    p = Q.front();
-    Q.pop();
-
-    if (p-&amp;gt;lchild)
-        Q.push(p-&amp;gt;lchild);
-    if (p-&amp;gt;rchild)
-        Q.push(p-&amp;gt;rchild);
-
-    if (p == back)
-    {
-        visit(p);
-        if (!Q.empty())
-            back = Q.back();
-    }
-}
-</code></pre><p>}</p>
-<p>// 初始条件：二叉树存在<br>// 操作结果：分行输出每层二叉树的结点<br>void PrintLevelOrderByLevel(BiTree T)<br>{<br>    if (!T)<br>        return;</p>
-<pre><code>queue&amp;lt;BiTNode *&amp;gt; Q;
-BiTNode *p;
-BiTNode *back; // 记录每层最右边的结点，从而实现分行输出
-
-Q.push(T);
-back = Q.back();
-while (!Q.empty())
-{
-    p = Q.front();
-    Q.pop();
-    visit(p);
-
-    if (p-&amp;gt;lchild)
-        Q.push(p-&amp;gt;lchild);
-    if (p-&amp;gt;rchild)
-        Q.push(p-&amp;gt;rchild);
-
-    if (p == back)
-    {
-        putchar(&apos;\n&apos;);
-        if (!Q.empty())
-            back = Q.back();
-    }
-}
-</code></pre><p>}<br>[/code]</p>
-<p>本身感觉现在这些在计算机专业里面应该是太基础的东西了，不想贴出来的，但是确实这个算是一个里程碑吧——感觉自己对编程有点入门了。下一篇会把用类实现的二叉树的代码贴上来，之后再写点自学编程上面的一些感悟或者说一些经验吧。</p>
 <p>参考资料：</p>
 <p>1.<span style="color: #0000ff;"><a href="https://book.douban.com/subject/6424904/" target="_blank" rel="external">《大话数据结构》</a></span></p>
 
@@ -411,11 +112,11 @@ while (!Q.empty())
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/the-implement-of-binary-tree-in-cpp/" data-id="ciw6hew1q000fr8ez0epfmc53" class="article-share-link" data-share="baidu" data-title="二叉树的实现以及相关操作C/C++">Share</a>
+        <a data-url="http://yoursite.com/the-implement-of-binary-tree-in-cpp/" data-id="ciw6kv1fr000hwsez42wspq3y" class="article-share-link" data-share="baidu" data-title="二叉树的实现以及相关操作C/C++">分享到</a>
       
 
       
-        <a href="http://yoursite.com/the-implement-of-binary-tree-in-cpp/#ds-thread" class="article-comment-link">Comments</a>
+        <a href="http://yoursite.com/the-implement-of-binary-tree-in-cpp/#ds-thread" class="article-comment-link">評論</a>
       
 
       
@@ -476,11 +177,11 @@ while (!Q.empty())
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/a-smart-way-to-insert-a-new-node-in-sorted-singly-linked-list/" data-id="ciw6hew1e0006r8ezmo49ktog" class="article-share-link" data-share="baidu" data-title="顺序单链表插入新节点的一种方法">Share</a>
+        <a data-url="http://yoursite.com/a-smart-way-to-insert-a-new-node-in-sorted-singly-linked-list/" data-id="ciw6kv1fc0005wsezgwnfqtaj" class="article-share-link" data-share="baidu" data-title="顺序单链表插入新节点的一种方法">分享到</a>
       
 
       
-        <a href="http://yoursite.com/a-smart-way-to-insert-a-new-node-in-sorted-singly-linked-list/#ds-thread" class="article-comment-link">Comments</a>
+        <a href="http://yoursite.com/a-smart-way-to-insert-a-new-node-in-sorted-singly-linked-list/#ds-thread" class="article-comment-link">評論</a>
       
 
       
@@ -563,11 +264,11 @@ while (!Q.empty())
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/the-timeline-of-my-blog/" data-id="ciw6hew20000qr8ezaa4tmfao" class="article-share-link" data-share="baidu" data-title="博客时间轴">Share</a>
+        <a data-url="http://yoursite.com/the-timeline-of-my-blog/" data-id="ciw6kv1fl000awsez5gni76zk" class="article-share-link" data-share="baidu" data-title="博客时间轴">分享到</a>
       
 
       
-        <a href="http://yoursite.com/the-timeline-of-my-blog/#ds-thread" class="article-comment-link">Comments</a>
+        <a href="http://yoursite.com/the-timeline-of-my-blog/#ds-thread" class="article-comment-link">評論</a>
       
 
       
@@ -583,7 +284,7 @@ while (!Q.empty())
 
 
   <nav id="page-nav">
-    <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
+    <a class="extend prev" rel="prev" href="/page/2/">&laquo; 上一頁</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
   </nav>
 </section>
       
@@ -591,7 +292,7 @@ while (!Q.empty())
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
+    <h3 class="widget-title">歸檔</h3>
     <div class="widget">
       <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a><span class="archive-list-count">2</span></li></ul>
     </div>
@@ -600,7 +301,7 @@ while (!Q.empty())
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Categories</h3>
+    <h3 class="widget-title">分類</h3>
     <div class="widget">
       <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/建站相关/">建站相关</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/编程学习/">编程学习</a><span class="category-list-count">6</span></li></ul>
     </div>
@@ -609,7 +310,7 @@ while (!Q.empty())
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Tags</h3>
+    <h3 class="widget-title">標簽</h3>
     <div class="widget">
       <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C-C/">C/C++</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/我的博客/">我的博客</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/深度学习/">深度学习</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a><span class="tag-list-count">2</span></li></ul>
     </div>
@@ -639,7 +340,7 @@ while (!Q.empty())
 </nav>
   <!-- totop start -->
 <div id="totop">
-<a title="totop"><img src="/img/scrollup.png"/></a>
+<a title="返回頂部"><img src="/img/scrollup.png"/></a>
 </div>
 
 <!-- totop end -->

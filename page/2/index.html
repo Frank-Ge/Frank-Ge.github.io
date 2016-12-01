@@ -145,11 +145,11 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/matconvnet-installation-in-windows-system/" data-id="ciw6hew1p000er8ez4dpkgi1l" class="article-share-link" data-share="baidu" data-title="windows下MatConvNet深度学习框架的搭建">Share</a>
+        <a data-url="http://yoursite.com/matconvnet-installation-in-windows-system/" data-id="ciw6kv1f90004wsezzkcsz8jc" class="article-share-link" data-share="baidu" data-title="windows下MatConvNet深度学习框架的搭建">分享到</a>
       
 
       
-        <a href="http://yoursite.com/matconvnet-installation-in-windows-system/#ds-thread" class="article-comment-link">Comments</a>
+        <a href="http://yoursite.com/matconvnet-installation-in-windows-system/#ds-thread" class="article-comment-link">評論</a>
       
 
       
@@ -239,11 +239,11 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/getting-start-to-dynamic-programming-part1-some-exercises-from-lintcode/" data-id="ciw6hew0q0000r8ezhqwlpszo" class="article-share-link" data-share="baidu" data-title="浅谈动态规划（一）——从lintcode刷题入门">Share</a>
+        <a data-url="http://yoursite.com/getting-start-to-dynamic-programming-part1-some-exercises-from-lintcode/" data-id="ciw6kv1ez0000wsezag868v8x" class="article-share-link" data-share="baidu" data-title="浅谈动态规划（一）——从lintcode刷题入门">分享到</a>
       
 
       
-        <a href="http://yoursite.com/getting-start-to-dynamic-programming-part1-some-exercises-from-lintcode/#ds-thread" class="article-comment-link">Comments</a>
+        <a href="http://yoursite.com/getting-start-to-dynamic-programming-part1-some-exercises-from-lintcode/#ds-thread" class="article-comment-link">評論</a>
       
 
       
@@ -282,347 +282,25 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>最近看数据结构看到二叉树的时候，自己实现了一下，同时写成了类，正好复习一下以前看C++的一些知识。代码如下。</p>
-<p>[code lang=”cpp”]<br>// BiTNode.h<br>// 参照《c++大学教程》中P639页编写<br>// 模版结点BiTNode类的声明</p>
-<p>#ifndef BITNODE_H</p>
-<p>#define BITNODE_H</p>
-<p>// 声明BiNTree类型<br>template&lt;typename NODETYPE&gt; class BiTree;</p>
-<p>template&lt;typename NODETYPE&gt;<br>class BiTNode<br>{<br>    // 声明友元BiNTree类，使得BiTree类可以访问BiTNode类中的private成员<br>    friend class BiTree&lt;NODETYPE&gt;;</p>
-<p>public:<br>    BiTNode(const NODETYPE &amp;d)<br>        : lchild(0),<br>            data(d),<br>            rchild(0)<br>    {<br>    }</p>
-<pre><code>NODETYPE getData() const
-{
-    return data;
-}
-</code></pre><p>private:<br>    BiTNode&lt;NODETYPE&gt; <em>lchild;<br>    NODETYPE data;<br>    BiTNode&lt;NODETYPE&gt; </em>rchild;<br>};</p>
-<p>#endif<br>[/code]</p>
-<p>[code lang=”cpp”]<br>// BiTree.h<br>// 链表二叉树类模版的定义</p>
-<p>#ifndef BITREE_H</p>
-<p>#define BITREE_H</p>
-<p>#include &lt;iostream&gt;</p>
-<p>#include &lt;iomanip&gt;</p>
-<p>#include &quot;BiTNode.h&quot;</p>
-<p>#include &lt;queue&gt;</p>
-<p>#include &lt;stack&gt;<br>using namespace std;</p>
-<p>typedef int Status;</p>
-<p>#define OK    1</p>
-<p>#define ERROR    0</p>
-<p>#define TRUE    1</p>
-<p>#define FALSE    0</p>
-<p>template&lt;typename NODETYPE&gt;<br>class BiTree<br>{<br>public:<br>    BiTree();</p>
-<pre><code>void CreateBiTree();
-void DestroyBiTree();
-Status BiTreeEmpty();
-NODETYPE Root();
+        <p style="text-align: justify;">最近看数据结构看到二叉树的时候，自己实现了一下，同时写成了类，正好复习一下以前看C++的一些知识。代码如下。</p>
 
-int BiTreeDepth();
-int BiTreeDepthNonRecursion();
-
-void PreOrderTraverse();
-void PreOrderNonRecursion();
-void InOrderTraverse();
-void InOrderNonRecursion();
-void PostOrderTraverse();
-void PostOrderNonRecursion();
-void LevelOrderTraverse();
-
-void PrintLast();
-void PrintByDepth();
-</code></pre><p>private:<br>    BiTNode&lt;NODETYPE&gt; *rootPtr;</p>
-<pre><code>// utility function
-void visit(BiTNode&amp;lt;NODETYPE&amp;gt; *p);
-void CreateBiTreeHelper(BiTNode&amp;lt;NODETYPE&amp;gt; **T);
-void DestroyBiTreeHelper(BiTNode&amp;lt;NODETYPE&amp;gt; **T);
-int BiTreeDepthHelper(BiTNode&amp;lt;NODETYPE&amp;gt; *T);
-
-// 用helper函数的原因是对二叉树进行遍历要传入参数
-void PreOrderTraverseHelper(BiTNode&amp;lt;NODETYPE&amp;gt; *T);
-void InOrderTraverseHelper(BiTNode&amp;lt;NODETYPE&amp;gt; *T);
-void PostOrderTraverseHelper(BiTNode&amp;lt;NODETYPE&amp;gt; *T);
-</code></pre><p>};</p>
-<p>template&lt;typename NODETYPE&gt;<br>BiTree&lt;NODETYPE&gt;::BiTree()<br>{<br>    rootPtr = 0;<br>}</p>
-<p>template&lt;typename NODETYPE&gt;<br>Status BiTree&lt;NODETYPE&gt;::BiTreeEmpty()<br>{<br>    if (rootPtr)<br>        return FALSE;<br>    else<br>        return TRUE;<br>}</p>
-<p>template&lt;typename NODETYPE&gt;<br>void BiTree&lt;NODETYPE&gt;::CreateBiTree()<br>{<br>    CreateBiTreeHelper(&amp;rootPtr);<br>}</p>
-<p>// 按前序输入二叉树中结点的值（一个字符）<br>// #表示空树，构造二叉链表表示二叉树T。<br>template&lt;typename NODETYPE&gt;<br>void BiTree&lt;NODETYPE&gt;::CreateBiTreeHelper(BiTNode&lt;NODETYPE&gt; **T)<br>{<br>    NODETYPE val;</p>
-<pre><code>cin &amp;gt;&amp;gt; val;
-
-if (val == &apos;#&apos;)
-    *T = NULL;
-else
-{
-    *T = new BiTNode&amp;lt;NODETYPE&amp;gt;(val);
-    CreateBiTreeHelper(&amp;amp;(*T)-&amp;gt;lchild);
-    CreateBiTreeHelper(&amp;amp;(*T)-&amp;gt;rchild);
-}
-</code></pre><p>}</p>
-<p>template&lt;typename NODETYPE&gt;<br>void BiTree&lt;NODETYPE&gt;::DestroyBiTree()<br>{<br>    DestroyBiTreeHelper(&amp;rootPtr);<br>}</p>
-<p>template&lt;typename NODETYPE&gt;<br>void BiTree&lt;NODETYPE&gt;::DestroyBiTreeHelper(BiTNode&lt;NODETYPE&gt; <em>*T)<br>{<br>    if (</em>T)<br>    {<br>        if ((<em>T)-&gt;lchild)<br>            DestroyBiTreeHelper(&amp;(</em>T)-&gt;lchild);<br>        if ((<em>T)-&gt;rchild)<br>            DestroyBiTreeHelper(&amp;(</em>T)-&gt;rchild);<br>        free(<em>T);
-        </em>T = NULL;<br>    }<br>}</p>
-<p>template&lt;typename NODETYPE&gt;<br>int BiTree&lt;NODETYPE&gt;::BiTreeDepth()<br>{<br>    return BiTreeDepthHelper(rootPtr);<br>}</p>
-<p>template&lt;typename NODETYPE&gt;<br>int BiTree&lt;NODETYPE&gt;::BiTreeDepthHelper(BiTNode&lt;NODETYPE&gt; *T)<br>{<br>    int i, j;</p>
-<pre><code>if (!T)
-    return 0;
-
-if (T-&amp;gt;lchild)
-    i = BiTreeDepthHelper(T-&amp;gt;lchild);
-else 
-    i = 0;
-if (T-&amp;gt;rchild)
-    j = BiTreeDepthHelper(T-&amp;gt;rchild);
-else
-    j = 0;
-
-return i &amp;gt; j ? i+1 : j+1;
-</code></pre><p>}</p>
-<p>template&lt;typename NODETYPE&gt;<br>NODETYPE BiTree&lt;NODETYPE&gt;::Root()<br>{<br>    if (!rootPtr)<br>        return ‘ ‘;<br>    else<br>        return rootPtr-&gt;data;<br>}</p>
-<p>// 借用层次遍历的思想，实现非递归形式求出二叉树深度<br>template&lt;typename NODETYPE&gt;<br>int BiTree&lt;NODETYPE&gt;::BiTreeDepthNonRecursion()<br>{<br>    if (!rootPtr)<br>        return 0;</p>
-<pre><code>BiTNode&amp;lt;NODETYPE&amp;gt; *p; // 工作指针，每次记录从队列队首弹出的结点
-BiTNode&amp;lt;NODETYPE&amp;gt; *back; // 记录每层二叉树的最右边的结点。此结点在每次遍历一层之后的队列队尾
-int level = 0; // 层数，初始值为0
-queue&amp;lt;BiTNode&amp;lt;NODETYPE&amp;gt; *&amp;gt; Q;
-
-Q.push(rootPtr);
-back = Q.back();
-while (!Q.empty())
-{
-    p = Q.front();
-    Q.pop();
-
-    if (p-&amp;gt;lchild)
-        Q.push(p-&amp;gt;lchild);
-    if (p-&amp;gt;rchild)
-        Q.push(p-&amp;gt;rchild);
-
-    if (p == back) // 如果p == 每层的最右边的结点，则层数+1，同时重新赋值队尾结点
-    {
-        level++;
-        if (!Q.empty()) // 如果队列为空，则下一步的操作出错。主要用于防止最后一个结点弹出队列之后的那次操作
-            back = Q.back();
-    }
-}
-
-return level;
-</code></pre><p>}</p>
-<p>template&lt;typename NODETYPE&gt;<br>void BiTree&lt;NODETYPE&gt;::PreOrderTraverse()<br>{<br>    PreOrderTraverseHelper(rootPtr);<br>}</p>
-<p>template&lt;typename NODETYPE&gt;<br>void BiTree&lt;NODETYPE&gt;::PreOrderTraverseHelper(BiTNode&lt;NODETYPE&gt; *T)<br>{<br>    if (!T)<br>        return;</p>
-<pre><code>visit(T);
-PreOrderTraverseHelper(T-&amp;gt;lchild);
-PreOrderTraverseHelper(T-&amp;gt;rchild);
-</code></pre><p>}</p>
-<p>// 前序遍历非递归形式<br>template&lt;typename NODETYPE&gt;<br>void BiTree&lt;NODETYPE&gt;::PreOrderNonRecursion()<br>{<br>    if (!rootPtr)<br>        return;</p>
-<pre><code>BiTNode&amp;lt;NODETYPE&amp;gt; *p;
-stack&amp;lt;BiTNode&amp;lt;NODETYPE&amp;gt; *&amp;gt; S; // 借助栈实现非递归的前序遍历
-
-p = rootPtr;
-while (p || !S.empty())
-{
-    while (p) 
-    {
-        visit(p); // 在每次入栈之前进行访问
-        S.push(p);
-        p = p-&amp;gt;lchild;
-    }
-    if (!S.empty())
-    {
-        p = S.top();
-        S.pop();
-        p = p-&amp;gt;rchild;
-    }
-}
-</code></pre><p>}</p>
-<p>template&lt;typename NODETYPE&gt;<br>void BiTree&lt;NODETYPE&gt;::InOrderTraverse()<br>{<br>    InOrderTraverseHelper(rootPtr);<br>}</p>
-<p>template&lt;typename NODETYPE&gt;<br>void BiTree&lt;NODETYPE&gt;::InOrderTraverseHelper(BiTNode&lt;NODETYPE&gt; *T)<br>{<br>    if (!T)<br>        return;</p>
-<pre><code>InOrderTraverseHelper(T-&amp;gt;lchild);
-visit(T);
-InOrderTraverseHelper(T-&amp;gt;rchild);
-</code></pre><p>}</p>
-<p>template&lt;typename NODETYPE&gt;<br>void BiTree&lt;NODETYPE&gt;::InOrderNonRecursion()<br>{<br>    if (!rootPtr)<br>        return;</p>
-<pre><code>BiTNode&amp;lt;NODETYPE&amp;gt; *p;
-stack&amp;lt;BiTNode&amp;lt;NODETYPE&amp;gt; *&amp;gt; S;
-
-p = rootPtr;
-while (p || !S.empty())
-{
-    while (p)
-    {
-        S.push(p);
-        p = p-&amp;gt;lchild;
-    }
-    if (!S.empty())
-    {
-        p = S.top();
-        S.pop();
-        visit(p); // 在每次出栈之时进行访问
-        p = p-&amp;gt;rchild;
-    }
-}
-</code></pre><p>}</p>
-<p>template&lt;typename NODETYPE&gt;<br>void BiTree&lt;NODETYPE&gt;::PostOrderTraverse()<br>{<br>    PostOrderTraverseHelper(rootPtr);<br>}</p>
-<p>template&lt;typename NODETYPE&gt;<br>void BiTree&lt;NODETYPE&gt;::PostOrderTraverseHelper(BiTNode&lt;NODETYPE&gt; *T)<br>{<br>    if (!T)<br>        return;</p>
-<pre><code>PostOrderTraverseHelper(T-&amp;gt;lchild);
-PostOrderTraverseHelper(T-&amp;gt;rchild);
-visit(T);
-</code></pre><p>}</p>
-<p>template&lt;typename NODETYPE&gt;<br>void BiTree&lt;NODETYPE&gt;::PostOrderNonRecursion()<br>{<br>    if (!rootPtr)<br>        return;</p>
-<pre><code>BiTNode&amp;lt;NODETYPE&amp;gt; *p;
-BiTNode&amp;lt;NODETYPE&amp;gt; *r; // 用于记录栈中弹出的结点的右子树是否访问过
-stack&amp;lt;BiTNode&amp;lt;NODETYPE&amp;gt; *&amp;gt; S;
-
-p = rootPtr;
-r = NULL;
-while (p || !S.empty())
-{
-    while (p)
-    {
-        S.push(p);
-        p = p-&amp;gt;lchild;
-    }
-    if (!S.empty())
-    {
-        p = S.top();
-        if (p-&amp;gt;rchild &amp;amp;&amp;amp; p-&amp;gt;rchild != r) // 此结点的右子树尚未入栈
-        {
-            p = p-&amp;gt;rchild;
-            S.push(p);
-            p = p-&amp;gt;lchild;
-        }
-        else
-        {
-            S.pop();
-            visit(p); // 每次出栈时访问结点
-            r = p;
-            p = NULL;
-        }
-    }
-}
-</code></pre><p>}</p>
-<p>template&lt;typename NODETYPE&gt;<br>void BiTree&lt;NODETYPE&gt;::LevelOrderTraverse()<br>{<br>    if (!rootPtr)<br>        return;</p>
-<pre><code>BiTNode&amp;lt;NODETYPE&amp;gt; *p;
-BiTNode&amp;lt;NODETYPE&amp;gt; *back; // 操作中记录队列尾部的指针
-queue&amp;lt;BiTNode&amp;lt;NODETYPE&amp;gt; *&amp;gt; Q; // 使用辅助队列
-
-Q.push(rootPtr);
-back = Q.back();
-while (!Q.empty())
-{
-    p = Q.front();
-    Q.pop();
-    visit(p);
-
-    if (p-&amp;gt;lchild)
-        Q.push(p-&amp;gt;lchild);
-    if (p-&amp;gt;rchild)
-        Q.push(p-&amp;gt;rchild);
-}
-</code></pre><p>}</p>
-<p>template&lt;typename NODETYPE&gt;<br>void BiTree&lt;NODETYPE&gt;::PrintLast()<br>{<br>    if (!rootPtr)<br>        return;</p>
-<pre><code>BiTNode&amp;lt;NODETYPE&amp;gt; *p;
-BiTNode&amp;lt;NODETYPE&amp;gt; *back; // 操作中记录队列尾部的指针
-queue&amp;lt;BiTNode&amp;lt;NODETYPE&amp;gt; *&amp;gt; Q; // 使用辅助队列
-
-Q.push(rootPtr);
-back = Q.back();
-while (!Q.empty())
-{
-    p = Q.front();
-    Q.pop();
-
-    if (p-&amp;gt;lchild)
-        Q.push(p-&amp;gt;lchild);
-    if (p-&amp;gt;rchild)
-        Q.push(p-&amp;gt;rchild);
-
-    if (p == back)
-    {
-        visit(p);
-        if (!Q.empty())
-            back = Q.back(); // 更新back指针的位置
-    }
-}
-</code></pre><p>}</p>
-<p>template&lt;typename NODETYPE&gt;<br>void BiTree&lt;NODETYPE&gt;::PrintByDepth()<br>{<br>    if (!rootPtr)<br>        return;</p>
-<pre><code>BiTNode&amp;lt;NODETYPE&amp;gt; *p;
-BiTNode&amp;lt;NODETYPE&amp;gt; *back; // 操作中记录队列尾部的指针
-queue&amp;lt;BiTNode&amp;lt;NODETYPE&amp;gt; *&amp;gt; Q; // 使用辅助队列
-
-Q.push(rootPtr);
-back = Q.back();
-while (!Q.empty())
-{
-    p = Q.front();
-    Q.pop();
-    visit(p);
-
-    if (p-&amp;gt;lchild)
-        Q.push(p-&amp;gt;lchild);
-    if (p-&amp;gt;rchild)
-        Q.push(p-&amp;gt;rchild);
-
-    if (p == back)
-    {
-        cout &amp;lt;&amp;lt; endl;
-        if (!Q.empty())
-            back = Q.back(); // 更新back指针的位置
-    }
-}
-</code></pre><p>}</p>
-<p>template&lt;typename NODETYPE&gt;<br>void BiTree&lt;NODETYPE&gt;::visit(BiTNode&lt;NODETYPE&gt; *p)<br>{<br>    cout &lt;&lt; left &lt;&lt; setw(5) &lt;&lt; p-&gt;data;<br>}</p>
-<p>#endif<br>[/code]</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// BiTNode.h</span></div><div class="line"><span class="comment">// 参照《c++大学教程》中P639页编写</span></div><div class="line"><span class="comment">// 模版结点BiTNode类的声明</span></div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> BITNODE_H</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> BITNODE_H</span></div><div class="line"></div><div class="line"><span class="comment">// 声明BiNTree类型</span></div><div class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> NODETYPE&gt; <span class="keyword">class</span> BiTree;</div><div class="line"></div><div class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> NODETYPE&gt;</div><div class="line"><span class="keyword">class</span> BiTNode</div><div class="line">&#123;</div><div class="line">	<span class="comment">// 声明友元BiNTree类，使得BiTree类可以访问BiTNode类中的private成员</span></div><div class="line">	<span class="keyword">friend</span> <span class="keyword">class</span> BiTree&lt;NODETYPE&gt;;</div><div class="line"></div><div class="line"><span class="keyword">public</span>:</div><div class="line">	BiTNode(<span class="keyword">const</span> NODETYPE &amp;d) </div><div class="line">		: lchild(<span class="number">0</span>), </div><div class="line">			data(d),</div><div class="line">			rchild(<span class="number">0</span>)</div><div class="line">	&#123;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="function">NODETYPE <span class="title">getData</span><span class="params">()</span> <span class="keyword">const</span></span></div><div class="line">	&#123;</div><div class="line">		<span class="keyword">return</span> data;</div><div class="line">	&#125;</div><div class="line"></div><div class="line"><span class="keyword">private</span>:</div><div class="line">	BiTNode&lt;NODETYPE&gt; *lchild;</div><div class="line">	NODETYPE data;</div><div class="line">	BiTNode&lt;NODETYPE&gt; *rchild;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></div></pre></td></tr></table></figure>
+<p><br><br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div><div class="line">158</div><div class="line">159</div><div class="line">160</div><div class="line">161</div><div class="line">162</div><div class="line">163</div><div class="line">164</div><div class="line">165</div><div class="line">166</div><div class="line">167</div><div class="line">168</div><div class="line">169</div><div class="line">170</div><div class="line">171</div><div class="line">172</div><div class="line">173</div><div class="line">174</div><div class="line">175</div><div class="line">176</div><div class="line">177</div><div class="line">178</div><div class="line">179</div><div class="line">180</div><div class="line">181</div><div class="line">182</div><div class="line">183</div><div class="line">184</div><div class="line">185</div><div class="line">186</div><div class="line">187</div><div class="line">188</div><div class="line">189</div><div class="line">190</div><div class="line">191</div><div class="line">192</div><div class="line">193</div><div class="line">194</div><div class="line">195</div><div class="line">196</div><div class="line">197</div><div class="line">198</div><div class="line">199</div><div class="line">200</div><div class="line">201</div><div class="line">202</div><div class="line">203</div><div class="line">204</div><div class="line">205</div><div class="line">206</div><div class="line">207</div><div class="line">208</div><div class="line">209</div><div class="line">210</div><div class="line">211</div><div class="line">212</div><div class="line">213</div><div class="line">214</div><div class="line">215</div><div class="line">216</div><div class="line">217</div><div class="line">218</div><div class="line">219</div><div class="line">220</div><div class="line">221</div><div class="line">222</div><div class="line">223</div><div class="line">224</div><div class="line">225</div><div class="line">226</div><div class="line">227</div><div class="line">228</div><div class="line">229</div><div class="line">230</div><div class="line">231</div><div class="line">232</div><div class="line">233</div><div class="line">234</div><div class="line">235</div><div class="line">236</div><div class="line">237</div><div class="line">238</div><div class="line">239</div><div class="line">240</div><div class="line">241</div><div class="line">242</div><div class="line">243</div><div class="line">244</div><div class="line">245</div><div class="line">246</div><div class="line">247</div><div class="line">248</div><div class="line">249</div><div class="line">250</div><div class="line">251</div><div class="line">252</div><div class="line">253</div><div class="line">254</div><div class="line">255</div><div class="line">256</div><div class="line">257</div><div class="line">258</div><div class="line">259</div><div class="line">260</div><div class="line">261</div><div class="line">262</div><div class="line">263</div><div class="line">264</div><div class="line">265</div><div class="line">266</div><div class="line">267</div><div class="line">268</div><div class="line">269</div><div class="line">270</div><div class="line">271</div><div class="line">272</div><div class="line">273</div><div class="line">274</div><div class="line">275</div><div class="line">276</div><div class="line">277</div><div class="line">278</div><div class="line">279</div><div class="line">280</div><div class="line">281</div><div class="line">282</div><div class="line">283</div><div class="line">284</div><div class="line">285</div><div class="line">286</div><div class="line">287</div><div class="line">288</div><div class="line">289</div><div class="line">290</div><div class="line">291</div><div class="line">292</div><div class="line">293</div><div class="line">294</div><div class="line">295</div><div class="line">296</div><div class="line">297</div><div class="line">298</div><div class="line">299</div><div class="line">300</div><div class="line">301</div><div class="line">302</div><div class="line">303</div><div class="line">304</div><div class="line">305</div><div class="line">306</div><div class="line">307</div><div class="line">308</div><div class="line">309</div><div class="line">310</div><div class="line">311</div><div class="line">312</div><div class="line">313</div><div class="line">314</div><div class="line">315</div><div class="line">316</div><div class="line">317</div><div class="line">318</div><div class="line">319</div><div class="line">320</div><div class="line">321</div><div class="line">322</div><div class="line">323</div><div class="line">324</div><div class="line">325</div><div class="line">326</div><div class="line">327</div><div class="line">328</div><div class="line">329</div><div class="line">330</div><div class="line">331</div><div class="line">332</div><div class="line">333</div><div class="line">334</div><div class="line">335</div><div class="line">336</div><div class="line">337</div><div class="line">338</div><div class="line">339</div><div class="line">340</div><div class="line">341</div><div class="line">342</div><div class="line">343</div><div class="line">344</div><div class="line">345</div><div class="line">346</div><div class="line">347</div><div class="line">348</div><div class="line">349</div><div class="line">350</div><div class="line">351</div><div class="line">352</div><div class="line">353</div><div class="line">354</div><div class="line">355</div><div class="line">356</div><div class="line">357</div><div class="line">358</div><div class="line">359</div><div class="line">360</div><div class="line">361</div><div class="line">362</div><div class="line">363</div><div class="line">364</div><div class="line">365</div><div class="line">366</div><div class="line">367</div><div class="line">368</div><div class="line">369</div><div class="line">370</div><div class="line">371</div><div class="line">372</div><div class="line">373</div><div class="line">374</div><div class="line">375</div><div class="line">376</div><div class="line">377</div><div class="line">378</div><div class="line">379</div><div class="line">380</div><div class="line">381</div><div class="line">382</div><div class="line">383</div><div class="line">384</div><div class="line">385</div><div class="line">386</div><div class="line">387</div><div class="line">388</div><div class="line">389</div><div class="line">390</div><div class="line">391</div><div class="line">392</div><div class="line">393</div><div class="line">394</div><div class="line">395</div><div class="line">396</div><div class="line">397</div><div class="line">398</div><div class="line">399</div><div class="line">400</div><div class="line">401</div><div class="line">402</div><div class="line">403</div><div class="line">404</div><div class="line">405</div><div class="line">406</div><div class="line">407</div><div class="line">408</div><div class="line">409</div><div class="line">410</div><div class="line">411</div><div class="line">412</div><div class="line">413</div><div class="line">414</div><div class="line">415</div><div class="line">416</div><div class="line">417</div><div class="line">418</div><div class="line">419</div><div class="line">420</div><div class="line">421</div><div class="line">422</div><div class="line">423</div><div class="line">424</div><div class="line">425</div><div class="line">426</div><div class="line">427</div><div class="line">428</div><div class="line">429</div><div class="line">430</div><div class="line">431</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// BiTree.h</span></div><div class="line"><span class="comment">// 链表二叉树类模版的定义</span></div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> BITREE_H</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> BITREE_H</span></div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iomanip&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"BiTNode.h"</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;queue&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stack&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="keyword">typedef</span> <span class="keyword">int</span> Status;</div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> OK	1</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> ERROR	0</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> TRUE	1</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> FALSE	0</span></div><div class="line"></div><div class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> NODETYPE&gt;</div><div class="line"><span class="keyword">class</span> BiTree</div><div class="line">&#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">	BiTree();</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">void</span> <span class="title">CreateBiTree</span><span class="params">()</span></span>;</div><div class="line">	<span class="function"><span class="keyword">void</span> <span class="title">DestroyBiTree</span><span class="params">()</span></span>;</div><div class="line">	<span class="function">Status <span class="title">BiTreeEmpty</span><span class="params">()</span></span>;</div><div class="line">	<span class="function">NODETYPE <span class="title">Root</span><span class="params">()</span></span>;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">int</span> <span class="title">BiTreeDepth</span><span class="params">()</span></span>;</div><div class="line">	<span class="function"><span class="keyword">int</span> <span class="title">BiTreeDepthNonRecursion</span><span class="params">()</span></span>;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">void</span> <span class="title">PreOrderTraverse</span><span class="params">()</span></span>;</div><div class="line">	<span class="function"><span class="keyword">void</span> <span class="title">PreOrderNonRecursion</span><span class="params">()</span></span>;</div><div class="line">	<span class="function"><span class="keyword">void</span> <span class="title">InOrderTraverse</span><span class="params">()</span></span>;</div><div class="line">	<span class="function"><span class="keyword">void</span> <span class="title">InOrderNonRecursion</span><span class="params">()</span></span>;</div><div class="line">	<span class="function"><span class="keyword">void</span> <span class="title">PostOrderTraverse</span><span class="params">()</span></span>;</div><div class="line">	<span class="function"><span class="keyword">void</span> <span class="title">PostOrderNonRecursion</span><span class="params">()</span></span>;</div><div class="line">	<span class="function"><span class="keyword">void</span> <span class="title">LevelOrderTraverse</span><span class="params">()</span></span>;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">void</span> <span class="title">PrintLast</span><span class="params">()</span></span>;</div><div class="line">	<span class="function"><span class="keyword">void</span> <span class="title">PrintByDepth</span><span class="params">()</span></span>;</div><div class="line"></div><div class="line"><span class="keyword">private</span>:</div><div class="line">	BiTNode&lt;NODETYPE&gt; *rootPtr;</div><div class="line"></div><div class="line">	<span class="comment">// utility function</span></div><div class="line">	<span class="function"><span class="keyword">void</span> <span class="title">visit</span><span class="params">(BiTNode&lt;NODETYPE&gt; *p)</span></span>;</div><div class="line">	<span class="function"><span class="keyword">void</span> <span class="title">CreateBiTreeHelper</span><span class="params">(BiTNode&lt;NODETYPE&gt; **T)</span></span>;</div><div class="line">	<span class="function"><span class="keyword">void</span> <span class="title">DestroyBiTreeHelper</span><span class="params">(BiTNode&lt;NODETYPE&gt; **T)</span></span>;</div><div class="line">	<span class="function"><span class="keyword">int</span> <span class="title">BiTreeDepthHelper</span><span class="params">(BiTNode&lt;NODETYPE&gt; *T)</span></span>;</div><div class="line"></div><div class="line">	<span class="comment">// 用helper函数的原因是对二叉树进行遍历要传入参数</span></div><div class="line">	<span class="function"><span class="keyword">void</span> <span class="title">PreOrderTraverseHelper</span><span class="params">(BiTNode&lt;NODETYPE&gt; *T)</span></span>;</div><div class="line">	<span class="function"><span class="keyword">void</span> <span class="title">InOrderTraverseHelper</span><span class="params">(BiTNode&lt;NODETYPE&gt; *T)</span></span>;</div><div class="line">	<span class="function"><span class="keyword">void</span> <span class="title">PostOrderTraverseHelper</span><span class="params">(BiTNode&lt;NODETYPE&gt; *T)</span></span>;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> NODETYPE&gt;</div><div class="line">BiTree&lt;NODETYPE&gt;::BiTree()</div><div class="line">&#123;</div><div class="line">	rootPtr = <span class="number">0</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> NODETYPE&gt;</div><div class="line">Status BiTree&lt;NODETYPE&gt;::BiTreeEmpty()</div><div class="line">&#123;</div><div class="line">	<span class="keyword">if</span> (rootPtr)</div><div class="line">		<span class="keyword">return</span> FALSE;</div><div class="line">	<span class="keyword">else</span></div><div class="line">		<span class="keyword">return</span> TRUE;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> NODETYPE&gt;</div><div class="line"><span class="keyword">void</span> BiTree&lt;NODETYPE&gt;::CreateBiTree()</div><div class="line">&#123;</div><div class="line">	CreateBiTreeHelper(&amp;rootPtr);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 按前序输入二叉树中结点的值（一个字符）</span></div><div class="line"><span class="comment">// #表示空树，构造二叉链表表示二叉树T。</span></div><div class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> NODETYPE&gt;</div><div class="line"><span class="keyword">void</span> BiTree&lt;NODETYPE&gt;::CreateBiTreeHelper(BiTNode&lt;NODETYPE&gt; **T)</div><div class="line">&#123;</div><div class="line">	NODETYPE val;</div><div class="line"></div><div class="line">	<span class="built_in">cin</span> &gt;&gt; val;</div><div class="line"></div><div class="line">	<span class="keyword">if</span> (val == <span class="string">'#'</span>)</div><div class="line">		*T = <span class="literal">NULL</span>;</div><div class="line">	<span class="keyword">else</span></div><div class="line">	&#123;</div><div class="line">		*T = <span class="keyword">new</span> BiTNode&lt;NODETYPE&gt;(val);</div><div class="line">		CreateBiTreeHelper(&amp;(*T)-&gt;lchild);</div><div class="line">		CreateBiTreeHelper(&amp;(*T)-&gt;rchild);</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> NODETYPE&gt;</div><div class="line"><span class="keyword">void</span> BiTree&lt;NODETYPE&gt;::DestroyBiTree()</div><div class="line">&#123;</div><div class="line">	DestroyBiTreeHelper(&amp;rootPtr);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> NODETYPE&gt;</div><div class="line"><span class="keyword">void</span> BiTree&lt;NODETYPE&gt;::DestroyBiTreeHelper(BiTNode&lt;NODETYPE&gt; **T)</div><div class="line">&#123;</div><div class="line">	<span class="keyword">if</span> (*T)</div><div class="line">	&#123;</div><div class="line">		<span class="keyword">if</span> ((*T)-&gt;lchild)</div><div class="line">			DestroyBiTreeHelper(&amp;(*T)-&gt;lchild);</div><div class="line">		<span class="keyword">if</span> ((*T)-&gt;rchild)</div><div class="line">			DestroyBiTreeHelper(&amp;(*T)-&gt;rchild);</div><div class="line">		<span class="built_in">free</span>(*T);</div><div class="line">		*T = <span class="literal">NULL</span>;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> NODETYPE&gt;</div><div class="line"><span class="keyword">int</span> BiTree&lt;NODETYPE&gt;::BiTreeDepth()</div><div class="line">&#123;</div><div class="line">	<span class="keyword">return</span> BiTreeDepthHelper(rootPtr);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> NODETYPE&gt;</div><div class="line"><span class="keyword">int</span> BiTree&lt;NODETYPE&gt;::BiTreeDepthHelper(BiTNode&lt;NODETYPE&gt; *T)</div><div class="line">&#123;</div><div class="line">	<span class="keyword">int</span> i, j;</div><div class="line"></div><div class="line">	<span class="keyword">if</span> (!T)</div><div class="line">		<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line"></div><div class="line">	<span class="keyword">if</span> (T-&gt;lchild)</div><div class="line">		i = BiTreeDepthHelper(T-&gt;lchild);</div><div class="line">	<span class="keyword">else</span> </div><div class="line">		i = <span class="number">0</span>;</div><div class="line">	<span class="keyword">if</span> (T-&gt;rchild)</div><div class="line">		j = BiTreeDepthHelper(T-&gt;rchild);</div><div class="line">	<span class="keyword">else</span></div><div class="line">		j = <span class="number">0</span>;</div><div class="line"></div><div class="line">	<span class="keyword">return</span> i &gt; j ? i+<span class="number">1</span> : j+<span class="number">1</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> NODETYPE&gt;</div><div class="line">NODETYPE BiTree&lt;NODETYPE&gt;::Root()</div><div class="line">&#123;</div><div class="line">	<span class="keyword">if</span> (!rootPtr)</div><div class="line">		<span class="keyword">return</span> <span class="string">' '</span>;</div><div class="line">	<span class="keyword">else</span></div><div class="line">		<span class="keyword">return</span> rootPtr-&gt;data;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 借用层次遍历的思想，实现非递归形式求出二叉树深度</span></div><div class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> NODETYPE&gt;</div><div class="line"><span class="keyword">int</span> BiTree&lt;NODETYPE&gt;::BiTreeDepthNonRecursion()</div><div class="line">&#123;</div><div class="line">	<span class="keyword">if</span> (!rootPtr)</div><div class="line">		<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line"></div><div class="line">	BiTNode&lt;NODETYPE&gt; *p; <span class="comment">// 工作指针，每次记录从队列队首弹出的结点</span></div><div class="line">	BiTNode&lt;NODETYPE&gt; *back; <span class="comment">// 记录每层二叉树的最右边的结点。此结点在每次遍历一层之后的队列队尾</span></div><div class="line">	<span class="keyword">int</span> level = <span class="number">0</span>; <span class="comment">// 层数，初始值为0</span></div><div class="line">	<span class="built_in">queue</span>&lt;BiTNode&lt;NODETYPE&gt; *&gt; Q;</div><div class="line"></div><div class="line">	Q.push(rootPtr);</div><div class="line">	back = Q.back();</div><div class="line">	<span class="keyword">while</span> (!Q.empty())</div><div class="line">	&#123;</div><div class="line">		p = Q.front();</div><div class="line">		Q.pop();</div><div class="line"></div><div class="line">		<span class="keyword">if</span> (p-&gt;lchild)</div><div class="line">			Q.push(p-&gt;lchild);</div><div class="line">		<span class="keyword">if</span> (p-&gt;rchild)</div><div class="line">			Q.push(p-&gt;rchild);</div><div class="line"></div><div class="line">		<span class="keyword">if</span> (p == back) <span class="comment">// 如果p == 每层的最右边的结点，则层数+1，同时重新赋值队尾结点</span></div><div class="line">		&#123;</div><div class="line">			level++;</div><div class="line">			<span class="keyword">if</span> (!Q.empty()) <span class="comment">// 如果队列为空，则下一步的操作出错。主要用于防止最后一个结点弹出队列之后的那次操作</span></div><div class="line">				back = Q.back();</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="keyword">return</span> level;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> NODETYPE&gt;</div><div class="line"><span class="keyword">void</span> BiTree&lt;NODETYPE&gt;::PreOrderTraverse()</div><div class="line">&#123;</div><div class="line">	PreOrderTraverseHelper(rootPtr);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> NODETYPE&gt;</div><div class="line"><span class="keyword">void</span> BiTree&lt;NODETYPE&gt;::PreOrderTraverseHelper(BiTNode&lt;NODETYPE&gt; *T)</div><div class="line">&#123;</div><div class="line">	<span class="keyword">if</span> (!T)</div><div class="line">		<span class="keyword">return</span>;</div><div class="line"></div><div class="line">	visit(T);</div><div class="line">	PreOrderTraverseHelper(T-&gt;lchild);</div><div class="line">	PreOrderTraverseHelper(T-&gt;rchild);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 前序遍历非递归形式</span></div><div class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> NODETYPE&gt;</div><div class="line"><span class="keyword">void</span> BiTree&lt;NODETYPE&gt;::PreOrderNonRecursion()</div><div class="line">&#123;</div><div class="line">	<span class="keyword">if</span> (!rootPtr)</div><div class="line">		<span class="keyword">return</span>;</div><div class="line"></div><div class="line">	BiTNode&lt;NODETYPE&gt; *p;</div><div class="line">	<span class="built_in">stack</span>&lt;BiTNode&lt;NODETYPE&gt; *&gt; S; <span class="comment">// 借助栈实现非递归的前序遍历</span></div><div class="line"></div><div class="line">	p = rootPtr;</div><div class="line">	<span class="keyword">while</span> (p || !S.empty())</div><div class="line">	&#123;</div><div class="line">		<span class="keyword">while</span> (p) </div><div class="line">		&#123;</div><div class="line">			visit(p); <span class="comment">// 在每次入栈之前进行访问</span></div><div class="line">			S.push(p);</div><div class="line">			p = p-&gt;lchild;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">if</span> (!S.empty())</div><div class="line">		&#123;</div><div class="line">			p = S.top();</div><div class="line">			S.pop();</div><div class="line">			p = p-&gt;rchild;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> NODETYPE&gt;</div><div class="line"><span class="keyword">void</span> BiTree&lt;NODETYPE&gt;::InOrderTraverse()</div><div class="line">&#123;</div><div class="line">	InOrderTraverseHelper(rootPtr);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> NODETYPE&gt;</div><div class="line"><span class="keyword">void</span> BiTree&lt;NODETYPE&gt;::InOrderTraverseHelper(BiTNode&lt;NODETYPE&gt; *T)</div><div class="line">&#123;</div><div class="line">	<span class="keyword">if</span> (!T)</div><div class="line">		<span class="keyword">return</span>;</div><div class="line"></div><div class="line">	InOrderTraverseHelper(T-&gt;lchild);</div><div class="line">	visit(T);</div><div class="line">	InOrderTraverseHelper(T-&gt;rchild);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> NODETYPE&gt;</div><div class="line"><span class="keyword">void</span> BiTree&lt;NODETYPE&gt;::InOrderNonRecursion()</div><div class="line">&#123;</div><div class="line">	<span class="keyword">if</span> (!rootPtr)</div><div class="line">		<span class="keyword">return</span>;</div><div class="line"></div><div class="line">	BiTNode&lt;NODETYPE&gt; *p;</div><div class="line">	<span class="built_in">stack</span>&lt;BiTNode&lt;NODETYPE&gt; *&gt; S;</div><div class="line"></div><div class="line">	p = rootPtr;</div><div class="line">	<span class="keyword">while</span> (p || !S.empty())</div><div class="line">	&#123;</div><div class="line">		<span class="keyword">while</span> (p)</div><div class="line">		&#123;</div><div class="line">			S.push(p);</div><div class="line">			p = p-&gt;lchild;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">if</span> (!S.empty())</div><div class="line">		&#123;</div><div class="line">			p = S.top();</div><div class="line">			S.pop();</div><div class="line">			visit(p); <span class="comment">// 在每次出栈之时进行访问</span></div><div class="line">			p = p-&gt;rchild;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> NODETYPE&gt;</div><div class="line"><span class="keyword">void</span> BiTree&lt;NODETYPE&gt;::PostOrderTraverse()</div><div class="line">&#123;</div><div class="line">	PostOrderTraverseHelper(rootPtr);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> NODETYPE&gt;</div><div class="line"><span class="keyword">void</span> BiTree&lt;NODETYPE&gt;::PostOrderTraverseHelper(BiTNode&lt;NODETYPE&gt; *T)</div><div class="line">&#123;</div><div class="line">	<span class="keyword">if</span> (!T)</div><div class="line">		<span class="keyword">return</span>;</div><div class="line"></div><div class="line">	PostOrderTraverseHelper(T-&gt;lchild);</div><div class="line">	PostOrderTraverseHelper(T-&gt;rchild);</div><div class="line">	visit(T);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> NODETYPE&gt;</div><div class="line"><span class="keyword">void</span> BiTree&lt;NODETYPE&gt;::PostOrderNonRecursion()</div><div class="line">&#123;</div><div class="line">	<span class="keyword">if</span> (!rootPtr)</div><div class="line">		<span class="keyword">return</span>;</div><div class="line"></div><div class="line">	BiTNode&lt;NODETYPE&gt; *p;</div><div class="line">	BiTNode&lt;NODETYPE&gt; *r; <span class="comment">// 用于记录栈中弹出的结点的右子树是否访问过</span></div><div class="line">	<span class="built_in">stack</span>&lt;BiTNode&lt;NODETYPE&gt; *&gt; S;</div><div class="line"></div><div class="line">	p = rootPtr;</div><div class="line">	r = <span class="literal">NULL</span>;</div><div class="line">	<span class="keyword">while</span> (p || !S.empty())</div><div class="line">	&#123;</div><div class="line">		<span class="keyword">while</span> (p)</div><div class="line">		&#123;</div><div class="line">			S.push(p);</div><div class="line">			p = p-&gt;lchild;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">if</span> (!S.empty())</div><div class="line">		&#123;</div><div class="line">			p = S.top();</div><div class="line">			<span class="keyword">if</span> (p-&gt;rchild &amp;&amp; p-&gt;rchild != r) <span class="comment">// 此结点的右子树尚未入栈</span></div><div class="line">			&#123;</div><div class="line">				p = p-&gt;rchild;</div><div class="line">				S.push(p);</div><div class="line">				p = p-&gt;lchild;</div><div class="line">			&#125;</div><div class="line">			<span class="keyword">else</span></div><div class="line">			&#123;</div><div class="line">				S.pop();</div><div class="line">				visit(p); <span class="comment">// 每次出栈时访问结点</span></div><div class="line">				r = p;</div><div class="line">				p = <span class="literal">NULL</span>;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> NODETYPE&gt;</div><div class="line"><span class="keyword">void</span> BiTree&lt;NODETYPE&gt;::LevelOrderTraverse()</div><div class="line">&#123;</div><div class="line">	<span class="keyword">if</span> (!rootPtr)</div><div class="line">		<span class="keyword">return</span>;</div><div class="line"></div><div class="line">	BiTNode&lt;NODETYPE&gt; *p;</div><div class="line">	BiTNode&lt;NODETYPE&gt; *back; <span class="comment">// 操作中记录队列尾部的指针</span></div><div class="line">	<span class="built_in">queue</span>&lt;BiTNode&lt;NODETYPE&gt; *&gt; Q; <span class="comment">// 使用辅助队列</span></div><div class="line"></div><div class="line">	Q.push(rootPtr);</div><div class="line">	back = Q.back();</div><div class="line">	<span class="keyword">while</span> (!Q.empty())</div><div class="line">	&#123;</div><div class="line">		p = Q.front();</div><div class="line">		Q.pop();</div><div class="line">		visit(p);</div><div class="line"></div><div class="line">		<span class="keyword">if</span> (p-&gt;lchild)</div><div class="line">			Q.push(p-&gt;lchild);</div><div class="line">		<span class="keyword">if</span> (p-&gt;rchild)</div><div class="line">			Q.push(p-&gt;rchild);</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> NODETYPE&gt;</div><div class="line"><span class="keyword">void</span> BiTree&lt;NODETYPE&gt;::PrintLast()</div><div class="line">&#123;</div><div class="line">	<span class="keyword">if</span> (!rootPtr)</div><div class="line">		<span class="keyword">return</span>;</div><div class="line"></div><div class="line">	BiTNode&lt;NODETYPE&gt; *p;</div><div class="line">	BiTNode&lt;NODETYPE&gt; *back; <span class="comment">// 操作中记录队列尾部的指针</span></div><div class="line">	<span class="built_in">queue</span>&lt;BiTNode&lt;NODETYPE&gt; *&gt; Q; <span class="comment">// 使用辅助队列</span></div><div class="line"></div><div class="line">	Q.push(rootPtr);</div><div class="line">	back = Q.back();</div><div class="line">	<span class="keyword">while</span> (!Q.empty())</div><div class="line">	&#123;</div><div class="line">		p = Q.front();</div><div class="line">		Q.pop();</div><div class="line"></div><div class="line">		<span class="keyword">if</span> (p-&gt;lchild)</div><div class="line">			Q.push(p-&gt;lchild);</div><div class="line">		<span class="keyword">if</span> (p-&gt;rchild)</div><div class="line">			Q.push(p-&gt;rchild);</div><div class="line"></div><div class="line">		<span class="keyword">if</span> (p == back)</div><div class="line">		&#123;</div><div class="line">			visit(p);</div><div class="line">			<span class="keyword">if</span> (!Q.empty())</div><div class="line">				back = Q.back(); <span class="comment">// 更新back指针的位置</span></div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> NODETYPE&gt;</div><div class="line"><span class="keyword">void</span> BiTree&lt;NODETYPE&gt;::PrintByDepth()</div><div class="line">&#123;</div><div class="line">	<span class="keyword">if</span> (!rootPtr)</div><div class="line">		<span class="keyword">return</span>;</div><div class="line"></div><div class="line">	BiTNode&lt;NODETYPE&gt; *p;</div><div class="line">	BiTNode&lt;NODETYPE&gt; *back; <span class="comment">// 操作中记录队列尾部的指针</span></div><div class="line">	<span class="built_in">queue</span>&lt;BiTNode&lt;NODETYPE&gt; *&gt; Q; <span class="comment">// 使用辅助队列</span></div><div class="line"></div><div class="line">	Q.push(rootPtr);</div><div class="line">	back = Q.back();</div><div class="line">	<span class="keyword">while</span> (!Q.empty())</div><div class="line">	&#123;</div><div class="line">		p = Q.front();</div><div class="line">		Q.pop();</div><div class="line">		visit(p);</div><div class="line"></div><div class="line">		<span class="keyword">if</span> (p-&gt;lchild)</div><div class="line">			Q.push(p-&gt;lchild);</div><div class="line">		<span class="keyword">if</span> (p-&gt;rchild)</div><div class="line">			Q.push(p-&gt;rchild);</div><div class="line"></div><div class="line">		<span class="keyword">if</span> (p == back)</div><div class="line">		&#123;</div><div class="line">			<span class="built_in">cout</span> &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">			<span class="keyword">if</span> (!Q.empty())</div><div class="line">				back = Q.back(); <span class="comment">// 更新back指针的位置</span></div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> NODETYPE&gt;</div><div class="line"><span class="keyword">void</span> BiTree&lt;NODETYPE&gt;::visit(BiTNode&lt;NODETYPE&gt; *p)</div><div class="line">&#123;</div><div class="line">	<span class="built_in">cout</span> &lt;&lt; left &lt;&lt; setw(<span class="number">5</span>) &lt;&lt; p-&gt;data;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></div></pre></td></tr></table></figure></p>
 <p>为了省事，main函数有些代码直接使用了前面一篇文章里面c的代码。</p>
-<p>[code lang=”cpp”]<br>// main.h</p>
-<p>#include &lt;iostream&gt;</p>
-<p>#include &quot;BiTree.h&quot;<br>using namespace std;</p>
-<p>int main()<br>{<br>    int i;<br>    BiTree&lt;char&gt; T;<br>    char e1;</p>
-<pre><code>//StrAssign(str,&amp;quot;ABDH#K###E##CFI###G#J##&amp;quot;);
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// main.h</span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"BiTree.h"</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">int</span> i;</div><div class="line">	BiTree&lt;<span class="keyword">char</span>&gt; T;</div><div class="line">	<span class="keyword">char</span> e1;</div><div class="line">	</div><div class="line">	<span class="comment">//StrAssign(str,"ABDH#K###E##CFI###G#J##");</span></div><div class="line"></div><div class="line">	T.CreateBiTree();</div><div class="line"></div><div class="line">	<span class="built_in">printf</span>(<span class="string">"构造空二叉树后,树空否？%d(1:是 0:否) 树的深度: %d\n"</span>,T.BiTreeEmpty(), T.BiTreeDepthNonRecursion());</div><div class="line">	e1 = T.Root();</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"二叉树的根为: %c\n"</span>,e1);</div><div class="line"></div><div class="line">	<span class="built_in">printf</span>(<span class="string">"\n前序遍历二叉树:\n"</span>);</div><div class="line">	<span class="comment">//T.PreOrderTraverse();</span></div><div class="line">	T.PreOrderNonRecursion();</div><div class="line"></div><div class="line">	<span class="built_in">printf</span>(<span class="string">"\n中序遍历二叉树:\n"</span>);</div><div class="line">	T.InOrderTraverse();</div><div class="line">	<span class="comment">//T.InOrderNonRecursion();</span></div><div class="line"></div><div class="line">	<span class="built_in">printf</span>(<span class="string">"\n后序遍历二叉树:\n"</span>);</div><div class="line">	<span class="comment">//T.PostOrderTraverse();</span></div><div class="line">	T.PostOrderNonRecursion();</div><div class="line"></div><div class="line">	<span class="built_in">printf</span>(<span class="string">"\n层次遍历二叉树:\n"</span>);</div><div class="line">	T.LevelOrderTraverse();</div><div class="line"></div><div class="line">	<span class="built_in">printf</span>(<span class="string">"\n每行二叉树的最右边的结点为:\n"</span>);</div><div class="line">	T.PrintLast();</div><div class="line"></div><div class="line">	<span class="built_in">printf</span>(<span class="string">"\n按层次输出每行的结点:\n"</span>);</div><div class="line">	T.PrintByDepth();</div><div class="line"></div><div class="line">	T.DestroyBiTree();</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"\n清除二叉树后,树空否？%d(1:是 0:否) 树的深度=%d\n"</span>,T.BiTreeEmpty(),T.BiTreeDepth());</div><div class="line">	i = T.Root();</div><div class="line">	<span class="keyword">if</span>(!i)</div><div class="line">		<span class="built_in">printf</span>(<span class="string">"树空，无根\n"</span>);</div><div class="line"></div><div class="line">	getchar();</div><div class="line">	getchar();</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p style="text-align: justify;">写这个代码的时候，感觉自己计算机编程入门了——之前写代码主要都是照着书写，出错了更多都是照着书查找错误。写这个二叉树类的时候有个地方指针出错了，自己设断点改错，改了很久。所以入门的一些经验在下面一篇文章里面谈谈吧。</p>
 
-T.CreateBiTree();
-
-printf(&amp;quot;构造空二叉树后,树空否？%d(1:是 0:否) 树的深度: %d\n&amp;quot;,T.BiTreeEmpty(), T.BiTreeDepthNonRecursion());
-e1 = T.Root();
-printf(&amp;quot;二叉树的根为: %c\n&amp;quot;,e1);
-
-printf(&amp;quot;\n前序遍历二叉树:\n&amp;quot;);
-//T.PreOrderTraverse();
-T.PreOrderNonRecursion();
-
-printf(&amp;quot;\n中序遍历二叉树:\n&amp;quot;);
-T.InOrderTraverse();
-//T.InOrderNonRecursion();
-
-printf(&amp;quot;\n后序遍历二叉树:\n&amp;quot;);
-//T.PostOrderTraverse();
-T.PostOrderNonRecursion();
-
-printf(&amp;quot;\n层次遍历二叉树:\n&amp;quot;);
-T.LevelOrderTraverse();
-
-printf(&amp;quot;\n每行二叉树的最右边的结点为:\n&amp;quot;);
-T.PrintLast();
-
-printf(&amp;quot;\n按层次输出每行的结点:\n&amp;quot;);
-T.PrintByDepth();
-
-T.DestroyBiTree();
-printf(&amp;quot;\n清除二叉树后,树空否？%d(1:是 0:否) 树的深度=%d\n&amp;quot;,T.BiTreeEmpty(),T.BiTreeDepth());
-i = T.Root();
-if(!i)
-    printf(&amp;quot;树空，无根\n&amp;quot;);
-
-getchar();
-getchar();
-return 0;
-</code></pre><p>}<br>[/code]</p>
-<p>写这个代码的时候，感觉自己计算机编程入门了——之前写代码主要都是照着书写，出错了更多都是照着书查找错误。写这个二叉树类的时候有个地方指针出错了，自己设断点改错，改了很久。所以入门的一些经验在下面一篇文章里面谈谈吧。</p>
 <p>参考资料：<br>1.<a href="https://book.douban.com/subject/6424904/" target="_blank" rel="external"><span style="color: #0000ff;">《大话数据结构》</span></a><br>2.<a href="https://book.douban.com/subject/5349823/" target="_blank" rel="external"><span style="color: #0000ff;">《C++大学教程（第七版）》</span></a></p>
 
       
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://yoursite.com/the-implement-of-binary-tree-class/" data-id="ciw6hew1v000jr8ezajgvm74o" class="article-share-link" data-share="baidu" data-title="二叉树类的实现">Share</a>
+        <a data-url="http://yoursite.com/the-implement-of-binary-tree-class/" data-id="ciw6kv1fn000cwsezihmexgzx" class="article-share-link" data-share="baidu" data-title="二叉树类的实现">分享到</a>
       
 
       
-        <a href="http://yoursite.com/the-implement-of-binary-tree-class/#ds-thread" class="article-comment-link">Comments</a>
+        <a href="http://yoursite.com/the-implement-of-binary-tree-class/#ds-thread" class="article-comment-link">評論</a>
       
 
       
@@ -638,7 +316,7 @@ return 0;
 
 
   <nav id="page-nav">
-    <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
+    <a class="extend prev" rel="prev" href="/">&laquo; 上一頁</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">下一頁 &raquo;</a>
   </nav>
 </section>
       
@@ -646,7 +324,7 @@ return 0;
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
+    <h3 class="widget-title">歸檔</h3>
     <div class="widget">
       <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a><span class="archive-list-count">2</span></li></ul>
     </div>
@@ -655,7 +333,7 @@ return 0;
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Categories</h3>
+    <h3 class="widget-title">分類</h3>
     <div class="widget">
       <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/建站相关/">建站相关</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/编程学习/">编程学习</a><span class="category-list-count">6</span></li></ul>
     </div>
@@ -664,7 +342,7 @@ return 0;
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Tags</h3>
+    <h3 class="widget-title">標簽</h3>
     <div class="widget">
       <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C-C/">C/C++</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/我的博客/">我的博客</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/深度学习/">深度学习</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a><span class="tag-list-count">2</span></li></ul>
     </div>
@@ -694,7 +372,7 @@ return 0;
 </nav>
   <!-- totop start -->
 <div id="totop">
-<a title="totop"><img src="/img/scrollup.png"/></a>
+<a title="返回頂部"><img src="/img/scrollup.png"/></a>
 </div>
 
 <!-- totop end -->
