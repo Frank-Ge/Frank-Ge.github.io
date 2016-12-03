@@ -4,9 +4,9 @@
   <subtitle>去探索更大的世界</subtitle>
   <link href="/atom.xml" rel="self"/>
   
-  <link href="http://yoursite.com/"/>
+  <link href="http://skills.frankge.me/"/>
   <updated>2016-12-01T16:48:37.761Z</updated>
-  <id>http://yoursite.com/</id>
+  <id>http://skills.frankge.me/</id>
   
   <author>
     <name>Frank</name>
@@ -17,8 +17,8 @@
   
   <entry>
     <title>wordpress站点迁移方法</title>
-    <link href="http://yoursite.com/the-way-to-migrate-your-wordpress-website/"/>
-    <id>http://yoursite.com/the-way-to-migrate-your-wordpress-website/</id>
+    <link href="http://skills.frankge.me/the-way-to-migrate-your-wordpress-website/"/>
+    <id>http://skills.frankge.me/the-way-to-migrate-your-wordpress-website/</id>
     <published>2016-11-22T17:08:37.000Z</published>
     <updated>2016-12-01T16:48:37.761Z</updated>
     
@@ -38,17 +38,17 @@
     
     </summary>
     
-      <category term="建站相关" scheme="http://yoursite.com/categories/%E5%BB%BA%E7%AB%99%E7%9B%B8%E5%85%B3/"/>
+      <category term="建站相关" scheme="http://skills.frankge.me/categories/%E5%BB%BA%E7%AB%99%E7%9B%B8%E5%85%B3/"/>
     
     
-      <category term="我的博客" scheme="http://yoursite.com/tags/%E6%88%91%E7%9A%84%E5%8D%9A%E5%AE%A2/"/>
+      <category term="我的博客" scheme="http://skills.frankge.me/tags/%E6%88%91%E7%9A%84%E5%8D%9A%E5%AE%A2/"/>
     
   </entry>
   
   <entry>
     <title>子域名下安装wordpress总结</title>
-    <link href="http://yoursite.com/install-wordpress-on-a-subdomain-using-cpanel/"/>
-    <id>http://yoursite.com/install-wordpress-on-a-subdomain-using-cpanel/</id>
+    <link href="http://skills.frankge.me/install-wordpress-on-a-subdomain-using-cpanel/"/>
+    <id>http://skills.frankge.me/install-wordpress-on-a-subdomain-using-cpanel/</id>
     <published>2016-11-22T03:48:59.000Z</published>
     <updated>2016-12-01T15:04:09.010Z</updated>
     
@@ -69,17 +69,17 @@
     
     </summary>
     
-      <category term="建站相关" scheme="http://yoursite.com/categories/%E5%BB%BA%E7%AB%99%E7%9B%B8%E5%85%B3/"/>
+      <category term="建站相关" scheme="http://skills.frankge.me/categories/%E5%BB%BA%E7%AB%99%E7%9B%B8%E5%85%B3/"/>
     
     
-      <category term="我的博客" scheme="http://yoursite.com/tags/%E6%88%91%E7%9A%84%E5%8D%9A%E5%AE%A2/"/>
+      <category term="我的博客" scheme="http://skills.frankge.me/tags/%E6%88%91%E7%9A%84%E5%8D%9A%E5%AE%A2/"/>
     
   </entry>
   
   <entry>
     <title>浅谈动态规划（二）——进阶题</title>
-    <link href="http://yoursite.com/getting-start-to-dynamic-programming-part2-some-exercises-slightly-difficult-from-lintcode-2/"/>
-    <id>http://yoursite.com/getting-start-to-dynamic-programming-part2-some-exercises-slightly-difficult-from-lintcode-2/</id>
+    <link href="http://skills.frankge.me/getting-start-to-dynamic-programming-part2-some-exercises-slightly-difficult-from-lintcode-2/"/>
+    <id>http://skills.frankge.me/getting-start-to-dynamic-programming-part2-some-exercises-slightly-difficult-from-lintcode-2/</id>
     <published>2016-11-15T16:44:43.000Z</published>
     <updated>2016-11-30T16:30:43.130Z</updated>
     
@@ -195,17 +195,17 @@
     
     </summary>
     
-      <category term="编程学习" scheme="http://yoursite.com/categories/%E7%BC%96%E7%A8%8B%E5%AD%A6%E4%B9%A0/"/>
+      <category term="编程学习" scheme="http://skills.frankge.me/categories/%E7%BC%96%E7%A8%8B%E5%AD%A6%E4%B9%A0/"/>
     
     
-      <category term="算法" scheme="http://yoursite.com/tags/%E7%AE%97%E6%B3%95/"/>
+      <category term="算法" scheme="http://skills.frankge.me/tags/%E7%AE%97%E6%B3%95/"/>
     
   </entry>
   
   <entry>
     <title>windows下MatConvNet深度学习框架的搭建</title>
-    <link href="http://yoursite.com/matconvnet-installation-in-windows-system/"/>
-    <id>http://yoursite.com/matconvnet-installation-in-windows-system/</id>
+    <link href="http://skills.frankge.me/matconvnet-installation-in-windows-system/"/>
+    <id>http://skills.frankge.me/matconvnet-installation-in-windows-system/</id>
     <published>2016-10-25T08:28:07.000Z</published>
     <updated>2016-12-03T06:27:47.684Z</updated>
     
@@ -270,17 +270,17 @@
     
     </summary>
     
-      <category term="编程学习" scheme="http://yoursite.com/categories/%E7%BC%96%E7%A8%8B%E5%AD%A6%E4%B9%A0/"/>
+      <category term="编程学习" scheme="http://skills.frankge.me/categories/%E7%BC%96%E7%A8%8B%E5%AD%A6%E4%B9%A0/"/>
     
     
-      <category term="深度学习" scheme="http://yoursite.com/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+      <category term="深度学习" scheme="http://skills.frankge.me/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
     
   </entry>
   
   <entry>
     <title>浅谈动态规划（一）——从lintcode刷题入门</title>
-    <link href="http://yoursite.com/getting-start-to-dynamic-programming-part1-some-exercises-from-lintcode/"/>
-    <id>http://yoursite.com/getting-start-to-dynamic-programming-part1-some-exercises-from-lintcode/</id>
+    <link href="http://skills.frankge.me/getting-start-to-dynamic-programming-part1-some-exercises-from-lintcode/"/>
+    <id>http://skills.frankge.me/getting-start-to-dynamic-programming-part1-some-exercises-from-lintcode/</id>
     <published>2016-10-24T13:10:34.000Z</published>
     <updated>2016-11-30T16:54:50.601Z</updated>
     
@@ -340,17 +340,17 @@
     
     </summary>
     
-      <category term="编程学习" scheme="http://yoursite.com/categories/%E7%BC%96%E7%A8%8B%E5%AD%A6%E4%B9%A0/"/>
+      <category term="编程学习" scheme="http://skills.frankge.me/categories/%E7%BC%96%E7%A8%8B%E5%AD%A6%E4%B9%A0/"/>
     
     
-      <category term="算法" scheme="http://yoursite.com/tags/%E7%AE%97%E6%B3%95/"/>
+      <category term="算法" scheme="http://skills.frankge.me/tags/%E7%AE%97%E6%B3%95/"/>
     
   </entry>
   
   <entry>
     <title>二叉树类的实现</title>
-    <link href="http://yoursite.com/the-implement-of-binary-tree-class/"/>
-    <id>http://yoursite.com/the-implement-of-binary-tree-class/</id>
+    <link href="http://skills.frankge.me/the-implement-of-binary-tree-class/"/>
+    <id>http://skills.frankge.me/the-implement-of-binary-tree-class/</id>
     <published>2016-09-10T17:05:45.000Z</published>
     <updated>2016-12-01T16:30:19.680Z</updated>
     
@@ -373,17 +373,17 @@
     
     </summary>
     
-      <category term="编程学习" scheme="http://yoursite.com/categories/%E7%BC%96%E7%A8%8B%E5%AD%A6%E4%B9%A0/"/>
+      <category term="编程学习" scheme="http://skills.frankge.me/categories/%E7%BC%96%E7%A8%8B%E5%AD%A6%E4%B9%A0/"/>
     
     
-      <category term="C/C++" scheme="http://yoursite.com/tags/C-C/"/>
+      <category term="C/C++" scheme="http://skills.frankge.me/tags/C-C/"/>
     
   </entry>
   
   <entry>
     <title>二叉树的实现以及相关操作C/C++</title>
-    <link href="http://yoursite.com/the-implement-of-binary-tree-in-cpp/"/>
-    <id>http://yoursite.com/the-implement-of-binary-tree-in-cpp/</id>
+    <link href="http://skills.frankge.me/the-implement-of-binary-tree-in-cpp/"/>
+    <id>http://skills.frankge.me/the-implement-of-binary-tree-in-cpp/</id>
     <published>2016-09-10T16:38:36.000Z</published>
     <updated>2016-12-01T16:34:24.144Z</updated>
     
@@ -406,17 +406,17 @@
     
     </summary>
     
-      <category term="编程学习" scheme="http://yoursite.com/categories/%E7%BC%96%E7%A8%8B%E5%AD%A6%E4%B9%A0/"/>
+      <category term="编程学习" scheme="http://skills.frankge.me/categories/%E7%BC%96%E7%A8%8B%E5%AD%A6%E4%B9%A0/"/>
     
     
-      <category term="C/C++" scheme="http://yoursite.com/tags/C-C/"/>
+      <category term="C/C++" scheme="http://skills.frankge.me/tags/C-C/"/>
     
   </entry>
   
   <entry>
     <title>顺序单链表插入新节点的一种方法</title>
-    <link href="http://yoursite.com/a-smart-way-to-insert-a-new-node-in-sorted-singly-linked-list/"/>
-    <id>http://yoursite.com/a-smart-way-to-insert-a-new-node-in-sorted-singly-linked-list/</id>
+    <link href="http://skills.frankge.me/a-smart-way-to-insert-a-new-node-in-sorted-singly-linked-list/"/>
+    <id>http://skills.frankge.me/a-smart-way-to-insert-a-new-node-in-sorted-singly-linked-list/</id>
     <published>2016-08-17T16:09:39.000Z</published>
     <updated>2016-12-01T14:53:23.270Z</updated>
     
@@ -447,17 +447,17 @@
     
     </summary>
     
-      <category term="编程学习" scheme="http://yoursite.com/categories/%E7%BC%96%E7%A8%8B%E5%AD%A6%E4%B9%A0/"/>
+      <category term="编程学习" scheme="http://skills.frankge.me/categories/%E7%BC%96%E7%A8%8B%E5%AD%A6%E4%B9%A0/"/>
     
     
-      <category term="C/C++" scheme="http://yoursite.com/tags/C-C/"/>
+      <category term="C/C++" scheme="http://skills.frankge.me/tags/C-C/"/>
     
   </entry>
   
   <entry>
     <title>博客时间轴</title>
-    <link href="http://yoursite.com/the-timeline-of-my-blog/"/>
-    <id>http://yoursite.com/the-timeline-of-my-blog/</id>
+    <link href="http://skills.frankge.me/the-timeline-of-my-blog/"/>
+    <id>http://skills.frankge.me/the-timeline-of-my-blog/</id>
     <published>2016-08-15T02:56:55.000Z</published>
     <updated>2016-12-03T06:49:40.079Z</updated>
     
@@ -508,10 +508,10 @@
     
     </summary>
     
-      <category term="建站相关" scheme="http://yoursite.com/categories/%E5%BB%BA%E7%AB%99%E7%9B%B8%E5%85%B3/"/>
+      <category term="建站相关" scheme="http://skills.frankge.me/categories/%E5%BB%BA%E7%AB%99%E7%9B%B8%E5%85%B3/"/>
     
     
-      <category term="我的博客" scheme="http://yoursite.com/tags/%E6%88%91%E7%9A%84%E5%8D%9A%E5%AE%A2/"/>
+      <category term="我的博客" scheme="http://skills.frankge.me/tags/%E6%88%91%E7%9A%84%E5%8D%9A%E5%AE%A2/"/>
     
   </entry>
   
