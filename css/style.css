@@ -1216,6 +1216,11 @@ a.article-title:hover {
 #page-nav .space {
   color: #ddd;
 }
+#page-nav # 16.12.06 添加，用于解决表格渲染问题 th,
+#page-nav table th {
+  border-bottom: 2px solid;
+  min-width: 100px;
+}
 #footer {
   background: #262a30;
   padding: 50px 0;
