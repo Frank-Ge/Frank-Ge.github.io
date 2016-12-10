@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://skills.frankge.me/"/>
-  <updated>2016-12-07T11:55:30.644Z</updated>
+  <updated>2016-12-10T17:37:36.941Z</updated>
   <id>http://skills.frankge.me/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://skills.frankge.me/getting-start-to-dynamic-programming-part3-find-the-optimal-solution/"/>
     <id>http://skills.frankge.me/getting-start-to-dynamic-programming-part3-find-the-optimal-solution/</id>
     <published>2016-12-04T12:23:26.000Z</published>
-    <updated>2016-12-07T11:55:30.644Z</updated>
+    <updated>2016-12-10T17:37:36.941Z</updated>
     
     <content type="html"><![CDATA[<p style="text-align: justify;">前两次动态规划的博客中，介绍了动态规划最基础的两个特点以及列举了几个我在做lintcode中遇到的接触动态规划初期相对比较适合做的题目。这次结合几道题目来总结一下动态规划的另一个特点——找到最优时的解。<br><br>同样，还是以题目来说明。</p>
 
