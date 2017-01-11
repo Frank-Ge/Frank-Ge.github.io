@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://skills.frankge.me/"/>
-  <updated>2017-01-11T11:53:36.073Z</updated>
+  <updated>2017-01-11T11:57:42.692Z</updated>
   <id>http://skills.frankge.me/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://skills.frankge.me/getting-start-to-dynamic-programming-part-4-using-recursion-in-a-smart-way/"/>
     <id>http://skills.frankge.me/getting-start-to-dynamic-programming-part-4-using-recursion-in-a-smart-way/</id>
     <published>2017-01-10T16:25:10.000Z</published>
-    <updated>2017-01-11T11:53:36.073Z</updated>
+    <updated>2017-01-11T11:57:42.692Z</updated>
     
     <content type="html"><![CDATA[<p style="text-align: justify;">从lintcode做题的角度来说，递归往往会开销较大。不过在做动态规划的时候，我们能发现递归是个不错的工具，对于解决问题的代码量能够缩小很多。同时，如果使用了带有备忘的递归，能够减少很大的开销。这次列举几个典型的使用带备忘的递归的例子，来总结一下带备忘的递归的使用。这篇文章中的三个题目均是<span style="color: #3366ff;"><a href="http://skills.frankge.me/getting-start-to-dynamic-programming-part-3-find-the-optimal-solution/">上篇博客</a></span>中出现过的，便于比较。<br><br>首先我们来看第一题。</p>
 
@@ -34,7 +34,7 @@
 <p>给定两个序列X = {$x_1$, $x_2$, $x_3$, …, $x_m$ }, 和Y = {$y_1$, $y_2$, …, $y_n$}，求<code>X</code>和<code>Y</code>长度最长的公共子序列。公共子序列的定义为，给定两个序列<code>X</code>，<code>Y</code>，如果<code>Z</code>即是<code>X</code>的子序列，也是<code>Y</code>的子序列，我们称它是<code>X</code>和<code>Y</code>的公共子序列。</p>
 <p>例如：X = {A, B, C, D, A, B}，Y = {B, D, C, B, A}，那么序列｛B, C, A｝就是X和Y的公共子序列，但不是最长公共子序列。X和Y的最长公共子序列是{B, C, A, B}，其长度为<code>4</code>。</p>
 <p>根据<span style="color: #3366ff;"><a href="http://skills.frankge.me/getting-start-to-dynamic-programming-part-3-find-the-optimal-solution/">上篇文章</a></span>，状态转移方程为：</p>
-<p>情况1:  $i==0$ 或者 $j== 0$时，$c[i][j] = 0$`；<br>情况2:  $i,  j &gt; 0$且$x_i$ == $y_j$时， $c[i][j] = c[i-1][j-1] + 1$;<br>情况3:  $i，j &gt; 0$且$x_i != y_j$时， $c[i][j] = max(c[i][j-1], c[i-1][j])$;</p>
+<p>情况1:  $i==0$ 或者 $j== 0$时，$c[i][j] = 0$；<br>情况2:  $i,  j &gt; 0$且$x_i$ == $y_j$时， $c[i][j] = c[i-1][j-1] + 1$;<br>情况3:  $i，j &gt; 0$且$x_i != y_j$时， $c[i][j] = max(c[i][j-1], c[i-1][j])$;</p>
 <p>那么直接用递归实现如下：</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">LCS</span><span class="params">(<span class="built_in">string</span> A, <span class="built_in">string</span> B)</span></span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">int</span> len1 = A.length();</div><div class="line">	<span class="keyword">int</span> len2 = B.length();</div><div class="line"></div><div class="line">	<span class="keyword">return</span> LCS_AUX(A, B, len1, len2);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">LCS_AUX</span><span class="params">(<span class="built_in">string</span> A, <span class="built_in">string</span> B, <span class="keyword">int</span> idx1, <span class="keyword">int</span> idx2)</span></span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">if</span> (idx1 == <span class="number">0</span> || idx2 == <span class="number">0</span>) <span class="comment">// 递归出口，情况1</span></div><div class="line">		<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line"></div><div class="line">	<span class="keyword">if</span> (A[idx1<span class="number">-1</span>] == B[idx2<span class="number">-1</span>])</div><div class="line">		<span class="keyword">return</span> LCS_AUX(A, B, idx1<span class="number">-1</span>, idx2<span class="number">-1</span>) + <span class="number">1</span>; <span class="comment">// 情况2</span></div><div class="line">	<span class="keyword">else</span></div><div class="line">		<span class="keyword">return</span> max(LCS_AUX(A, B, idx1<span class="number">-1</span>, idx2), LCS_AUX(A, B, idx1, idx2<span class="number">-1</span>)); <span class="comment">// 情况3</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>同样，加入备忘，记录过程中的求解的值，就可以节省很多开销。代码如下：</p>
