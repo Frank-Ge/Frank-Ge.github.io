@@ -4,12 +4,12 @@
 
     
   <url>
-    <loc>http://skills.frankge.me/getting-start-to-dynamic-programming-part-3-find-the-optimal-solution/</loc>
-    <lastmod>2017-01-11T12:21:47.971Z</lastmod>
+    <loc>http://skills.frankge.me/getting-start-to-dynamic-programming-part-4-using-recursion-in-a-smart-way/</loc>
+    <lastmod>2017-01-11T12:33:09.166Z</lastmod>
     <data>
         <display>
-        <title>浅谈动态规划（三）——找到最优时的解</title>
-        <pubTime>2016-12-04T12:23:26.000Z</pubTime>
+        <title>浅谈动态规划（四）——巧用递归</title>
+        <pubTime>2017-01-10T16:25:10.000Z</pubTime>
         
         <tag>算法</tag>
          
@@ -24,12 +24,12 @@
 
     
   <url>
-    <loc>http://skills.frankge.me/getting-start-to-dynamic-programming-part-4-using-recursion-in-a-smart-way/</loc>
-    <lastmod>2017-01-11T12:00:52.598Z</lastmod>
+    <loc>http://skills.frankge.me/getting-start-to-dynamic-programming-part-3-find-the-optimal-solution/</loc>
+    <lastmod>2017-01-11T12:21:47.971Z</lastmod>
     <data>
         <display>
-        <title>浅谈动态规划（四）——巧用递归</title>
-        <pubTime>2017-01-10T16:25:10.000Z</pubTime>
+        <title>浅谈动态规划（三）——找到最优时的解</title>
+        <pubTime>2016-12-04T12:23:26.000Z</pubTime>
         
         <tag>算法</tag>
          
