@@ -4,7 +4,27 @@
 
     
   <url>
-    <loc>http://skills.frankge.me/getting-start-to-dynamic-programming-part3-find-the-optimal-solution/</loc>
+    <loc>http://skills.frankge.me/getting-start-to-dynamic-programming-part-4-using-recursion-in-a-smart-way/</loc>
+    <lastmod>2017-01-11T11:53:36.073Z</lastmod>
+    <data>
+        <display>
+        <title>浅谈动态规划（四）——巧用递归</title>
+        <pubTime>2017-01-10T16:25:10.000Z</pubTime>
+        
+        <tag>算法</tag>
+         
+         
+           
+             
+              <breadCrumb title="编程学习" url="http://skills.frankge.me/categories/%E7%BC%96%E7%A8%8B%E5%AD%A6%E4%B9%A0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://skills.frankge.me/getting-start-to-dynamic-programming-part-3-find-the-optimal-solution/</loc>
     <lastmod>2016-12-10T17:37:36.941Z</lastmod>
     <data>
         <display>
@@ -165,7 +185,7 @@
 
     
   <url>
-    <loc>http://skills.frankge.me/getting-start-to-dynamic-programming-part1-some-exercises-from-lintcode/</loc>
+    <loc>http://skills.frankge.me/getting-start-to-dynamic-programming-part-1-some-exercises-from-lintcode/</loc>
     <lastmod>2016-11-30T16:54:50.601Z</lastmod>
     <data>
         <display>
@@ -185,7 +205,7 @@
 
     
   <url>
-    <loc>http://skills.frankge.me/getting-start-to-dynamic-programming-part2-some-exercises-slightly-difficult-from-lintcode-2/</loc>
+    <loc>http://skills.frankge.me/getting-start-to-dynamic-programming-part-2-some-exercises-slightly-difficult-from-lintcode-2/</loc>
     <lastmod>2016-11-30T16:30:43.130Z</lastmod>
     <data>
         <display>
